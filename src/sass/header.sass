@@ -1,0 +1,27 @@
+@import "../font/variables"
+
+.header
+  @include flex-between
+  align-items: center
+
+
+.header-logo
+  padding: 24.5px 0
+
+.header-nav
+  padding: 23px 0
+  width: 437px
+  nav
+    @include flex-between
+    li
+      list-style: none
+      a
+        text-decoration: none
+        font-family: $ubuntu-bold
+        font-size: 16px
+        color: #1D1929
+
+.header-button
+  padding: 7px 0
+  button
+    @include buttonBlue-16
