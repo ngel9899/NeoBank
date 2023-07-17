@@ -2,6 +2,9 @@
 @import '../components/header/header.css';
 @import '../components/card_design/cards_design.css';
 @import '../components/what_features_do_we_provide/what_features_do_we_provide.css';
+@import '../components/exchange_rate/exchange_rate.css';
+@import '../components/services_anywhere_in_the_world/services_anywhere_in_the_world.css';
+@import '../components/subscribe/subscribe.css';
 
 * {
   margin: 0;
@@ -13,4 +16,8 @@
 .container {
     max-width: 1300px;
     margin: 0 auto;
+}
+
+body{
+    background: #F5F4FF;
 }

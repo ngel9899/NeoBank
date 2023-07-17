@@ -7,7 +7,8 @@
           justify-content: space-between;
   padding-top: 131px;
 }
-.cardsDesign div:last-child {
+
+.cardsDesign-right {
   text-align: right;
 }
 
@@ -29,7 +30,7 @@
   font-size: 16px;
   color: white;
   background-color: #003CFF;
-  border-radius: 14px;
+  border-radius: 16px;
   border: none;
 }
 
