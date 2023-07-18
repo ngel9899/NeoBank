@@ -23,6 +23,7 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  margin-bottom: 99px;
 }
 .subscribe-form input:first-child {
   width: 525px;
@@ -31,5 +32,24 @@
   border: none;
   -webkit-box-shadow: 0px 10px 20px 0px rgba(54, 58, 120, 0.1);
           box-shadow: 0px 10px 20px 0px rgba(54, 58, 120, 0.1);
-  background: url("../../../public/img/email.png") no-repeat left;
+  background: url("../../../public/img/email.png") 6% 50% no-repeat #FFFFFF;
+  color: #9092B0;
+  font-size: 20px;
+  font-family: "NunitoSans-regular";
+  padding-left: 70px;
+  margin-left: 162px;
+}
+.subscribe-form input:last-child {
+  position: relative;
+  top: 20px;
+  right: 15%;
+  width: 162px;
+  height: 45px;
+  padding-left: 20px;
+  border-radius: 20px;
+  background: url("../../../public/img/paper_airplane.png") 14px top no-repeat #686DF1;
+  color: #FFFFFF;
+  border: none;
+  font-family: "Ubuntu-bold";
+  font-size: 16px;
 }

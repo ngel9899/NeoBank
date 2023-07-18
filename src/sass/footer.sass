@@ -1,0 +1,50 @@
+@import "../font/variables"
+
+.footer
+  background: linear-gradient(0deg, rgba(178, 178, 178, 0.20) 0%, rgba(178, 178, 178, 0.20) 100%), #F4F4F4
+
+.footer-container
+  padding: 96px 0 92px 0
+
+.footer-about
+  @include flex-between
+  padding-bottom: 32px
+
+.footer-adress
+  ul
+    list-style-type: none
+    li:first-child
+      @include ubuntuBold-30
+      margin-bottom: 8px
+    li:last-child
+      @include ubuntuMed-16
+      color: #2D3748
+  a
+    text-decoration: none
+  a:first-child
+    color: #000000
+  a:last-child
+    color: #2D3748
+
+
+.footer-links
+  display: flex
+  flex-wrap: wrap
+  a
+    @include ubuntuMed-16
+    color: #000000
+    margin-right: 32px
+    text-decoration: none
+  a:last-child
+    margin-top: 8px
+
+
+.footer-text
+  margin-top: 28px
+  border-top: solid 2px rgba(255, 255, 255, 0.81)
+  p
+    padding-top: 32px
+    @include ubuntuMed-16
+    color: #2D3748
+    line-height: 24px
+    letter-spacing: 0.32px

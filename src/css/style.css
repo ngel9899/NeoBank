@@ -5,6 +5,7 @@
 @import '../components/exchange_rate/exchange_rate.css';
 @import '../components/services_anywhere_in_the_world/services_anywhere_in_the_world.css';
 @import '../components/subscribe/subscribe.css';
+@import '../components/footer/footer.css';
 
 * {
   margin: 0;
