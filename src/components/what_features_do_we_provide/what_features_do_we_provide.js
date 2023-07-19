@@ -10,7 +10,7 @@ export function WhatFeaturesDoWeProvide(){
     return(
         <section className="whatFeaturesDoWeProvide container">
             <div className="whatFeaturesDoWeProvide-img">
-                <img src="img/home-function_usage_illustration.png" alt="function_usage_illustration"/>
+                <img src="img/home-function_usage_illustration.png" alt="function usage illustration"/>
             </div>
             <div className="whatFeaturesDoWeProvide-text">
                 <h1>We Provide Many Features You Can Use</h1>

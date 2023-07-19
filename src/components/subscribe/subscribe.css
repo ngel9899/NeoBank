@@ -3,10 +3,17 @@
   text-align: center;
 }
 
+.subscribe-text a {
+  font-family: "Ubuntu-bold";
+  font-size: 24px;
+  color: #EB801D;
+  text-decoration: none;
+}
 .subscribe-text h1 {
   font-family: "Ubuntu-bold";
   font-size: 30px;
   color: #1C1C1E;
+  padding-top: 30px;
 }
 .subscribe-text h2 {
   font-family: "Ubuntu-bold";
@@ -60,6 +67,10 @@
     font-size: 20px;
   }
   .subscribe-text h2 {
+    font-family: "Ubuntu-bold";
+    font-size: 20px;
+  }
+  .subscribe-text a {
     font-family: "Ubuntu-bold";
     font-size: 20px;
   }

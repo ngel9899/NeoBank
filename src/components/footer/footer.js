@@ -7,13 +7,13 @@ export function Footer(){
             <div className='footer-container container'>
                 <div className='footer-about'>
                     <div className='footer-img'>
-                        <a href=""><img src="img/logo-footer.png" alt="logo"/></a>
+                        <a href=""><img src="img/logo-footer.png" alt="logo Neoflex"/></a>
                     </div>
                     <div>
                         <address className='footer-adress'>
                             <ul>
-                                <li><a href="">+7 (495) 984 25 13</a></li>
-                                <li><a href="">info@neoflex.ru</a></li>
+                                <li><a href="tel: 84959842513">+7 (495) 984 25 13</a></li>
+                                <li><a href="mailto: info@neoflex.ru">info@neoflex.ru</a></li>
                             </ul>
                         </address>
                     </div>

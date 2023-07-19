@@ -35,7 +35,7 @@ export function ExchangeRate(){
                         <p>Update every 15 minutes, MSC 09.08.2022</p>
                     </div>
                     <div className="exchangeRate-img">
-                        <img src="img/exchange_rate_logo.png" alt="exchange_logo"/>
+                        <img src="img/exchange_rate_logo.png" alt="exchange logo"/>
                     </div>
                 </div>
             </div>

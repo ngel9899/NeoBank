@@ -4,6 +4,7 @@ export function Subscribe(){
     return(
         <section className="subscribe container">
             <div className="subscribe-text">
+                <a>Support</a>
                 <h1>Subscribe Newsletter & get</h1>
                 <h2>Bank News</h2>
             </div>

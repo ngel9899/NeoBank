@@ -12,7 +12,6 @@
   padding: 32px;
   background: -webkit-gradient(linear, left bottom, left top, from(rgb(178, 178, 178)), to(rgb(244, 244, 244)));
   background: linear-gradient(0deg, rgb(178, 178, 178), rgb(244, 244, 244));
-  drop-shadow: 0px 2px 4px rgba(187, 187, 187, 0.2);
   border-radius: 16px;
 }
 
@@ -84,6 +83,9 @@
   }
   .exchangeRate-currency span {
     font-size: 14px;
+  }
+  .exchangeRate-link a {
+    font-size: 16px;
   }
 }
 @media screen and (max-width: 650px) {
