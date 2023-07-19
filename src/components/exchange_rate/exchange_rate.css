@@ -66,3 +66,36 @@
   padding-top: 79px;
   text-align: right;
 }
+
+@media screen and (max-width: 860px) {
+  .exchangeRate-right_block {
+    width: 26%;
+  }
+}
+@media screen and (max-width: 710px) {
+  .exchangeRate-text h1 {
+    font-size: 20px;
+  }
+  .exchangeRate-text p {
+    font-size: 14px;
+  }
+  .exchangeRate-currency p {
+    font-size: 14px;
+  }
+  .exchangeRate-currency span {
+    font-size: 14px;
+  }
+}
+@media screen and (max-width: 650px) {
+  .exchangeRate-currency {
+    width: 50%;
+  }
+  .exchangeRate-text {
+    width: 72%;
+  }
+}
+@media screen and (max-width: 500px) {
+  .exchangeRate-img img {
+    width: 90%;
+  }
+}

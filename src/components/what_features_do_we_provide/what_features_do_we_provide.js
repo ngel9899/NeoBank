@@ -4,7 +4,7 @@ export function WhatFeaturesDoWeProvide(){
     function ListItem(props){
         let text = props.text;
         return(
-            <li><img src="img/check-green.png" alt="check-green"/>{text}</li>
+            <li><img src="img/check-green.png" alt="check"/>{text}</li>
         )
     }
     return(

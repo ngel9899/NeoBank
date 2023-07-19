@@ -1,3 +1,4 @@
+import {DropDown} from "../dropdown/dropdown";
 
 
 export function Header(){
@@ -17,6 +18,7 @@ export function Header(){
                 <div className="header-button">
                     <button>Online Bank</button>
                 </div>
+                <DropDown />
             </header>
         )
 }

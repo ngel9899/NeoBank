@@ -12,8 +12,26 @@
   font-size: 16px;
   color: #1C1C1E;
   padding-top: 24px;
+  font-size: 16px;
 }
 
 .world_map-img {
   padding-top: 54px;
+}
+.world_map-img img {
+  width: 100%;
+}
+
+@media screen and (max-width: 1200px) {
+  .world_map h1 {
+    font-size: 24px;
+  }
+}
+@media screen and (max-width: 600px) {
+  .world_map h1 {
+    font-size: 20px;
+  }
+  .world_map p {
+    font-size: 14px;
+  }
 }

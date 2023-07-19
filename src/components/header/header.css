@@ -48,3 +48,15 @@
   border-radius: 16px;
   border: none;
 }
+
+@media screen and (max-width: 780px) {
+  .header-nav {
+    display: none;
+  }
+  .header-button {
+    display: none;
+  }
+  .header {
+    height: 73px;
+  }
+}

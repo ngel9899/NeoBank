@@ -52,3 +52,35 @@
 .cardsDesign-img img:first-child {
   margin-bottom: 16px;
 }
+
+@media screen and (max-width: 1200px) {
+  .cardsDesign-img img {
+    height: 45%;
+  }
+  .cardsDesign-text {
+    width: 100%;
+  }
+  .cardsDesign-text p {
+    font-size: 30px;
+    line-height: 40px;
+  }
+  .cardsDesign-right {
+    margin-left: 40px;
+  }
+}
+@media screen and (max-width: 780px) {
+  .cardsDesign-img {
+    width: 100%;
+  }
+  .cardsDesign-img img {
+    height: 30%;
+    margin-bottom: 6px;
+  }
+  .cardsDesign-img img:first-child {
+    margin-bottom: 6px;
+  }
+  .cardsDesign-right {
+    width: 30%;
+    margin-right: 20px;
+  }
+}

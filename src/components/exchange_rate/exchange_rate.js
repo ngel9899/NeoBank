@@ -30,7 +30,7 @@ export function ExchangeRate(){
                         <a href="">All courses</a>
                     </div>
                 </div>
-                <div>
+                <div className="exchangeRate-right_block">
                     <div className="exchangeRate-time">
                         <p>Update every 15 minutes, MSC 09.08.2022</p>
                     </div>

@@ -44,3 +44,22 @@
 .whatFeaturesDoWeProvide-text ul li:last-child {
   margin-bottom: 0;
 }
+
+@media screen and (max-width: 1270px) {
+  .whatFeaturesDoWeProvide-text h1 {
+    font-size: 30px;
+  }
+  .whatFeaturesDoWeProvide-img {
+    width: 80%;
+  }
+}
+@media screen and (max-width: 1030px) {
+  .whatFeaturesDoWeProvide-img img {
+    width: 80%;
+  }
+}
+@media screen and (max-width: 730px) {
+  .whatFeaturesDoWeProvide-img {
+    display: none;
+  }
+}
