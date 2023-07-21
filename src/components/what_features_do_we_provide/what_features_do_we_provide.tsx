@@ -1,7 +1,10 @@
 
 
 export function WhatFeaturesDoWeProvide(){
-    function ListItem(props){
+    interface ListItemProps{
+        text: string;
+    }
+    function ListItem(props: ListItemProps){
         let text = props.text;
         return(
             <li><img src="img/check-green.png" alt="check"/>{text}</li>

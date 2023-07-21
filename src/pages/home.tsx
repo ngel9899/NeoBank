@@ -6,7 +6,7 @@ import {ServicesWorld} from "../components/services_anywhere_in_the_world/servic
 import {Subscribe} from "../components/subscribe/subscribe";
 import {Footer} from "../components/footer/footer";
 
-export function Home (props){
+export function Home (){
     return(
         <div>
             <Header />

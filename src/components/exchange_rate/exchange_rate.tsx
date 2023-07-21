@@ -1,7 +1,11 @@
 
 
 export function ExchangeRate(){
-    function Сurrency(props){
+    interface СurrencyProps{
+        name: string;
+        number: string;
+    }
+    function Сurrency(props: СurrencyProps){
         let name = props.name;
         let number = props.number;
         return(

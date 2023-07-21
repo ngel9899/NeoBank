@@ -6,7 +6,7 @@ import './font/stylesheet.css';
 import {AppRoutes} from "./routes";
 
 
-function Menu (props){
+function Menu (){
     return(
         <BrowserRouter>
             <AppRoutes />
@@ -14,5 +14,5 @@ function Menu (props){
     )
 }
 
-createRoot(document.getElementById('root')).render(<Menu />);
+createRoot(document.getElementById('root')!).render(<Menu />);
 
