@@ -1,4 +1,4 @@
-
+import '../../sass/subscribe.sass';
 
 export function Subscribe(){
     return(

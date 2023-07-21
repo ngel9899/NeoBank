@@ -1,4 +1,4 @@
-
+import '../../sass/footer.sass';
 
 
 export function Footer(){

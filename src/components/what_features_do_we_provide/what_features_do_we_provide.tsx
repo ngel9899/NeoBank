@@ -1,4 +1,4 @@
-
+import '../../sass/what_features_do_we_provide.sass';
 
 export function WhatFeaturesDoWeProvide(){
     interface ListItemProps{

@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
 import {BrowserRouter} from "react-router-dom";
 import { createRoot } from 'react-dom/client'
-import './css/style.css';
-import './font/stylesheet.css';
+import './sass/global.sass';
+import './font/stylesheet.sass';
 import {AppRoutes} from "./routes";
 
 

@@ -1,4 +1,5 @@
 import {DropDown} from "../dropdown/dropdown";
+import '../../sass/header.sass';
 
 
 export function Header(){

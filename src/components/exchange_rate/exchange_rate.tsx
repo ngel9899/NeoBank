@@ -1,4 +1,4 @@
-
+import '../../sass/exchange_rate.sass';
 
 export function ExchangeRate(){
     interface СurrencyProps{

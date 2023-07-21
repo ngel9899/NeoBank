@@ -1,4 +1,4 @@
-
+import '../../sass/cards_design.sass';
 
 export function CardsDesign() {
     return(
