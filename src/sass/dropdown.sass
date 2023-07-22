@@ -1,18 +1,32 @@
 @import "../font/variables"
 
-
 .dropdown
-  width: 94px
+  width: 190px
+  z-index: 2
+  text-align: center
+  summary
+    @include ubuntuBold-20
+    display: inline-block
+    vertical-align: middle
+    background: url($way-img + "icon-menu.png") left no-repeat
+    padding-left: 36px
   &[open]
     position: relative
-    top: 60px
-  summary
-    list-style-image: url($way-img + "icon_menu.png")
+    top: 90px
+    summary
+      margin-bottom: 10px
+    li
+      background-color: #bebebe
+      margin-top: -1px
+      text-align: center
   li
     list-style: none
-    margin-top: 8px
+    padding-top: 8px
+    padding-bottom: 8px
     a
       text-decoration: none
       font-family: $ubuntu-bold
       font-size: 16px
       color: #1D1929
+    &:hover
+      background-color: #e7e7e7

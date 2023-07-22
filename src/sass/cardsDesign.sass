@@ -3,24 +3,25 @@
 .cardsDesign
   @include flex-between
   padding-top: 131px
+  z-index: 1
 
-.cardsDesign-right
+.cardsDesign__right
   text-align: right
 
-.cardsDesign-text
+.cardsDesign__text
   width: 610px
   p
     font-family: $ubuntu-bold
     font-size: 48px
     line-height: 50px
 
-.cardsDesign-button
+.cardsDesign__button
   padding-top: 36px
   button
     @include buttonBlue-16
 
 
-.cardsDesign-img
+.cardsDesign__img
   @include flex-between
   width: 518px
   height: 314px
@@ -31,21 +32,24 @@
     margin-bottom: 16px
 
 @media screen and (max-width: 1200px)
-  .cardsDesign-img
+  .cardsDesign__img
     img
       height: 45%
 
-  .cardsDesign-text
+  .cardsDesign__text
     width: 100%
     p
       font-size: 30px
       line-height: 40px
 
-  .cardsDesign-right
+  .cardsDesign__right
     margin-left: 40px
 
 @media screen and (max-width: 780px)
-  .cardsDesign-img
+  .cardsDesign
+    padding-top: 80px
+
+  .cardsDesign__img
     width: 100%
     img
       height: 30%
@@ -53,6 +57,6 @@
     img:first-child
       margin-bottom: 6px
 
-  .cardsDesign-right
+  .cardsDesign__right
     width: 30%
     margin-right: 20px

@@ -1,4 +1,4 @@
-import '../../sass/what_features_do_we_provide.sass';
+import "../../sass/whatFeaturesDoWeProvide.sass";
 
 export function WhatFeaturesDoWeProvide(){
     interface ListItemProps{
@@ -12,10 +12,10 @@ export function WhatFeaturesDoWeProvide(){
     }
     return(
         <section className="whatFeaturesDoWeProvide container">
-            <div className="whatFeaturesDoWeProvide-img">
-                <img src="img/home-function_usage_illustration.png" alt="function usage illustration"/>
+            <div className="whatFeaturesDoWeProvide__img">
+                <img src="img/home-function-usage-illustration.png" alt="function usage illustration"/>
             </div>
-            <div className="whatFeaturesDoWeProvide-text">
+            <div className="whatFeaturesDoWeProvide__text">
                 <h1>We Provide Many Features You Can Use</h1>
                 <p>You can explore the features that we provide with fun and have their own functions each feature</p>
                 <ul>

@@ -3,13 +3,13 @@
 .exchangeRate
   padding-top: 48px
 
-.exchangeRate-container
+.exchangeRate__container
   @include flex-between
   padding: 32px
   background: linear-gradient(0deg, rgb(178, 178, 178), rgb(244, 244, 244))
   border-radius: 16px
 
-.exchangeRate-text
+.exchangeRate__text
   h1
     font-family: $ubuntu-medium
     font-size: 30px
@@ -20,7 +20,7 @@
     color: #000000
     padding-top: 24px
 
-.exchangeRate-currency
+.exchangeRate__currency
   margin-top: 32px
   width: 432px
   div
@@ -33,7 +33,7 @@
     color: black
     padding: 0 32px 0 20px
 
-.exchangeRate-link
+.exchangeRate__link
   margin-top: 51px
   a
     @include ubuntuBold-20
@@ -41,43 +41,43 @@
     color: #FFFFFF
 
 
-.exchangeRate-time
+.exchangeRate__time
   p
     @include ubuntuMed-16
 
-.exchangeRate-img
+.exchangeRate__img
   padding-top: 79px
   text-align: right
 
 @media screen and (max-width: 860px)
-  .exchangeRate-right_block
+  .exchangeRate__right_block
     width: 26%
 
 @media screen and (max-width: 710px)
-  .exchangeRate-text
+  .exchangeRate__text
     h1
       font-size: 20px
     p
       font-size: 14px
 
-  .exchangeRate-currency
+  .exchangeRate__currency
     p
       font-size: 14px
     span
       font-size: 14px
 
 
-  .exchangeRate-link
+  .exchangeRate__link
     a
       font-size: 16px
 
 @media screen and (max-width: 650px)
-  .exchangeRate-currency
+  .exchangeRate__currency
     width: 50%
-  .exchangeRate-text
+  .exchangeRate__text
     width: 72%
 
 @media screen and (max-width: 500px)
-  .exchangeRate-img
+  .exchangeRate__img
     img
       width: 90%
