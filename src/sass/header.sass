@@ -5,10 +5,10 @@
   align-items: center
 
 
-.header-logo
+.header__logo
   padding: 24.5px 0
 
-.header-nav
+.header__nav
   padding: 23px 0
   width: 437px
   nav
@@ -21,7 +21,15 @@
         font-size: 16px
         color: #1D1929
 
-.header-button
+.header__button
   padding: 7px 0
   button
     @include buttonBlue-16
+
+@media screen and (max-width: 780px)
+  .header__nav
+    display: none
+  .header__button
+    display: none
+  .header
+    height: 73px

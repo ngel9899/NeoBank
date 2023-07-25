@@ -4,23 +4,101 @@
   padding-top: 50px
   text-align: center
 
-.subscribe-text
+.subscribe__text
+  a
+    font-family: $ubuntu-bold
+    font-size: 24px
+    color: #EB801D
+    text-decoration: none
   h1
     @include ubuntuBold-30
     color: #1C1C1E
+    padding-top: 30px
   h2
     @include ubuntuBold-30
     color: #1C1C1E
     padding: 28px 0 62px 0
 
-.subscribe-form
+.subscribe__form
   position: relative
   display: flex
   justify-content: center
+  margin-bottom: 99px
   input:first-child
     width: 525px
     height: 90px
     border-radius: 20px
     border: none
     box-shadow: 0px 10px 20px 0px rgba(54, 58, 120, 0.10)
-    background: url($way-img + "email.png") no-repeat left
+    background: url($way-img + "email.png") 6% 50% no-repeat #FFFFFF
+    color: #9092B0
+    font-size: 20px
+    font-family: $nunitoSans-regular
+    padding-left: 70px
+    margin-left: 162px
+  input:last-child
+    position: relative
+    top: 20px
+    right: 173px
+    width: 162px
+    height: 45px
+    padding-left: 20px
+    border-radius: 20px
+    background: url($way-img + "paper-airplane.png") 14px top no-repeat #686DF1
+    color: #FFFFFF
+    border: none
+    font-family: $ubuntu-bold
+    font-size: 16px
+
+@media screen and (max-width: 910px)
+  .subscribe__text
+    h1
+      @include ubuntuBold-20
+    h2
+      @include ubuntuBold-20
+    a
+      @include ubuntuBold-20
+
+  .subscribe__form
+    display: inline-block
+    width: 100%
+    input:first-child
+      display: inline-block
+      font-size: 16px
+      width: 60%
+      margin-left: 100px
+    input:last-child
+      display: inline-block
+      width: 20%
+      font-size: 14px
+      top: 0
+
+@media screen and (max-width: 740px)
+  .subscribe__form
+
+    input:first-child
+      margin-left: 0
+    input:last-child
+      position: absolute
+      top: 20px
+      width: 160px
+      right: 153px
+
+@media screen and (max-width: 680px)
+  .subscribe__form
+    input:last-child
+      right: 145px
+
+
+@media screen and (max-width: 630px)
+  .subscribe__form
+    input:last-child
+      right: 125px
+
+@media screen and (max-width: 570px)
+  .subscribe__form
+    input:first-child
+      width: 80%
+    input:last-child
+      right: 70px
+      background: url($way-img + "paper-airplane.png") 12px top no-repeat #686DF1

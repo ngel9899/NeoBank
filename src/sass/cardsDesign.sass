@@ -1,0 +1,62 @@
+@import "../font/variables"
+
+.cardsDesign
+  @include flex-between
+  padding-top: 131px
+  z-index: 1
+
+.cardsDesign__right
+  text-align: right
+
+.cardsDesign__text
+  width: 610px
+  p
+    font-family: $ubuntu-bold
+    font-size: 48px
+    line-height: 50px
+
+.cardsDesign__button
+  padding-top: 36px
+  button
+    @include buttonBlue-16
+
+
+.cardsDesign__img
+  @include flex-between
+  width: 518px
+  height: 314px
+  flex-wrap: wrap
+  img
+    max-height: 150px
+  img:first-child
+    margin-bottom: 16px
+
+@media screen and (max-width: 1200px)
+  .cardsDesign__img
+    img
+      height: 45%
+
+  .cardsDesign__text
+    width: 100%
+    p
+      font-size: 30px
+      line-height: 40px
+
+  .cardsDesign__right
+    margin-left: 40px
+
+@media screen and (max-width: 780px)
+  .cardsDesign
+    padding-top: 80px
+
+  .cardsDesign__img
+    width: 100%
+    img
+      height: 30%
+      margin-bottom: 6px
+    img:first-child
+      margin-bottom: 6px
+
+  .cardsDesign__right
+    width: 30%
+    margin-right: 20px

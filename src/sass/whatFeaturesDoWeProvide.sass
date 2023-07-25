@@ -4,10 +4,10 @@
   @include flex-between
   padding-top: 112px
 
-.whatFeaturesDoWeProvide-img
+.whatFeaturesDoWeProvide__img
   width: 39.1%
 
-.whatFeaturesDoWeProvide-text
+.whatFeaturesDoWeProvide__text
   h1
     font-family: $rubik-medium
     font-size: 35px
@@ -31,4 +31,19 @@
     li:last-child
       margin-bottom: 0
 
+@media screen and (max-width: 1270px)
+  .whatFeaturesDoWeProvide__text
+    h1
+      font-size: 30px
 
+  .whatFeaturesDoWeProvide__img
+    width: 80%
+
+@media screen and (max-width: 1030px)
+  .whatFeaturesDoWeProvide__img
+    img
+      width: 80%
+
+@media screen and (max-width: 730px)
+  .whatFeaturesDoWeProvide__img
+    display: none

@@ -1,0 +1,83 @@
+@import "../font/variables"
+
+.exchangeRate
+  padding-top: 48px
+
+.exchangeRate__container
+  @include flex-between
+  padding: 32px
+  background: linear-gradient(0deg, rgb(178, 178, 178), rgb(244, 244, 244))
+  border-radius: 16px
+
+.exchangeRate__text
+  h1
+    font-family: $ubuntu-medium
+    font-size: 30px
+    color: #1C1C1E
+  p
+    font-family: $ubuntu-medium
+    font-size: 20px
+    color: #000000
+    padding-top: 24px
+
+.exchangeRate__currency
+  margin-top: 32px
+  width: 432px
+  div
+    display: inline-block
+  p
+    @include ubuntuBold-20
+    color: #808080
+  span
+    @include ubuntuBold-20
+    color: black
+    padding: 0 32px 0 20px
+
+.exchangeRate__link
+  margin-top: 51px
+  a
+    @include ubuntuBold-20
+    text-decoration: none
+    color: #FFFFFF
+
+
+.exchangeRate__time
+  p
+    @include ubuntuMed-16
+
+.exchangeRate__img
+  padding-top: 79px
+  text-align: right
+
+@media screen and (max-width: 860px)
+  .exchangeRate__right_block
+    width: 26%
+
+@media screen and (max-width: 710px)
+  .exchangeRate__text
+    h1
+      font-size: 20px
+    p
+      font-size: 14px
+
+  .exchangeRate__currency
+    p
+      font-size: 14px
+    span
+      font-size: 14px
+
+
+  .exchangeRate__link
+    a
+      font-size: 16px
+
+@media screen and (max-width: 650px)
+  .exchangeRate__currency
+    width: 50%
+  .exchangeRate__text
+    width: 72%
+
+@media screen and (max-width: 500px)
+  .exchangeRate__img
+    img
+      width: 90%
