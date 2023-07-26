@@ -1,0 +1,47 @@
+@import "../font/variables"
+
+.newsline
+  padding-top: 50px
+  text-align: center
+
+.newsline__text
+  padding-bottom: 46px
+  h1
+    @include ubuntuMed-30
+    color: #000000
+  p
+    @include ubuntuMed-16
+    color: #2D3748
+    padding-top: 24px
+
+.newsline__slider
+  display: flex
+  justify-content: space-evenly
+
+.newsline-slider__card
+  width: 320px
+  height: 448px
+  border-radius: 28px
+  border: 1px solid rgba(187, 187, 187, 0.20)
+  background: #FFF
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.20), 0 0 4px 0 rgba(0, 0, 0, 0.08)
+  img
+    width: 256px
+
+.newsline-card__text
+  a
+    @include ubuntuMed-20
+    line-height: 25px
+    color: black
+    text-decoration: none
+  p
+    @include ubuntuMed-16
+    line-height: 23px
+    margin-top: 32px
+
+
+.newsline-card__img
+  margin-bottom: 32px
+
+.newsline-card__container
+  margin: 32px

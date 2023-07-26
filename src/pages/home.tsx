@@ -5,6 +5,7 @@ import {ExchangeRate} from "../components/exchangeRate/exchangeRate";
 import {ServicesWorld} from "../components/servicesAnywhereInTheWorld/servicesAnywhereInTheWorld";
 import {Subscribe} from "../components/subscribe/subscribe";
 import {Footer} from "../components/footer/footer";
+import {Newsline} from "../components/newsline/newsline";
 
 export function Home (){
     return(
@@ -14,6 +15,7 @@ export function Home (){
             <WhatFeaturesDoWeProvide />
             <ExchangeRate />
             <ServicesWorld />
+            <Newsline />
             <Subscribe />
             <Footer />
         </div>

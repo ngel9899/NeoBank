@@ -35,6 +35,22 @@ export async function CurrencyWithdrawal(typesOfCurrency: any){
 
 }
 
+/*
+export async function ConnectBusinessNews(){
+    let url = 'https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=47cb016e61734c628e8070d865794427';
+    try {
+        const response = await fetch(url, {method: 'GET'});
+        const result = await response.json();
+        console.log(result);
+        return result;
+    }
+    catch(error) {
+        console.log('Ошибка сервера');
+        console.error(error);
+    }
+
+}
+*/
 
 
 /*export function FunctionIndex(props){
