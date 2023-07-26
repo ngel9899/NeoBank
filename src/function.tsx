@@ -1,5 +1,39 @@
 import React, {useState} from 'react';
 
+async function ConnectCurrency(typesOfCurrency: any) {
+    let promises = [];
+    for(let i =0; i< typesOfCurrency.length; i++){
+        let exchangeRateToTheRub = `to=RUB&from=${typesOfCurrency[i]}&q=1.0`;
+        let url = 'https://currency-exchange.p.rapidapi.com/exchange?'+ exchangeRateToTheRub;
+            let response = fetch(url,
+                {
+                    method: 'GET',
+                    headers: {
+                        'X-RapidAPI-Key': '2bd3c6dc0dmshd7272ab9852f00ap165910jsncc17b5435d7d',
+                        'X-RapidAPI-Host': 'currency-exchange.p.rapidapi.com'
+                    }}).then(response => {
+                        if (response.ok){
+                            return response.json()
+                        }else return null
+                }).catch(error => {
+                console.log('Ошибка сервера');
+                console.error(error);
+            });
+            promises.push(response);
+    }
+    return Promise.all(promises);
+}
+
+export async function CurrencyWithdrawal(typesOfCurrency: any){
+    let arrayOfCurrenciesToTheRub = [];
+    let currencyList = await ConnectCurrency(typesOfCurrency);
+    for (let i = 0; i < typesOfCurrency.length; i++){
+        let result = currencyList[i];
+        arrayOfCurrenciesToTheRub[typesOfCurrency[i]] = result.toFixed(2);
+    }
+    return arrayOfCurrenciesToTheRub;
+
+}
 
 
 

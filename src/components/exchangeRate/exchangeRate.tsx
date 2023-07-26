@@ -1,19 +1,21 @@
 import "../../sass/exchangeRate.sass";
+import {CurrencyWithdrawal} from "../../function";
 
 export function ExchangeRate(){
-    interface СurrencyProps{
-        name: string;
-        number: string;
+    async function Currency(){
+        let currency = ['USD', 'EUR', 'CNY', 'CHF', 'TRY', 'JPY'];
+        const connectArray = await CurrencyWithdrawal(currency);
+        const container = document.getElementById("exchangeRate__currency_list");
+        for(let i = 0; i < currency.length; i++){
+            let key: any = currency[i];
+            container!.innerHTML +=`
+                <div>
+                    <p>${key}:<span>${connectArray[key]}</span></p>
+                </div>
+            `
+        }
     }
-    function Сurrency(props: СurrencyProps){
-        let name = props.name;
-        let number = props.number;
-        return(
-            <div>
-                <p>{name}<span>{number}</span></p>
-            </div>
-        )
-    }
+    setTimeout(Currency, 1000);
     return(
         <section className="exchangeRate container">
             <div className="exchangeRate__container">
@@ -23,12 +25,9 @@ export function ExchangeRate(){
                         <p>Currency</p>
                     </div>
                     <div className="exchangeRate__currency">
-                        <Сurrency name="USD:" number="60.78"/>
-                        <Сurrency name="CNY:" number="9.08"/>
-                        <Сurrency name="CHF:" number="64.78"/>
-                        <Сurrency name="USD:" number="60.78"/>
-                        <Сurrency name="JPY:" number="0.46"/>
-                        <Сurrency name="TRY:" number="3.39"/>
+                        <div className="exchangeRate__currency_list" id="exchangeRate__currency_list">
+
+                        </div>
                     </div>
                     <div className="exchangeRate__link">
                         <a href="">All courses</a>
