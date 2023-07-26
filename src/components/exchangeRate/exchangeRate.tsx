@@ -15,7 +15,8 @@ export function ExchangeRate(){
             `
         }
     }
-    setTimeout(Currency, 1000);
+    setTimeout(Currency, 5); //Для проверки задания
+    setInterval(Currency, 900000);
     return(
         <section className="exchangeRate container">
             <div className="exchangeRate__container">
