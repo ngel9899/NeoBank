@@ -36,7 +36,7 @@ export async function CurrencyWithdrawal(typesOfCurrency: any){
 }
 
 
-export function SliderNewsline(){
+export async function SliderNewsline(){
     $(function(){
         // @ts-ignore
         $('.newsline__slider-line').slick({
@@ -46,6 +46,12 @@ export function SliderNewsline(){
             slidesToShow: 3,
             responsive: [
                 {
+                    breakpoint: 1170,
+                    settings: {
+                        slidesToShow: 2
+                    }
+                },
+                {
                     breakpoint: 768,
                     settings: {
                         centerMode: true,
@@ -54,7 +60,7 @@ export function SliderNewsline(){
                     }
                 },
                 {
-                    breakpoint: 480,
+                    breakpoint: 580,
                     settings: {
                         centerMode: true,
                         centerPadding: '40px',
@@ -67,7 +73,7 @@ export function SliderNewsline(){
 }
 
 
-/*export async function ConnectBusinessNews(){
+export async function ConnectBusinessNews(){
     let url = 'https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=47cb016e61734c628e8070d865794427';
     try {
         const response = await fetch(url, {method: 'GET'});
@@ -78,7 +84,7 @@ export function SliderNewsline(){
         console.error(error);
     }
 
-}*/
+}
 
 
 /*export function FunctionIndex(props){

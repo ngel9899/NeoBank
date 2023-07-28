@@ -1,12 +1,11 @@
 import "../../sass/newsline.sass";
-//import {ConnectBusinessNews} from "../../function";
-import {SliderNewsline} from "../../function";
+import {ConnectBusinessNews, SliderNewsline} from "../../function";
 
 
 export function Newsline(){
-    /*async function NewsSliderCard() {
+    async function NewsSliderCard() {
         const connectBusinessNews = await ConnectBusinessNews();
-        const container = document.querySelector('.newsline__slider');
+        const container = document.querySelector('.newsline__slider-line');
         for (let i = 0; i < connectBusinessNews.articles.length; i++){
             let articles = connectBusinessNews.articles[i];
             if ((articles['urlToImage'] && articles['description']) != null || undefined){
@@ -23,11 +22,11 @@ export function Newsline(){
                     </div>
                 </div>
             `
-            }else return
+            }
         }
+        await SliderNewsline();
     }
-    setTimeout(NewsSliderCard, 5);*/
-    setTimeout(SliderNewsline, 5);
+    NewsSliderCard();
     return(
         <section className="newsline container">
             <div className="newsline__text">
@@ -36,7 +35,7 @@ export function Newsline(){
             </div>
             <div className="newsline__slider">
                 <div className="newsline__slider-line">
-                    <div className="newsline-slider__card">
+                    {/*<div className="newsline-slider__card">
                         <div className="newsline-card__container">
                             <div className="newsline-card__img">
                                 <img src='https://image.cnbcfm.com/api/v1/image/107230159-1682368003597-gettyimages-1484916701-img_0525_ibjrobnv.jpeg?v=1690367364&w=1920&h=1080' alt="photo news"/>
@@ -90,7 +89,7 @@ export function Newsline(){
                                 <p>Coke has been raising prices across its portfolio, including another round of hikes during the first quarter</p>
                             </div>
                         </div>
-                    </div>
+                    </div>*/}
                 </div>
             </div>
         </section>

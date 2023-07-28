@@ -15,11 +15,7 @@
     padding-top: 24px
 
 .newsline__slider
-  height: 100%
-  width: 100%
   display: flex
-  justify-content: center
-  align-items: center
 
 .newsline__slider-line
   display: flex
@@ -33,7 +29,8 @@
 .slick-slide
   margin-right: 80px
   width: 320px
-  height: 448px
+  height: 452px
+  overflow: hidden
 
 .newsline__slider-line .slick-arrow
   position: absolute
@@ -44,8 +41,8 @@
   height: 64px
 
 .newsline__slider-line .slick-arrow.slick-prev
-  left: 86%
-  border: 0
+  right: 10%
+  border: none
   background: url($way-img + 'arrows-left.png') 0 0 / 100% no-repeat
 
 .newsline__slider-line .slick-arrow.slick-prev.slick-disabled
@@ -53,7 +50,7 @@
 
 .newsline__slider-line .slick-arrow.slick-next
   right: 35px
-  border: 0
+  border: none
   background: url($way-img + 'arrows-right.png') 0 0 / 100% no-repeat
 
 .newsline__slider-line .slick-arrow.slick-next.slick-disabled
@@ -67,6 +64,7 @@
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.20), 0 0 4px 0 rgba(0, 0, 0, 0.08)
   img
     width: 256px
+    height: 120px
 
 .newsline-card__text
   a
@@ -75,6 +73,8 @@
     color: black
     text-decoration: none
   p
+    height: 128px
+    overflow: hidden
     @include ubuntuMed-16
     line-height: 23px
     margin-top: 32px
@@ -85,3 +85,40 @@
 
 .newsline-card__container
   margin: 32px
+
+
+@media screen and (max-width: 1200px)
+  .newsline__text
+    h1
+      font-size: 24px
+
+@media screen and (max-width: 1200px)
+  .newsline__slider-line .slick-arrow.slick-prev
+    right: 12%
+
+@media screen and (max-width: 1020px)
+  .newsline__slider-line .slick-arrow.slick-prev
+    right: 14%
+
+@media screen and (max-width: 860px)
+  .newsline__slider-line .slick-arrow.slick-prev
+    right: 16%
+
+@media screen and (max-width: 720px)
+  .newsline__slider-line .slick-arrow.slick-prev
+    right: 20%
+
+@media screen and (max-width: 580px)
+  .newsline__slider-line .slick-arrow.slick-prev
+    right: 24%
+
+@media screen and (max-width: 480px)
+  .newsline__slider-line .slick-arrow.slick-prev
+    right: 28%
+
+@media screen and (max-width: 600px)
+  .newsline__text
+    h1
+      font-size: 20px
+    p
+      font-size: 14px
