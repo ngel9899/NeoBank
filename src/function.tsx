@@ -35,7 +35,39 @@ export async function CurrencyWithdrawal(typesOfCurrency: any){
 
 }
 
-export async function ConnectBusinessNews(){
+
+export function SliderNewsline(){
+    $(function(){
+        // @ts-ignore
+        $('.newsline__slider-line').slick({
+            variableWidth: true,
+            infinite: false,
+            speed: 500,
+            slidesToShow: 3,
+            responsive: [
+                {
+                    breakpoint: 768,
+                    settings: {
+                        centerMode: true,
+                        centerPadding: '40px',
+                        slidesToShow: 2
+                    }
+                },
+                {
+                    breakpoint: 480,
+                    settings: {
+                        centerMode: true,
+                        centerPadding: '40px',
+                        slidesToShow: 1
+                    }
+                }
+            ]
+        });
+    });
+}
+
+
+/*export async function ConnectBusinessNews(){
     let url = 'https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=47cb016e61734c628e8070d865794427';
     try {
         const response = await fetch(url, {method: 'GET'});
@@ -46,7 +78,7 @@ export async function ConnectBusinessNews(){
         console.error(error);
     }
 
-}
+}*/
 
 
 /*export function FunctionIndex(props){

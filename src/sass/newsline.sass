@@ -15,12 +15,52 @@
     padding-top: 24px
 
 .newsline__slider
+  height: 100%
+  width: 100%
   display: flex
-  justify-content: space-evenly
+  justify-content: center
+  align-items: center
+
+.newsline__slider-line
+  display: flex
+  position: relative
+  max-width: 100%
 
 .newsline-slider__card
   width: 320px
   height: 448px
+
+.slick-slide
+  margin-right: 80px
+  width: 320px
+  height: 448px
+
+.newsline__slider-line .slick-arrow
+  position: absolute
+  top: 110%
+  z-index: 2
+  font-size: 0
+  width: 64px
+  height: 64px
+
+.newsline__slider-line .slick-arrow.slick-prev
+  left: 86%
+  border: 0
+  background: url($way-img + 'arrows-left.png') 0 0 / 100% no-repeat
+
+.newsline__slider-line .slick-arrow.slick-prev.slick-disabled
+  background: url($way-img + 'arrowsOff-left.png') 0 0 / 100% no-repeat
+
+.newsline__slider-line .slick-arrow.slick-next
+  right: 35px
+  border: 0
+  background: url($way-img + 'arrows-right.png') 0 0 / 100% no-repeat
+
+.newsline__slider-line .slick-arrow.slick-next.slick-disabled
+  background: url($way-img + 'arrowsOff-right.png') 0 0 / 100% no-repeat
+
+.newsline-slider__card
+  width: 320px
   border-radius: 28px
   border: 1px solid rgba(187, 187, 187, 0.20)
   background: #FFF
