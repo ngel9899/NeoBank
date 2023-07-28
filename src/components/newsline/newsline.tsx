@@ -35,61 +35,7 @@ export function Newsline(){
             </div>
             <div className="newsline__slider">
                 <div className="newsline__slider-line">
-                    {/*<div className="newsline-slider__card">
-                        <div className="newsline-card__container">
-                            <div className="newsline-card__img">
-                                <img src='https://image.cnbcfm.com/api/v1/image/107230159-1682368003597-gettyimages-1484916701-img_0525_ibjrobnv.jpeg?v=1690367364&w=1920&h=1080' alt="photo news"/>
-                            </div>
-                            <div className="newsline-card__text">
-                                <a href='"https://www.cnbc.com/2023/07/26/coca-cola-ko-q2-2023-earnings.html'>Coca-Cola is about to report earnings. Here's what to expect - CNBC</a>
-                                <p>Coke has been raising prices across its portfolio, including another round of hikes during the first quarter</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="newsline-slider__card">
-                        <div className="newsline-card__container">
-                            <div className="newsline-card__img">
-                                <img src='https://image.cnbcfm.com/api/v1/image/107230159-1682368003597-gettyimages-1484916701-img_0525_ibjrobnv.jpeg?v=1690367364&w=1920&h=1080' alt="photo news"/>
-                            </div>
-                            <div className="newsline-card__text">
-                                <a href='"https://www.cnbc.com/2023/07/26/coca-cola-ko-q2-2023-earnings.html'>Coca-Cola is about to report earnings. Here's what to expect - CNBC</a>
-                                <p>Coke has been raising prices across its portfolio, including another round of hikes during the first quarter</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="newsline-slider__card">
-                        <div className="newsline-card__container">
-                            <div className="newsline-card__img">
-                                <img src='https://image.cnbcfm.com/api/v1/image/107230159-1682368003597-gettyimages-1484916701-img_0525_ibjrobnv.jpeg?v=1690367364&w=1920&h=1080' alt="photo news"/>
-                            </div>
-                            <div className="newsline-card__text">
-                                <a href='"https://www.cnbc.com/2023/07/26/coca-cola-ko-q2-2023-earnings.html'>Coca-Cola is about to report earnings. Here's what to expect - CNBC</a>
-                                <p>Coke has been raising prices across its portfolio, including another round of hikes during the first quarter</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="newsline-slider__card">
-                        <div className="newsline-card__container">
-                            <div className="newsline-card__img">
-                                <img src='https://image.cnbcfm.com/api/v1/image/107230159-1682368003597-gettyimages-1484916701-img_0525_ibjrobnv.jpeg?v=1690367364&w=1920&h=1080' alt="photo news"/>
-                            </div>
-                            <div className="newsline-card__text">
-                                <a href='"https://www.cnbc.com/2023/07/26/coca-cola-ko-q2-2023-earnings.html'>Coca-Cola is about to report earnings. Here's what to expect - CNBC</a>
-                                <p>Coke has been raising prices across its portfolio, including another round of hikes during the first quarter</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="newsline-slider__card">
-                        <div className="newsline-card__container">
-                            <div className="newsline-card__img">
-                                <img src='https://image.cnbcfm.com/api/v1/image/107230159-1682368003597-gettyimages-1484916701-img_0525_ibjrobnv.jpeg?v=1690367364&w=1920&h=1080' alt="photo news"/>
-                            </div>
-                            <div className="newsline-card__text">
-                                <a href='"https://www.cnbc.com/2023/07/26/coca-cola-ko-q2-2023-earnings.html'>Coca-Cola is about to report earnings. Here's what to expect - CNBC</a>
-                                <p>Coke has been raising prices across its portfolio, including another round of hikes during the first quarter</p>
-                            </div>
-                        </div>
-                    </div>*/}
+
                 </div>
             </div>
         </section>
