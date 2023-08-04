@@ -1,57 +1,6 @@
 import React, {useEffect, useState} from 'react';
-import { register } from 'swiper/element/bundle';
-register();
 
 
-export async function SliderNewsline(){
-    $(function(){
-        // @ts-ignore
-        $('.newsline__slider-line').slick({
-            variableWidth: true,
-            infinite: false,
-            speed: 500,
-            slidesToShow: 3,
-            responsive: [
-                {
-                    breakpoint: 1170,
-                    settings: {
-                        slidesToShow: 2
-                    }
-                },
-                {
-                    breakpoint: 768,
-                    settings: {
-                        centerMode: true,
-                        centerPadding: '40px',
-                        slidesToShow: 2
-                    }
-                },
-                {
-                    breakpoint: 580,
-                    settings: {
-                        centerMode: true,
-                        centerPadding: '40px',
-                        slidesToShow: 1
-                    }
-                }
-            ]
-        });
-    });
-}
-
-
-export async function ConnectBusinessNews(){
-    let url = 'https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=47cb016e61734c628e8070d865794427';
-    try {
-        const response = await fetch(url, {method: 'GET'});
-        return await response.json();
-    }
-    catch(error) {
-        console.log('Ошибка сервера');
-        console.error(error);
-    }
-
-}
 
 
 /*export function FunctionIndex(props){
@@ -162,42 +111,3 @@ export function ToursPageFormEvent(){
         applicantForm.querySelector('button').disabled = true
     });
 }*/
-
-/*
-useEffect(() => {
-        let promises = [];
-        let arrayOfCurrenciesToTheRub: any = [];
-        const element = document.getElementById("exchangeRate__currency_list");
-        const url = new URL('exchange?to=RUB', 'https://currency-exchange.p.rapidapi.com');
-        for (let i = 0; i < currency.length; i++){
-            url.searchParams.set('from', currency[i] );
-            url.searchParams.set('q', '1.0' );
-            let response = fetch(url.toString(),
-                {
-                    method: 'GET',
-                    headers: {
-                        'X-RapidAPI-Key': '2bd3c6dc0dmshd7272ab9852f00ap165910jsncc17b5435d7d',
-                        'X-RapidAPI-Host': 'currency-exchange.p.rapidapi.com'
-                    }}).then(response => {
-                if (response.ok){
-                    return response.json()
-                }else return null
-            }).catch(error => {
-                console.log('Ошибка сервера');
-                console.error(error);
-            });
-            promises.push(response);
-        }
-        let currencyList: any = await Promise.all(promises);
-        for (let i = 0; i < currency.length; i++){
-            arrayOfCurrenciesToTheRub[currency[i]] = currencyList[i].toFixed(2)
-            console.log(arrayOfCurrenciesToTheRub);
-            /!*setData(Currency(currency[i], arrayOfCurrenciesToTheRub[currency[i]]))*!/
-        }
-
-        /!*.then((response) => response.json()).then((json: any) => {
-        setData(json.map((n : any) => Number(n).toFixed(2)))*!/
-
-
-    },
-    []);*/

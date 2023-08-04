@@ -16,40 +16,41 @@
 
 .newsline__slider
   display: flex
+  height: 560px
 
 .newsline__slider-line
   display: flex
   position: relative
   max-width: 100%
 
-.slick-slide
+.swiper-slide
   margin-right: 80px
   width: 320px
   height: 452px
   overflow: hidden
 
-.newsline__slider-line .slick-arrow
+.newsline-slider__button
   position: absolute
-  top: 110%
+  top: 88%
   z-index: 2
   font-size: 0
   width: 64px
   height: 64px
 
-.newsline__slider-line .slick-arrow.slick-prev
-  right: 10%
+.newsline__slider .newsline-slider__button-prev
+  right: 7%
   border: none
   background: url($way-img + 'arrows-left.png') 0 0 / 100% no-repeat
 
-.newsline__slider-line .slick-arrow.slick-prev.slick-disabled
+.newsline-slider__button-prev.arrow-disabled
   background: url($way-img + 'arrowsOff-left.png') 0 0 / 100% no-repeat
 
-.newsline__slider-line .slick-arrow.slick-next
-  right: 35px
+.newsline__slider .newsline-slider__button-next
+  right: 0
   border: none
   background: url($way-img + 'arrows-right.png') 0 0 / 100% no-repeat
 
-.newsline__slider-line .slick-arrow.slick-next.slick-disabled
+.newsline-slider__button-next.arrow-disabled
   background: url($way-img + 'arrowsOff-right.png') 0 0 / 100% no-repeat
 
 .newsline-slider__card
@@ -89,28 +90,28 @@
       font-size: 24px
 
 @media screen and (max-width: 1200px)
-  .newsline__slider-line .slick-arrow.slick-prev
-    right: 12%
+  .newsline__slider .newsline-slider__button-prev
+    right: 8%
 
 @media screen and (max-width: 1020px)
-  .newsline__slider-line .slick-arrow.slick-prev
-    right: 14%
+  .newsline__slider .newsline-slider__button-prev
+    right: 9%
 
 @media screen and (max-width: 860px)
-  .newsline__slider-line .slick-arrow.slick-prev
-    right: 16%
+  .newsline__slider .newsline-slider__button-prev
+    right: 10%
 
-@media screen and (max-width: 720px)
-  .newsline__slider-line .slick-arrow.slick-prev
-    right: 20%
+@media screen and (max-width: 780px)
+  .newsline__slider .newsline-slider__button-prev
+    right: 11%
 
-@media screen and (max-width: 580px)
-  .newsline__slider-line .slick-arrow.slick-prev
-    right: 24%
+@media screen and (max-width: 700px)
+  .newsline__slider .newsline-slider__button-prev
+    right: 12%
 
-@media screen and (max-width: 480px)
-  .newsline__slider-line .slick-arrow.slick-prev
-    right: 28%
+@media screen and (max-width: 630px)
+  .newsline__slider .newsline-slider__button-prev
+    right: 14%
 
 @media screen and (max-width: 600px)
   .newsline__text
@@ -118,3 +119,7 @@
       font-size: 20px
     p
       font-size: 14px
+
+@media screen and (max-width: 560px)
+  .newsline__slider .newsline-slider__button-prev
+    right: 18%
