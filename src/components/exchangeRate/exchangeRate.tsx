@@ -7,39 +7,39 @@ export function ExchangeRate(){
     const [data, setData] = useState<Array<any>>();
 
 
-useEffect(() => {
-        const url = new URL('exchange?to=RUB', 'https://currency-exchange.p.rapidapi.com');
-        let connect = () =>{
-            let promises = [];
-            for (let i = 0; i < currency.length; i++){
-                url.searchParams.set('from', currency[i] );
-                url.searchParams.set('q', '1.0' );
-                let response = fetch(url.toString(),
-                    {
-                        method: 'GET',
-                        headers: {
-                            'X-RapidAPI-Key': '2bd3c6dc0dmshd7272ab9852f00ap165910jsncc17b5435d7d',
-                            'X-RapidAPI-Host': 'currency-exchange.p.rapidapi.com'
-                        }}).then(response => {
-                    if (response.ok){
-                        return response.json()
-                    }else return null
-                }).catch(error => {
-                    console.log('Ошибка сервера');
-                    console.error(error);
-                });
-                promises.push(response);
+    useEffect(() => {
+            const url = new URL('exchange?to=RUB', 'https://currency-exchange.p.rapidapi.com');
+            let connect = () =>{
+                let promises = [];
+                for (let i = 0; i < currency.length; i++){
+                    url.searchParams.set('from', currency[i] );
+                    url.searchParams.set('q', '1.0' );
+                    let response = fetch(url.toString(),
+                        {
+                            method: 'GET',
+                            headers: {
+                                'X-RapidAPI-Key': '2bd3c6dc0dmshd7272ab9852f00ap165910jsncc17b5435d7d',
+                                'X-RapidAPI-Host': 'currency-exchange.p.rapidapi.com'
+                            }}).then(response => {
+                        if (response.ok){
+                            return response.json()
+                        }else return null
+                    }).catch(error => {
+                        console.log('Ошибка сервера');
+                        console.error(error);
+                    });
+                    promises.push(response);
+                }
+                Promise.all(promises).then((responses: any) => {
+                    setData(responses.map((n : any) =>  Number(n).toFixed(2)))
+                })
             }
-            Promise.all(promises).then((responses: any) => {
-                setData(responses.map((n : any) =>  Number(n).toFixed(2)))
-            })
-        }
-        connect(); //для проверки
-        const interval = window.setInterval(connect, 900000);
-            return () => {
-                clearInterval(interval)
-            }
-        }, []);
+            connect(); //для проверки
+            const interval = window.setInterval(connect, 900000);
+                return () => {
+                    clearInterval(interval)
+                }
+    }, []);
 
 
     return(
