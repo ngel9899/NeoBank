@@ -1,19 +1,47 @@
 import "../../sass/exchangeRate.sass";
+import {useEffect, useState} from "react";
+
+const currency: string[] = ['USD', 'EUR', 'CNY', 'CHF', 'TRY', 'JPY'];
 
 export function ExchangeRate(){
-    interface СurrencyProps{
-        name: string;
-        number: string;
-    }
-    function Сurrency(props: СurrencyProps){
-        let name = props.name;
-        let number = props.number;
-        return(
-            <div>
-                <p>{name}<span>{number}</span></p>
-            </div>
-        )
-    }
+    const [data, setData] = useState<Array<any>>();
+
+
+useEffect(() => {
+        const url = new URL('exchange?to=RUB', 'https://currency-exchange.p.rapidapi.com');
+        let connect = () =>{
+            let promises = [];
+            for (let i = 0; i < currency.length; i++){
+                url.searchParams.set('from', currency[i] );
+                url.searchParams.set('q', '1.0' );
+                let response = fetch(url.toString(),
+                    {
+                        method: 'GET',
+                        headers: {
+                            'X-RapidAPI-Key': '2bd3c6dc0dmshd7272ab9852f00ap165910jsncc17b5435d7d',
+                            'X-RapidAPI-Host': 'currency-exchange.p.rapidapi.com'
+                        }}).then(response => {
+                    if (response.ok){
+                        return response.json()
+                    }else return null
+                }).catch(error => {
+                    console.log('Ошибка сервера');
+                    console.error(error);
+                });
+                promises.push(response);
+            }
+            Promise.all(promises).then((responses: any) => {
+                setData(responses.map((n : any) =>  Number(n).toFixed(2)))
+            })
+        }
+        connect(); //для проверки
+        const interval = window.setInterval(connect, 900000);
+            return () => {
+                clearInterval(interval)
+            }
+        }, []);
+
+
     return(
         <section className="exchangeRate container">
             <div className="exchangeRate__container">
@@ -23,12 +51,9 @@ export function ExchangeRate(){
                         <p>Currency</p>
                     </div>
                     <div className="exchangeRate__currency">
-                        <Сurrency name="USD:" number="60.78"/>
-                        <Сurrency name="CNY:" number="9.08"/>
-                        <Сurrency name="CHF:" number="64.78"/>
-                        <Сurrency name="USD:" number="60.78"/>
-                        <Сurrency name="JPY:" number="0.46"/>
-                        <Сurrency name="TRY:" number="3.39"/>
+                        <div className="exchangeRate__currency_list" id="exchangeRate__currency_list">
+                            {data?.map((n: any, index) => <div key={n}><p>{currency[index]}:<span>{n}</span></p></div>)}
+                        </div>
                     </div>
                     <div className="exchangeRate__link">
                         <a href="">All courses</a>

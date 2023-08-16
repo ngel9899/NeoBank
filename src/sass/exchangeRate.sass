@@ -22,16 +22,21 @@
 
 .exchangeRate__currency
   margin-top: 32px
-  width: 432px
-  div
-    display: inline-block
+  width: 480px
   p
     @include ubuntuBold-20
     color: #808080
   span
     @include ubuntuBold-20
     color: black
-    padding: 0 32px 0 20px
+    padding-left: 20px
+
+.exchangeRate__currency_list
+  display: flex
+  flex-wrap: wrap
+  div
+    width: 120px
+    margin-right: 32px
 
 .exchangeRate__link
   margin-top: 51px
@@ -61,6 +66,7 @@
       font-size: 14px
 
   .exchangeRate__currency
+    width: auto
     p
       font-size: 14px
     span

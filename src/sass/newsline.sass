@@ -1,0 +1,125 @@
+@import "../font/variables"
+
+.newsline
+  padding-top: 50px
+  text-align: center
+
+.newsline__text
+  padding-bottom: 46px
+  h1
+    @include ubuntuMed-30
+    color: #000000
+  p
+    @include ubuntuMed-16
+    color: #2D3748
+    padding-top: 24px
+
+.newsline__slider
+  display: flex
+  height: 560px
+
+.newsline__slider-line
+  display: flex
+  position: relative
+  max-width: 100%
+
+.swiper-slide
+  margin-right: 80px
+  width: 320px
+  height: 452px
+  overflow: hidden
+
+.newsline-slider__button
+  position: absolute
+  top: 88%
+  z-index: 2
+  font-size: 0
+  width: 64px
+  height: 64px
+
+.newsline__slider .newsline-slider__button-prev
+  right: 7%
+  border: none
+  background: url($way-img + 'arrows-left.png') 0 0 / 100% no-repeat
+
+.newsline-slider__button-prev.arrow-disabled
+  background: url($way-img + 'arrowsOff-left.png') 0 0 / 100% no-repeat
+
+.newsline__slider .newsline-slider__button-next
+  right: 0
+  border: none
+  background: url($way-img + 'arrows-right.png') 0 0 / 100% no-repeat
+
+.newsline-slider__button-next.arrow-disabled
+  background: url($way-img + 'arrowsOff-right.png') 0 0 / 100% no-repeat
+
+.newsline-slider__card
+  height: 448px
+  border-radius: 28px
+  border: 1px solid rgba(187, 187, 187, 0.20)
+  background: #FFF
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.20), 0 0 4px 0 rgba(0, 0, 0, 0.08)
+  img
+    width: 256px
+    height: 120px
+
+.newsline-card__text
+  a
+    @include ubuntuMed-20
+    line-height: 25px
+    color: black
+    text-decoration: none
+  p
+    height: 128px
+    overflow: hidden
+    @include ubuntuMed-16
+    line-height: 23px
+    margin-top: 32px
+
+
+.newsline-card__img
+  margin-bottom: 32px
+
+.newsline-card__container
+  margin: 32px
+
+
+@media screen and (max-width: 1200px)
+  .newsline__text
+    h1
+      font-size: 24px
+
+@media screen and (max-width: 1200px)
+  .newsline__slider .newsline-slider__button-prev
+    right: 8%
+
+@media screen and (max-width: 1020px)
+  .newsline__slider .newsline-slider__button-prev
+    right: 9%
+
+@media screen and (max-width: 860px)
+  .newsline__slider .newsline-slider__button-prev
+    right: 10%
+
+@media screen and (max-width: 780px)
+  .newsline__slider .newsline-slider__button-prev
+    right: 11%
+
+@media screen and (max-width: 700px)
+  .newsline__slider .newsline-slider__button-prev
+    right: 12%
+
+@media screen and (max-width: 630px)
+  .newsline__slider .newsline-slider__button-prev
+    right: 14%
+
+@media screen and (max-width: 600px)
+  .newsline__text
+    h1
+      font-size: 20px
+    p
+      font-size: 14px
+
+@media screen and (max-width: 560px)
+  .newsline__slider .newsline-slider__button-prev
+    right: 18%
