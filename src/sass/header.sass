@@ -8,18 +8,19 @@
 .header__logo
   padding: 24.5px 0
 
+.active-header
+  @include navLink-header
+  color: #B2A35F
+
+.no-active-header
+  @include navLink-header
+  color: #1D1929
+
 .header__nav
   padding: 23px 0
   width: 437px
   nav
     @include flex-between
-    li
-      list-style: none
-      a
-        text-decoration: none
-        font-family: $ubuntu-bold
-        font-size: 16px
-        color: #1D1929
 
 .header__button
   padding: 7px 0

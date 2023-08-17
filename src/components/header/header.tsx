@@ -1,5 +1,6 @@
 import {DropDown} from "../dropdown/dropdown";
 import "../../sass/header.sass";
+import {NavLink} from "react-router-dom";
 
 export function Header(){
     return(
@@ -9,10 +10,10 @@ export function Header(){
                 </div>
                 <div className="header__nav">
                     <nav>
-                        <li><a href="">Credit card</a></li>
-                        <li><a href="">Product</a></li>
-                        <li><a href="">Account</a></li>
-                        <li><a href="">Resources</a></li>
+                        <NavLink to="/loanPage" className={({ isActive }) =>(isActive ? "active-header" : "no-active-header")}>Credit card</NavLink>
+                        <NavLink to="/" className={({ isActive }) =>(isActive ? "active-header" : "no-active-header")}>Product</NavLink>
+                        <NavLink to="/" className={({ isActive }) =>(isActive ? "active-header" : "no-active-header")}>Account</NavLink>
+                        <NavLink to="/" className={({ isActive }) =>(isActive ? "active-header" : "no-active-header")}>Resources</NavLink>
                     </nav>
                 </div>
                 <div className="header__button">
