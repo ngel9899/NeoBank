@@ -1,0 +1,146 @@
+@import "../font/variables"
+
+.tabs
+  padding-top: 48px
+
+.tabs__bloc
+  display: flex
+  border-bottom: solid 2px #80808033
+
+.tab
+  position: relative
+  top: 2px
+  margin-right: 32px
+  padding-bottom: 8px
+
+.tab__active
+  border-bottom: solid 2px #7B7454
+
+.tab-content__inactive
+  display: none
+
+.tab-content__active
+  display: block
+
+.aboutCard
+  padding: 49px 0 96px 0
+
+.aboutCard__smallCard
+  @include flex-between
+
+.aboutCard__card
+  @include tabs-card
+  height: 236px
+  h2
+    @include ubuntuBold-30
+    padding-top: 24px
+  p
+    @include ubuntuMed-16
+    padding-top: 16px
+
+.aboutCard-smallCard__card
+  width: 31.3%
+
+.aboutCard-bigCard__card
+  width: 48.5%
+
+.aboutCard__bigCard
+  @include flex-between
+  padding-top: 40px
+
+.aboutCard-smallCard__card-black
+  background: #7F92ACB2
+
+.aboutCard-smallCard__content
+  padding: 32px 39px 0 32px
+
+.aboutCard-bigCard__content
+  padding: 32px 41px 0 32px
+
+.ratesAndConditions
+  padding: 40px 0 46px 0
+  width: 78%
+
+.ratesAndConditions__bloc
+  display: flex
+  border-bottom: solid 1px #7F92AC
+  height: 42px
+  margin-bottom: 24px
+  &:last-child
+    border-bottom: none
+    margin-bottom: 0
+
+.ratesAndConditions__title
+  width: 32%
+  p
+    @include ubuntuMed-16
+
+.ratesAndConditions__text
+  p
+    @include ubuntuMed-16
+    color: #434343
+
+.cashback
+  @include flex-between
+  padding: 32px 0 48px 0
+  flex-wrap: wrap
+
+.cashback__card
+  @include tabs-card
+  width: 31%
+  height: 163px
+  background-color: #EAECEE
+  &:first-child
+    margin-bottom: 41px
+
+.cashback__card-color
+  background-color: #88B3B899
+
+.cashback__container
+  padding: 32px 0 32px 32px
+
+.cashback__text
+  @include ubuntuMed-16
+  color: #434343E5
+
+.cashback__percent
+  padding-top: 22px
+  font-family: $ubuntu-bold
+  font-size: 36px
+
+.FAQ__first-accordion
+  padding-top: 32px
+  h1
+    padding-bottom: 32px
+
+.FAQ__last-accordion
+  padding: 32px 0 48px 0
+  h1
+    padding-bottom: 32px
+
+.FAQ-details
+  @include ubuntuMed-16
+  min-height: 84px
+  color: #1C1C1E
+  border: 1px solid #E2E8F0
+  &[open] summary:after
+    transform: rotateZ(180deg)
+
+  summary
+    @include ubuntuMed-16
+    @include flex-between
+    color: #1C1C1E
+    list-style: none
+    user-select: none
+    padding: 32px 32px 32px 32px
+    &:after
+      display: block
+      content: ""
+      height: 10px
+      width: 14px
+      background: url($way-img + "accordion-marker.png") no-repeat
+      transition: transform .5s
+  p
+    @include ubuntuReg-16
+    color: #7B7454
+    padding: 24px 0 25px 32px

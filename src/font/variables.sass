@@ -2,6 +2,7 @@ $rubik-medium: 'Rubik-medium'
 $rubik-regular: 'Rubik-regular'
 $ubuntu-bold: 'Ubuntu-bold'
 $ubuntu-medium: 'Ubuntu-medium'
+$ubuntu-regular: 'Ubuntu-regular'
 $nunitoSans-regular: 'NunitoSans-regular'
 $text-header-color: #2A3950
 $text-main-color: #006270
@@ -31,6 +32,10 @@ $way-img: '../../public/img/'
   font-family: $ubuntu-medium
   font-size: 30px
 
+@mixin ubuntuReg-16
+  font-family: $ubuntu-regular
+  font-size: 16px
+
 @mixin buttonBlue-16
   padding: 16px
   font-family: $ubuntu-bold
@@ -44,3 +49,8 @@ $way-img: '../../public/img/'
   text-decoration: none
   font-family: $ubuntu-bold
   font-size: 16px
+
+@mixin tabs-card
+  border-radius: 28px
+  background: #EAECEE
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.20), 0 0 8px 0 rgba(0, 0, 0, 0.08)

@@ -1,0 +1,60 @@
+@import "../font/variables"
+
+.digitalСreditСard
+  padding-top: 20px
+  height: 390px
+  border-radius: 28.8px
+  background: linear-gradient(180deg, rgba(203, 213, 224, 0.62) 0%, rgba(254, 235, 200, 0.56) 100%)
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.20), 0 0 8px 0 rgba(0, 0, 0, 0.08)
+
+.digitalСreditСard__container
+  @include flex-between
+  padding: 48px 0 0 32px
+
+.digitalСreditСard__left-bloc
+  width: 53%
+
+.digitalСreditСard__text
+  h1
+    color: #FFFFFF
+    font-family: $ubuntu-bold
+    font-size: 48px
+  p
+    @include ubuntuMed-16
+    width: 76%
+    padding-top: 48px
+    color: #2D3748
+
+.digitalСreditСard__conditions
+  div[data-descr]
+    position: relative
+  div[data-descr]:hover::after
+    content: attr(data-descr)
+    position: absolute
+    left: -54px
+    top: 56px
+    width: 144px
+    height: 36px
+    background-color: #3D3D3D
+    padding: 9px 19px 8px 7px
+    color: #FFFFFF
+    font-size: 14px
+    z-index: 1
+  @include flex-between
+  width: 90%
+  padding-top: 32px
+  h4
+    @include ubuntuBold-20
+    color: #3D3D3D
+  p
+    @include ubuntuMed-16
+    color: #3D3D3D
+    padding-top: 8px
+
+.digitalСreditСard__button
+  padding-top: 32px
+  button
+    @include buttonBlue-16
+
+.digitalСreditСard__image
+  padding-right: 100px
