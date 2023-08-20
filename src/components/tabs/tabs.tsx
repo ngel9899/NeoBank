@@ -1,5 +1,6 @@
 import "../../sass/tabs.sass";
 import {useEffect, useState} from "react";
+import {Form} from "../form/form";
 
 const AboutCard = () => {
     const [cardSmall, setCardSmall] = useState();
@@ -170,7 +171,7 @@ const Cashback = () =>{
     )
 }
 
-const FAQ = () =>{
+/*const FAQ = () =>{
     const [accordionFirst, setAccordionFirst] = useState<Array<any>>();
     const [accordionLast, setAccordionLast] = useState<Array<any>>();
     const [indexElement, setIndexElement] = useState<any>();
@@ -221,7 +222,7 @@ const FAQ = () =>{
 
         const accordionFAQ = (arr: any, set: any) =>{
             set(arr.map((n: any, i: any) =>
-                <details className="FAQ-details" onClick={(e) => setIndexElement(e.currentTarget.dataset.index)} data-index={index < i ? index += 1 : index += 1} key={index}>
+                <details className="FAQ-details" onClick={(e) =>{ setIndexElement(e.currentTarget.dataset.index);}} data-index={index < i ? index += 1 : index += 1} key={index}>
                     <summary>{n.title}</summary>
                     <p>{n.text}</p>
                 </details>
@@ -236,8 +237,9 @@ const FAQ = () =>{
     useEffect(() =>{
         const verification = (arr: any, val: any, set: any) => {
             for (let i = 0; i < (arr.length); i++){
-                if(val !== arr[i].key){
-                    set[i]?.removeAttribute('open');
+                if(val === arr[i].key){
+                    // здесь удаляется атрибут open у всех иных details
+                    /!*arr[i].props.open = false;*!/
                 }
             }
         }
@@ -262,6 +264,133 @@ const FAQ = () =>{
                 </div>
             </div>
         </>
+    )
+}*/
+
+const FAQ = () =>{
+    const [activeIndex, setActiveIndex] = useState<any>();
+
+    interface IAccordionItem {
+        title: string;
+        text: string;
+    }
+
+    interface IAccordionProps {
+        open: boolean;
+        onClick: (...args: any) => any;
+        item: IAccordionItem;
+    }
+
+    const arrFAQFirst = [
+        {
+            title: "How to get a card?",
+            text: "We will deliver your card by courier free of charge. Delivery in Moscow and St. Petersburg - 1-2 working days. For other regions of the Russian Federation - 2-5 working days.",
+        },
+        {
+            title: "What documents are needed and how old should one be to get a card?",
+            text: "Need a passport. You must be between 20 and 70 years old.",
+        },
+        {
+            title: "In what currency can I issue a card?",
+            text: "In rubles, dollars or euro",
+        },
+        {
+            title: "How much income do I need to get a credit card?",
+            text: "To obtain a credit card, you will need an income of at least 25,000 rubles per month after taxes.",
+        },
+        {
+            title: "How do I find out about the bank's decision on my application?",
+            text: "After registration, you will receive an e-mail with a decision on your application.",
+        },
+    ];
+    const arrFAQLast = [
+        {
+            title: "What is an interest free credit card?",
+            text: "A credit card with a grace period is a bank card with an established credit limit, designed for payment, reservation of goods and services, as well as for receiving cash, which allows you to use credit funds free of charge for a certain period.",
+        },
+        {
+            title: "How to activate a credit card",
+            text: "You can activate your credit card and generate a PIN code immediately after receiving the card at a bank branch using a PIN pad.",
+        },
+        {
+            title: "What is a settlement date?",
+            text: "The settlement date is the date from which you can pay off the debt for the reporting period. The settlement date falls on the first calendar day following the last day of the reporting period. The first settlement date is reported by the bank when transferring the issued credit card to the client, and then in the monthly account statement.",
+        },
+        {
+            title: "What do I need to know about interest rates?",
+            text: "For each reporting period from the 7th day of the previous month to the 6th day of the current month inclusive, a statement is generated for the credit card. The statement contains information on the amount and timing of the minimum payment, as well as the total amount of debt as of the date of issue.",
+        },
+    ];
+
+
+    const Accordion = (AccordionProps: IAccordionProps) =>{
+        return(
+            <details className="FAQ-details" open={AccordionProps.open} onClick={AccordionProps.onClick} >
+                <summary>{AccordionProps.item.title}</summary>
+                <p>{AccordionProps.item.text}</p>
+            </details>
+        )
+    }
+
+    return(
+        <>
+            <div className="FAQ__first-accordion">
+                <h1>Issuing and receiving a card</h1>
+                <div>
+                    {arrFAQFirst.map((item, index) =>
+                        <Accordion open={index === activeIndex} onClick={() => setActiveIndex(index)} item={item} key={index} />
+                    )}
+                </div>
+            </div>
+            <div className="FAQ__last-accordion">
+                <h1>Using a credit card</h1>
+                <div>
+                    {arrFAQLast.map((item, index) =>
+                        <Accordion open={index+arrFAQFirst.length === activeIndex} onClick={() => setActiveIndex(index+arrFAQFirst.length)} item={item} key={index} />
+                    )}
+                </div>
+            </div>
+        </>
+    )
+}
+
+const HowToGetCard = () =>{
+    const arrHowToGetCard = [
+        {
+            number: "1",
+            text: "Fill out an online application - you do not need to visit the bank",
+        },
+        {
+            number: "2",
+            text: "Find out the bank's decision immediately after filling out the application",
+        },
+        {
+            number: "3",
+            text: "The bank will deliver the card free of charge, wherever convenient, to your city",
+        },
+    ];
+    const HowToGetCards = arrHowToGetCard.map((n: any) =>
+        <div key={n.number} className="howToGetCard__bloc">
+            <div className="howToGetCard__content">
+                <div className="howToGetCard__number">
+                    <p>{n.number}</p>
+                </div>
+                <div className="howToGetCard__dividing-line">
+                    <hr />
+                </div>
+            </div>
+            <div className="howToGetCard__text">
+                <p>{n.text}</p>
+            </div>
+        </div>
+    );
+    return(
+        <div className="howToGetCard">
+            <h1>How to get a card</h1>
+            <div className="howToGetCard__container">
+                {HowToGetCards}
+            </div>
+        </div>
     )
 }
 
@@ -290,6 +419,8 @@ export function Tabs(){
                 </div>
                 <div className={toggleState === 4 ? "FAQ tab-content__active" : "tab-content__inactive"}>
                     <FAQ />
+                    <HowToGetCard />
+                    <Form />
                 </div>
             </div>
         </section>
