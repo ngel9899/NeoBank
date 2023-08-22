@@ -1,6 +1,6 @@
 import "../../sass/form.sass";
 import {useEffect, useState} from "react";
-import { useForm, SubmitHandler } from "react-hook-form"
+import {useForm, SubmitHandler, useWatch, Control} from "react-hook-form"
 
 const arrInput = [
     {
@@ -28,7 +28,7 @@ const arrInput = [
         placeholder: "For Example Victorovich",
         name: "middleName",
         select: false,
-        required: true
+        required: false
     },
     {
         label: "Select term",
@@ -62,7 +62,9 @@ const arrInput = [
         placeholder: "0000",
         name: "passportSeries",
         select: false,
-        required: true
+        required: true,
+        maxLength: 4,
+        minLength: 4
     },
     {
         label: "Your passport number",
@@ -71,47 +73,69 @@ const arrInput = [
         placeholder: "000000",
         name: "passportNumber",
         select: false,
-        required: true
+        required: true,
+        maxLength: 6,
+        minLength: 4
     },
 
 ]
 
+
+
 export function Form(){
-    const { register, handleSubmit } = useForm<IFormInterface>()
-    const onSubmit: SubmitHandler<IFormInterface> = (data) => console.log(data)
+    const { register, handleSubmit, control, formState: { errors }  } = useForm<IFormInterface>();
+    const onSubmit = (data: any) => console.log("отправлено:", data);
+    /*console.log(errors);*/
 
     interface IFormInterface{
-        "amount": "number",
-        "term": "number",
-        "firstName": "string",
-        "lastName": "string",
-        "middleName": "string | null",
-        "email": "string",
-        "birthdate": "string | Date",
-        "passportSeries": "string",
-        "passportNumber": "string"
+        amount: number,
+        term: number,
+        firstName: string,
+        lastName: string,
+        middleName: string | null,
+        email: string,
+        birthdate: string | Date,
+        passportSeries: string,
+        passportNumber: string
     }
     interface IInputCardItem{
         label?: string,
         caption: string,
-        type?: string
+        type?: string,
         placeholder?: string,
-        name: any,
-        select: boolean
-        required: boolean
-        option?: any
+        name: string,
+        select: boolean,
+        required: boolean,
+        maxLength?: number,
+        minLength?: number,
+        pattern?: any
     }
     interface IInputCard{
         item: IInputCardItem
     }
 
+    function AmountWatched({ control }: { control: Control<IFormInterface> }) {
+        const amount = useWatch({
+            control,
+            name: "amount",
+            defaultValue: 150
+        });
+        return <p className="form-selectAmount-content__value">{amount} 000</p>
+    }
 
-    const InputCard = (InputCardItem: IInputCard  ) =>{
+
+    const InputCard = (InputCardItem: IInputCard) =>{
         return(
             <div className={InputCardItem.item.caption === "middleName"?"inputCard__Container inputCard-Container__noneAfter" : "inputCard__Container"}>
                 <label>{InputCardItem.item.label}</label>
                 {!InputCardItem.item.select &&
-                    <input aria-label={InputCardItem.item.caption} type={InputCardItem.item.type} placeholder={InputCardItem.item.placeholder} {...register(InputCardItem.item.name, {/*InputCardItem.item.option*/})} />
+                    <input aria-label={InputCardItem.item.caption} type={InputCardItem.item.type} placeholder={InputCardItem.item.placeholder}
+                           {...register(InputCardItem.item.name, {
+                            required: InputCardItem.item.required,
+                            maxLength: InputCardItem.item.maxLength,
+                            minLength: InputCardItem.item.minLength,
+                            pattern: InputCardItem.item.pattern,
+                        })} />
                 }
                 {InputCardItem.item.select &&
                     <select aria-label={InputCardItem.item.caption} name={InputCardItem.item.name}>
@@ -141,18 +165,18 @@ export function Form(){
                         <div className="form__selectAmount">
                             <div className="form-selectAmount__content">
                                 <h3>Select amount</h3>
-                                <p className="form-selectAmount-content__value">value</p>
-                                <input type="range" placeholder="amount" {...register("amount", {required: true, max: 600000, min: 15000})} />
+                                <AmountWatched control={control} />
+                                <input type="range" placeholder="amount" {...register("amount", {required: true, max: 600000, min: 15000, pattern: /150000/i})} />
                                 <div className="form-selectAmount-content__minMax">
-                                    <p>минимальное</p>
-                                    <p>максимальное</p>
+                                    <p>15 000</p>
+                                    <p>600 000</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div className="form__haveChosenAmount">
                         <h2>You have chosen the amount</h2>
-                        <p>value</p>
+                        <AmountWatched control={control} />
                     </div>
                 </div>
                 <div className="form__contactInformation">
@@ -164,7 +188,7 @@ export function Form(){
                     </div>
                 </div>
                 <div className="form__submit">
-                    <input type="submit" />
+                    <input type="submit" value="Continue" />
                 </div>
             </form>
         </section>
@@ -193,7 +217,7 @@ export function App() {
             <input type="number" placeholder="passportSeries" {...register} />
             <input type="number" placeholder="passportNumber" {...register("passportNumber", {})} />
 
-            <input type="submit" />
+            <input type="submit" value="Continue" />
         </form>
     );
 }
