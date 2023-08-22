@@ -1,0 +1,103 @@
+@import "../font/variables"
+
+.form__container
+  background-color: #FFFFFF
+  border-radius: 28px
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.20), 0 0 8px 0 rgba(0, 0, 0, 0.08)
+  margin-bottom: 96px
+
+.form__customizeCard
+  display: flex
+  padding: 32px 0 0 32px
+
+.form-customizeCard__container
+  width: 608px
+  border-right: dashed  1px #80808066
+
+.form-customizeCard__content
+  @include flex-between
+  align-items: center
+  h1
+    @include ubuntuBold-30
+  div:last-child
+    padding-right: 40px
+    p
+      @include ubuntuMed-16
+      vertical-align: middle
+
+.form__selectAmount
+  width: 568px
+  height: 164px
+  border-radius: 10px
+  border: 1px solid #5B35D5
+  margin: 32px 40px 0 0
+
+.form-selectAmount__content
+  padding: 24px 24px 0 24px
+  h3
+    @include ubuntuMed-16
+    padding-bottom: 20px
+  input
+    width: 100%
+
+.form-selectAmount-content__value
+  @include ubuntuMed-16
+  padding-bottom: 10px
+
+.form-selectAmount-content__minMax
+  @include flex-between
+
+.form__haveChosenAmount
+  padding-left: 42px
+  h2
+    @include ubuntuBold-20
+    padding-bottom: 16px
+  p
+    @include ubuntuMed-16
+    width: 220px
+    border-bottom: solid 1px #80808033
+    padding-bottom: 10px
+
+.form__contactInformation
+  padding: 32px 32px 24px 32px
+  h2
+    @include ubuntuBold-20
+
+.form-contactInformation__inputCard
+  display: flex
+  flex-wrap: wrap
+
+.inputCard__Container
+  width: 23.6%
+  margin: 16px 16px 0 0
+  label
+    @include ubuntuMed-16
+    display: block
+    padding-bottom: 8px
+    &:after
+      content: "*"
+      color: #FF0000
+      padding-left: 2px
+  input, select
+    width: 100%
+    height: 40px
+    background-color: #F9F5E3
+    font-family: $ubuntu-regular
+    font-size: 14px
+    padding-left: 16px
+
+.inputCard-Container__noneAfter
+  label
+    &:after
+      display: none
+
+.form__submit
+  display: flex
+  justify-content: right
+  padding: 0 32px 32px 0
+  input
+    @include buttonBlue-16
+
+
+
+

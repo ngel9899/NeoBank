@@ -61,51 +61,49 @@ const AboutCard = () => {
     },[]);
 
     return(
-        <>
+        <div className="aboutCard">
             <div className="aboutCard__smallCard">
                 {cardSmall}
             </div>
             <div className="aboutCard__bigCard">
                 {cardBig}
             </div>
-        </>
+        </div>
     )
 }
+const arrRatesConditions = [
+    {
+        title: "Card currency",
+        text: "Rubles, dollars, euro",
+    },
+    {
+        title: "Interest free period",
+        text: "0% up to 160 days",
+    },
+    {
+        title: "Payment system",
+        text: "Mastercard, Visa",
+    },
+    {
+        title: "Maximum credit limit on the card",
+        text: "600 000 ₽",
+    },
+    {
+        title: "Replenishment and withdrawal",
+        text: "At any ATM. Top up your credit card for free with cash or transfer from other cards",
+    },
+    {
+        title: "Max cashback per month",
+        text: "15 000 ₽",
+    },
+    {
+        title: "Transaction Alert",
+        text: "60 ₽ — SMS or push notifications",
+        secondTextLine: "0 ₽ — card statement, information about transactions in the online bank",
+    },
+];
 
 const RatesAndConditions = () => {
-    const arrRatesConditions = [
-        {
-            title: "Card currency",
-            text: "Rubles, dollars, euro",
-        },
-        {
-            title: "Interest free period",
-            text: "0% up to 160 days",
-        },
-        {
-            title: "Payment system",
-            text: "Mastercard, Visa",
-        },
-        {
-            title: "Maximum credit limit on the card",
-            text: "600 000 ₽",
-        },
-        {
-            title: "Replenishment and withdrawal",
-            text: "At any ATM. Top up your credit card for free with cash or transfer from other cards",
-        },
-        {
-            title: "Max cashback per month",
-            text: "15 000 ₽",
-        },
-        {
-            title: "Transaction Alert",
-            text: "60 ₽ — SMS or push notifications",
-            secondTextLine: "0 ₽ — card statement, information about transactions in the online bank",
-        },
-    ];
-
-
     const ratesAndConditionsContent = arrRatesConditions.map((n : any) =>
         <div key={n.title} className="ratesAndConditions__bloc">
             <div className="ratesAndConditions__title">
@@ -119,42 +117,42 @@ const RatesAndConditions = () => {
     );
 
     return(
-        <>
+        <div className="ratesAndConditions">
             {ratesAndConditionsContent}
-        </>
+        </div>
     )
 }
+const arrCashback = [
+    {
+        text: "For food delivery, cafes and restaurants",
+        percent: "5%",
+    },
+    {
+        text: "In supermarkets with our subscription",
+        percent: "5%",
+        color: "true",
+    },
+    {
+        text: "In clothing stores and children's goods",
+        percent: "2%",
+    },
+    {
+        text: "Other purchases and payment of services and fines",
+        percent: "1%",
+        color: "true",
+    },
+    {
+        text: "Shopping in online stores",
+        percent: "up to 3%",
+    },
+    {
+        text: "Purchases from our partners",
+        percent: "30%",
+        color: "true",
+    },
+]
 
 const Cashback = () =>{
-    const arrCashback = [
-        {
-            text: "For food delivery, cafes and restaurants",
-            percent: "5%",
-        },
-        {
-            text: "In supermarkets with our subscription",
-            percent: "5%",
-            color: "true",
-        },
-        {
-            text: "In clothing stores and children's goods",
-            percent: "2%",
-        },
-        {
-            text: "Other purchases and payment of services and fines",
-            percent: "1%",
-            color: "true",
-        },
-        {
-            text: "Shopping in online stores",
-            percent: "up to 3%",
-        },
-        {
-            text: "Purchases from our partners",
-            percent: "30%",
-            color: "true",
-        },
-    ]
 
     const cashbackCard = arrCashback.map((n: any) =>
         <div key={n.text} className={"cashback__card " + (n.color ? "cashback__card-color" : "")}>
@@ -165,107 +163,52 @@ const Cashback = () =>{
         </div>
     )
     return(
-        <>
+        <div className="cashback">
             {cashbackCard}
-        </>
+        </div>
     )
 }
 
-/*const FAQ = () =>{
-    const [accordionFirst, setAccordionFirst] = useState<Array<any>>();
-    const [accordionLast, setAccordionLast] = useState<Array<any>>();
-    const [indexElement, setIndexElement] = useState<any>();
-
-    useEffect( () =>{
-        const arrFAQFirst = [
-            {
-                title: "How to get a card?",
-                text: "We will deliver your card by courier free of charge. Delivery in Moscow and St. Petersburg - 1-2 working days. For other regions of the Russian Federation - 2-5 working days.",
-            },
-            {
-                title: "What documents are needed and how old should one be to get a card?",
-                text: "Need a passport. You must be between 20 and 70 years old.",
-            },
-            {
-                title: "In what currency can I issue a card?",
-                text: "In rubles, dollars or euro",
-            },
-            {
-                title: "How much income do I need to get a credit card?",
-                text: "To obtain a credit card, you will need an income of at least 25,000 rubles per month after taxes.",
-            },
-            {
-                title: "How do I find out about the bank's decision on my application?",
-                text: "After registration, you will receive an e-mail with a decision on your application.",
-            },
-        ];
-        const arrFAQLast = [
-            {
-                title: "What is an interest free credit card?",
-                text: "A credit card with a grace period is a bank card with an established credit limit, designed for payment, reservation of goods and services, as well as for receiving cash, which allows you to use credit funds free of charge for a certain period.",
-            },
-            {
-                title: "How to activate a credit card",
-                text: "You can activate your credit card and generate a PIN code immediately after receiving the card at a bank branch using a PIN pad.",
-            },
-            {
-                title: "What is a settlement date?",
-                text: "The settlement date is the date from which you can pay off the debt for the reporting period. The settlement date falls on the first calendar day following the last day of the reporting period. The first settlement date is reported by the bank when transferring the issued credit card to the client, and then in the monthly account statement.",
-            },
-            {
-                title: "What do I need to know about interest rates?",
-                text: "For each reporting period from the 7th day of the previous month to the 6th day of the current month inclusive, a statement is generated for the credit card. The statement contains information on the amount and timing of the minimum payment, as well as the total amount of debt as of the date of issue.",
-            },
-        ];
-
-        let index: any = -1;
-
-        const accordionFAQ = (arr: any, set: any) =>{
-            set(arr.map((n: any, i: any) =>
-                <details className="FAQ-details" onClick={(e) =>{ setIndexElement(e.currentTarget.dataset.index);}} data-index={index < i ? index += 1 : index += 1} key={index}>
-                    <summary>{n.title}</summary>
-                    <p>{n.text}</p>
-                </details>
-            ))
-        }
-        accordionFAQ(arrFAQFirst, setAccordionFirst);
-        accordionFAQ(arrFAQLast, setAccordionLast);
-
-
-    },[]);
-
-    useEffect(() =>{
-        const verification = (arr: any, val: any, set: any) => {
-            for (let i = 0; i < (arr.length); i++){
-                if(val === arr[i].key){
-                    // здесь удаляется атрибут open у всех иных details
-                    /!*arr[i].props.open = false;*!/
-                }
-            }
-        }
-        if(accordionFirst !== undefined){
-            verification(accordionFirst, indexElement, setAccordionFirst);
-            verification(accordionLast, indexElement, setAccordionLast);
-        }
-
-    }, [indexElement]);
-    return(
-        <>
-            <div className="FAQ__first-accordion">
-                <h1>Issuing and receiving a card</h1>
-                <div>
-                    {accordionFirst}
-                </div>
-            </div>
-            <div className="FAQ__last-accordion">
-                <h1>Using a credit card</h1>
-                <div>
-                    {accordionLast}
-                </div>
-            </div>
-        </>
-    )
-}*/
+const arrFAQFirst = [
+    {
+        title: "How to get a card?",
+        text: "We will deliver your card by courier free of charge. Delivery in Moscow and St. Petersburg - 1-2 working days. For other regions of the Russian Federation - 2-5 working days.",
+    },
+    {
+        title: "What documents are needed and how old should one be to get a card?",
+        text: "Need a passport. You must be between 20 and 70 years old.",
+    },
+    {
+        title: "In what currency can I issue a card?",
+        text: "In rubles, dollars or euro",
+    },
+    {
+        title: "How much income do I need to get a credit card?",
+        text: "To obtain a credit card, you will need an income of at least 25,000 rubles per month after taxes.",
+    },
+    {
+        title: "How do I find out about the bank's decision on my application?",
+        text: "After registration, you will receive an e-mail with a decision on your application.",
+    },
+];
+const arrFAQLast = [
+    {
+        title: "What is an interest free credit card?",
+        text: "A credit card with a grace period is a bank card with an established credit limit, designed for payment, reservation of goods and services, as well as for receiving cash, which allows you to use credit funds free of charge for a certain period.",
+    },
+    {
+        title: "How to activate a credit card",
+        text: "You can activate your credit card and generate a PIN code immediately after receiving the card at a bank branch using a PIN pad.",
+    },
+    {
+        title: "What is a settlement date?",
+        text: "The settlement date is the date from which you can pay off the debt for the reporting period. The settlement date falls on the first calendar day following the last day of the reporting period. The first settlement date is reported by the bank when transferring the issued credit card to the client, and then in the monthly account statement.",
+    },
+    {
+        title: "What do I need to know about interest rates?",
+        text: "For each reporting period from the 7th day of the previous month to the 6th day of the current month inclusive, a statement is generated for the credit card. The statement contains information on the amount and timing of the minimum payment, as well as the total amount of debt as of the date of issue.",
+    },
+];
 
 const FAQ = () =>{
     const [activeIndex, setActiveIndex] = useState<any>();
@@ -281,47 +224,6 @@ const FAQ = () =>{
         item: IAccordionItem;
     }
 
-    const arrFAQFirst = [
-        {
-            title: "How to get a card?",
-            text: "We will deliver your card by courier free of charge. Delivery in Moscow and St. Petersburg - 1-2 working days. For other regions of the Russian Federation - 2-5 working days.",
-        },
-        {
-            title: "What documents are needed and how old should one be to get a card?",
-            text: "Need a passport. You must be between 20 and 70 years old.",
-        },
-        {
-            title: "In what currency can I issue a card?",
-            text: "In rubles, dollars or euro",
-        },
-        {
-            title: "How much income do I need to get a credit card?",
-            text: "To obtain a credit card, you will need an income of at least 25,000 rubles per month after taxes.",
-        },
-        {
-            title: "How do I find out about the bank's decision on my application?",
-            text: "After registration, you will receive an e-mail with a decision on your application.",
-        },
-    ];
-    const arrFAQLast = [
-        {
-            title: "What is an interest free credit card?",
-            text: "A credit card with a grace period is a bank card with an established credit limit, designed for payment, reservation of goods and services, as well as for receiving cash, which allows you to use credit funds free of charge for a certain period.",
-        },
-        {
-            title: "How to activate a credit card",
-            text: "You can activate your credit card and generate a PIN code immediately after receiving the card at a bank branch using a PIN pad.",
-        },
-        {
-            title: "What is a settlement date?",
-            text: "The settlement date is the date from which you can pay off the debt for the reporting period. The settlement date falls on the first calendar day following the last day of the reporting period. The first settlement date is reported by the bank when transferring the issued credit card to the client, and then in the monthly account statement.",
-        },
-        {
-            title: "What do I need to know about interest rates?",
-            text: "For each reporting period from the 7th day of the previous month to the 6th day of the current month inclusive, a statement is generated for the credit card. The statement contains information on the amount and timing of the minimum payment, as well as the total amount of debt as of the date of issue.",
-        },
-    ];
-
 
     const Accordion = (AccordionProps: IAccordionProps) =>{
         return(
@@ -333,7 +235,7 @@ const FAQ = () =>{
     }
 
     return(
-        <>
+        <div className="FAQ">
             <div className="FAQ__first-accordion">
                 <h1>Issuing and receiving a card</h1>
                 <div>
@@ -350,7 +252,7 @@ const FAQ = () =>{
                     )}
                 </div>
             </div>
-        </>
+        </div>
     )
 }
 
@@ -408,16 +310,22 @@ export function Tabs(){
                 <div className={toggleState === 4 ? "tab tab__active" : "tab"} onClick={() => setToggleState(4)}>FAQ</div>
             </div>
             <div className="tabs__content-bloc">
-                <div className={toggleState === 1 ? "aboutCard tab-content__active" : "tab-content__inactive"}>
+                <div className={toggleState === 1 ? "tab-content__active" : "tab-content__inactive"}>
                     <AboutCard />
+                    <HowToGetCard />
+                    <Form />
                 </div>
-                <div className={toggleState === 2 ? "ratesAndConditions tab-content__active" : "tab-content__inactive"}>
+                <div className={toggleState === 2 ? "tab-content__active" : "tab-content__inactive"}>
                     <RatesAndConditions />
+                    <HowToGetCard />
+                    <Form />
                 </div>
-                <div className={toggleState === 3 ? "cashback tab-content__active" : "tab-content__inactive"}>
+                <div className={toggleState === 3 ? "tab-content__active" : "tab-content__inactive"}>
                     <Cashback />
+                    <HowToGetCard />
+                    <Form />
                 </div>
-                <div className={toggleState === 4 ? "FAQ tab-content__active" : "tab-content__inactive"}>
+                <div className={toggleState === 4 ? "tab-content__active" : "tab-content__inactive"}>
                     <FAQ />
                     <HowToGetCard />
                     <Form />
