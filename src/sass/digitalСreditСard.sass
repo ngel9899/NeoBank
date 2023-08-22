@@ -57,4 +57,40 @@
     @include buttonBlue-16
 
 .digitalСreditСard__image
+  width: 39%
   padding-right: 100px
+  img
+    width: 100%
+
+@media screen and (max-width: 1300px)
+  .digitalСreditСard
+    height: 400px
+  .digitalСreditСard__left-bloc
+    width: 70%
+  .digitalСreditСard__image
+    padding-right: 40px
+
+@media screen and (max-width: 1152px)
+  .digitalСreditСard__image
+    padding-right: 0
+
+  .digitalСreditСard__text
+    h1
+      font-size: 34px
+    p
+      @include ubuntuMed-16
+      padding-top: 10px
+
+  .digitalСreditСard__conditions
+    h4
+      font-size: 14px
+    p
+      font-size: 12px
+
+@media screen and (max-width: 690px)
+  .digitalСreditСard
+    height: 450px
+  .digitalСreditСard__conditions
+    width: 450px
+    div[data-descr]
+      margin-right: 20px

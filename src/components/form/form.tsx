@@ -10,8 +10,9 @@ const arrInput = [
         placeholder: "For Example Doe",
         name: "lastName",
         select: false,
-        required: true
-    },
+        required: true,
+        errorText: "Enter your last name"
+    } as const,
     {
         label: "Your first name",
         caption: "firstName",
@@ -19,8 +20,9 @@ const arrInput = [
         placeholder: "For Example Jhon",
         name: "firstName",
         select: false,
-        required: true
-    },
+        required: true,
+        errorText: "Enter your first name"
+    } as const,
     {
         label: "Your patronymic",
         caption: "middleName",
@@ -29,14 +31,14 @@ const arrInput = [
         name: "middleName",
         select: false,
         required: false
-    },
+    } as const,
     {
         label: "Select term",
         caption: "term",
         name: "term",
         select: true,
         required: true
-    },
+    } as const,
     {
         label: "Your email",
         caption: "email",
@@ -44,8 +46,10 @@ const arrInput = [
         placeholder: "test@gmail.com",
         name: "email",
         select: false,
-        required: true
-    },
+        required: true,
+        pattern: /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/,
+        errorText: "Incorrect email address"
+    } as const,
     {
         label: "Your date of birth",
         caption: "birthdate",
@@ -53,8 +57,11 @@ const arrInput = [
         placeholder: "Select Date and Time",
         name: "birthdate",
         select: false,
-        required: true
-    },
+        required: true,
+        min: "1900-01-01",
+        max: "2005-08-01",
+        errorText: "Incorrect date of birth"
+    } as const,
     {
         label: "Your passport series",
         caption: "passportSeries",
@@ -64,8 +71,9 @@ const arrInput = [
         select: false,
         required: true,
         maxLength: 4,
-        minLength: 4
-    },
+        minLength: 4,
+        errorText: "The series must be 4 digits"
+    } as const,
     {
         label: "Your passport number",
         caption: "Passport number",
@@ -75,17 +83,17 @@ const arrInput = [
         select: false,
         required: true,
         maxLength: 6,
-        minLength: 4
-    },
+        minLength: 6,
+        errorText: "The series must be 6 digits"
+    } as const,
 
 ]
 
 
 
 export function Form(){
-    const { register, handleSubmit, control, formState: { errors }  } = useForm<IFormInterface>();
+    const { register, handleSubmit, control, formState:{errors}} = useForm<IFormInterface>({mode: 'onChange'});
     const onSubmit = (data: any) => console.log("отправлено:", data);
-    /*console.log(errors);*/
 
     interface IFormInterface{
         amount: number,
@@ -103,12 +111,15 @@ export function Form(){
         caption: string,
         type?: string,
         placeholder?: string,
-        name: string,
+        name: keyof IFormInterface,
         select: boolean,
         required: boolean,
         maxLength?: number,
         minLength?: number,
-        pattern?: any
+        pattern?: RegExp,
+        min?: any,
+        max?: any,
+        errorText?: string
     }
     interface IInputCard{
         item: IInputCardItem
@@ -123,19 +134,22 @@ export function Form(){
         return <p className="form-selectAmount-content__value">{amount} 000</p>
     }
 
-
     const InputCard = (InputCardItem: IInputCard) =>{
+        let name = InputCardItem.item.name;
         return(
             <div className={InputCardItem.item.caption === "middleName"?"inputCard__Container inputCard-Container__noneAfter" : "inputCard__Container"}>
                 <label>{InputCardItem.item.label}</label>
                 {!InputCardItem.item.select &&
                     <input aria-label={InputCardItem.item.caption} type={InputCardItem.item.type} placeholder={InputCardItem.item.placeholder}
-                           {...register(InputCardItem.item.name, {
-                            required: InputCardItem.item.required,
-                            maxLength: InputCardItem.item.maxLength,
-                            minLength: InputCardItem.item.minLength,
-                            pattern: InputCardItem.item.pattern,
+                           {...register(name, {
+                                required: InputCardItem.item.required,
+                                maxLength: InputCardItem.item.maxLength,
+                                minLength: InputCardItem.item.minLength,
+                                pattern: InputCardItem.item.pattern,
+                                min: InputCardItem.item.min,
+                                max: InputCardItem.item.max
                         })} />
+                    /*({errors[name] && <p>InputCardItem.item.errorText</p>})*/
                 }
                 {InputCardItem.item.select &&
                     <select aria-label={InputCardItem.item.caption} name={InputCardItem.item.name}>
@@ -166,7 +180,7 @@ export function Form(){
                             <div className="form-selectAmount__content">
                                 <h3>Select amount</h3>
                                 <AmountWatched control={control} />
-                                <input type="range" placeholder="amount" {...register("amount", {required: true, max: 600000, min: 15000, pattern: /150000/i})} />
+                                <input type="range" placeholder="amount" {...register("amount", {})} />
                                 <div className="form-selectAmount-content__minMax">
                                     <p>15 000</p>
                                     <p>600 000</p>
@@ -192,32 +206,6 @@ export function Form(){
                 </div>
             </form>
         </section>
-    );
+    )
 }
 
-export function App() {
-    const { register, handleSubmit, formState: { errors } } = useForm();
-    const onSubmit = (data: any) => console.log(data);
-    console.log(errors);
-
-    return (
-        <form onSubmit={handleSubmit(onSubmit)}>
-            <input type="range" placeholder="amount" {...register("amount", {required: true, max: 600000, min: 15000, pattern: /150000/i})} />
-            <input type="text" placeholder="lastName" {...register("lastName", {required: true})} />
-            <input type="text" placeholder="firstName" {...register("firstName", {required: true})} />
-            <input type="text" placeholder="middleName" {...register} />
-            <select {...register("term", { required: true })}>
-                <option value="6 month">6 month</option>
-                <option value="12 month">12 month</option>
-                <option value="18 month">18 month</option>
-                <option value="24 month">24 month</option>
-            </select>
-            <input type="text" placeholder="email" {...register("email", {required: true})} />
-            <input type="datetime" placeholder="birthdate" {...register("birthdate", {required: true})} />
-            <input type="number" placeholder="passportSeries" {...register} />
-            <input type="number" placeholder="passportNumber" {...register("passportNumber", {})} />
-
-            <input type="submit" value="Continue" />
-        </form>
-    );
-}

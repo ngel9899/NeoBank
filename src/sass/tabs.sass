@@ -72,10 +72,12 @@
 
 .ratesAndConditions__title
   width: 32%
+  margin-right: 69px
   p
     @include ubuntuMed-16
 
 .ratesAndConditions__text
+  width: 68%
   p
     @include ubuntuMed-16
     color: #434343
@@ -132,7 +134,7 @@
     color: #1C1C1E
     list-style: none
     user-select: none
-    padding: 32px 32px 32px 32px
+    padding: 32px
     &:after
       display: block
       content: ""
@@ -143,7 +145,7 @@
   p
     @include ubuntuReg-16
     color: #7B7454
-    padding: 24px 0 25px 32px
+    padding: 24px 69px 25px 32px
 
 .howToGetCard
   padding: 48px 0 46px 0
@@ -181,3 +183,49 @@
     @include ubuntuMed-16
     text-align: center
     padding-top: 20px
+
+@media screen and (max-width: 1240px)
+  .aboutCard-bigCard__card
+    height: 260px
+
+
+@media screen and (max-width: 930px)
+  .aboutCard__card
+    h2
+      font-size: 20px
+
+  .cashback__percent
+    font-size: 24px
+@media screen and (max-width: 860px)
+  .cashback__card
+    width: 48%
+    margin: 2% 1% 0 0
+    &:first-child
+      margin: 2% 1% 0 0
+  .cashback__container
+    padding-right: 20px
+@media screen and (max-width: 770px)
+  .ratesAndConditions
+    width: 100%
+
+@media screen and (max-width: 700px)
+  .aboutCard-smallCard__content
+    padding: 15px 0 0 15px
+
+  .aboutCard-bigCard__content
+    padding: 15px 0 0 15px
+
+  .FAQ-details
+    summary
+      &:after
+        height: 12px
+        width: 18px
+        background: url($way-img + "accordion-marker.png") no-repeat
+        transition: transform .5s
+
+@media screen and (max-width: 590px)
+  .aboutCard-bigCard__content
+    padding: 15px 0 0 15px
+
+  .ratesAndConditions__bloc
+    height: 60px
