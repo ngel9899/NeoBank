@@ -1,6 +1,7 @@
 import "../../sass/tabs.sass";
-import {useEffect, useState} from "react";
-import {Form} from "../form/form";
+import React, {forwardRef, useEffect, useRef, useState} from "react";
+import DigitalCreditCard from "../digitalCreditCard/digitalCreditCard";
+import Form from "../form/form";
 
 const AboutCard = () => {
     const [cardSmall, setCardSmall] = useState();
@@ -298,10 +299,13 @@ const HowToGetCard = () =>{
 
 
 
-export function Tabs(){
+export default function Tabs(){
     const [toggleState, setToggleState] = useState(1);
+    const ref = useRef<HTMLFormElement | null>(null);
 
     return(
+        <>
+        <DigitalCreditCard ref={ref} />
         <section className="tabs container">
             <div className="tabs__bloc">
                 <div className={toggleState === 1 ? "tab tab__active" : "tab"} onClick={() => setToggleState(1)}>about card</div>
@@ -312,25 +316,20 @@ export function Tabs(){
             <div className="tabs__content-bloc">
                 <div className={toggleState === 1 ? "tab-content__active" : "tab-content__inactive"}>
                     <AboutCard />
-                    <HowToGetCard />
-                    <Form />
                 </div>
                 <div className={toggleState === 2 ? "tab-content__active" : "tab-content__inactive"}>
                     <RatesAndConditions />
-                    <HowToGetCard />
-                    <Form />
                 </div>
                 <div className={toggleState === 3 ? "tab-content__active" : "tab-content__inactive"}>
                     <Cashback />
-                    <HowToGetCard />
-                    <Form />
                 </div>
                 <div className={toggleState === 4 ? "tab-content__active" : "tab-content__inactive"}>
                     <FAQ />
-                    <HowToGetCard />
-                    <Form />
                 </div>
             </div>
+            <HowToGetCard />
+            <Form ref={ref} />
         </section>
+        </>
     )
 }

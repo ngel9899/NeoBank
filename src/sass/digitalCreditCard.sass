@@ -1,20 +1,20 @@
 @import "../font/variables"
 
-.digitalСreditСard
+.digitalCreditCard
   padding-top: 20px
   height: 390px
   border-radius: 28.8px
   background: linear-gradient(180deg, rgba(203, 213, 224, 0.62) 0%, rgba(254, 235, 200, 0.56) 100%)
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.20), 0 0 8px 0 rgba(0, 0, 0, 0.08)
 
-.digitalСreditСard__container
+.digitalCreditCard__container
   @include flex-between
   padding: 48px 0 0 32px
 
-.digitalСreditСard__left-bloc
+.digitalCreditCard__left-bloc
   width: 53%
 
-.digitalСreditСard__text
+.digitalCreditCard__text
   h1
     color: #FFFFFF
     font-family: $ubuntu-bold
@@ -25,7 +25,7 @@
     padding-top: 48px
     color: #2D3748
 
-.digitalСreditСard__conditions
+.digitalCreditCard__conditions
   div[data-descr]
     position: relative
   div[data-descr]:hover::after
@@ -51,46 +51,49 @@
     color: #3D3D3D
     padding-top: 8px
 
-.digitalСreditСard__button
+.digitalCreditCard__button
   padding-top: 32px
   button
     @include buttonBlue-16
 
-.digitalСreditСard__image
+.digitalCreditCard__image
   width: 39%
   padding-right: 100px
   img
     width: 100%
 
 @media screen and (max-width: 1300px)
-  .digitalСreditСard
+  .digitalCreditCard
     height: 400px
-  .digitalСreditСard__left-bloc
+  .digitalCreditCard__left-bloc
     width: 70%
-  .digitalСreditСard__image
+  .digitalCreditCard__image
     padding-right: 40px
 
 @media screen and (max-width: 1152px)
-  .digitalСreditСard__image
+  .digitalCreditCard__image
     padding-right: 0
 
-  .digitalСreditСard__text
+  .digitalCreditCard__text
     h1
       font-size: 34px
     p
       @include ubuntuMed-16
       padding-top: 10px
 
-  .digitalСreditСard__conditions
+  .digitalCreditCard__conditions
     h4
       font-size: 14px
     p
       font-size: 12px
+@media screen and (max-width: 780px)
+  .digitalCreditCard__container
+    padding-left: 12px
 
 @media screen and (max-width: 690px)
-  .digitalСreditСard
+  .digitalCreditCard
     height: 450px
-  .digitalСreditСard__conditions
+  .digitalCreditCard__conditions
     width: 450px
     div[data-descr]
       margin-right: 20px

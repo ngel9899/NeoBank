@@ -1,6 +1,10 @@
 import "../../sass/form.sass";
-import {useEffect, useState} from "react";
+import {forwardRef, useEffect, useState} from "react";
 import {useForm, SubmitHandler, useWatch, Control} from "react-hook-form"
+import Swiper from "swiper";
+import {Navigation} from "swiper/types/modules";
+import {data} from "jquery";
+import {register} from "swiper/swiper-element";
 
 const arrInput = [
     {
@@ -89,68 +93,90 @@ const arrInput = [
 
 ]
 
+const submitPost = (data: any) =>{
+    const url = new URL('/application');
+    return fetch(url.toString(), {
+        method: 'POST',
+        body: JSON.stringify(data),
+    }).catch(function(error){
+        console.log(error);
+    });
+}
+
+const loading = (set: any) => {
+    setTimeout(() =>{
+        set(false);
+    },3500 )
+    return(
+        <div className="spinner">
+            <img src="img/spinner.png" alt="spinner"/>
+        </div>
+    )
+}
+
+interface IFormInterface{
+    amount: number,
+    term: number,
+    firstName: string,
+    lastName: string,
+    middleName: string | null,
+    email: string,
+    birthdate: string | Date,
+    passportSeries: string,
+    passportNumber: string
+}
+interface IInputCardItem{
+    label?: string,
+    caption: string,
+    type?: string,
+    placeholder?: string,
+    name: keyof IFormInterface,
+    select: boolean,
+    required: boolean,
+    maxLength?: number,
+    minLength?: number,
+    pattern?: RegExp,
+    min?: any,
+    max?: any,
+    errorText?: string
+}
+interface IInputCard{
+    item: IInputCardItem
+}
 
 
-export function Form(){
-    const { register, handleSubmit, control, formState:{errors}} = useForm<IFormInterface>({mode: 'onChange'});
-    const onSubmit = (data: any) => console.log("отправлено:", data);
+function AmountWatched({ control }: { control: Control<IFormInterface> }) {
+    const amount = useWatch({
+        control,
+        name: "amount",
+        defaultValue: 150
+    });
+    return <p className="form-selectAmount-content__value">150 000</p>
+}
 
-    interface IFormInterface{
-        amount: number,
-        term: number,
-        firstName: string,
-        lastName: string,
-        middleName: string | null,
-        email: string,
-        birthdate: string | Date,
-        passportSeries: string,
-        passportNumber: string
-    }
-    interface IInputCardItem{
-        label?: string,
-        caption: string,
-        type?: string,
-        placeholder?: string,
-        name: keyof IFormInterface,
-        select: boolean,
-        required: boolean,
-        maxLength?: number,
-        minLength?: number,
-        pattern?: RegExp,
-        min?: any,
-        max?: any,
-        errorText?: string
-    }
-    interface IInputCard{
-        item: IInputCardItem
-    }
-
-    function AmountWatched({ control }: { control: Control<IFormInterface> }) {
-        const amount = useWatch({
-            control,
-            name: "amount",
-            defaultValue: 150
-        });
-        return <p className="form-selectAmount-content__value">{amount} 000</p>
-    }
+const Form = forwardRef<HTMLFormElement>(function Form(props, ref){
+    const [isLoading, setLoading] = useState(false)
+    const { register, handleSubmit, control, formState:{errors}} = useForm<IFormInterface>({mode: "onSubmit"});
+    /*const onSubmit = (data: any) => {submitPost(data);setLoading(true)} направление данных в /application*/
+    const onSubmit = (data: any) => {console.log(data);setLoading(true);} //для проверки
 
     const InputCard = (InputCardItem: IInputCard) =>{
         let name = InputCardItem.item.name;
         return(
-            <div className={InputCardItem.item.caption === "middleName"?"inputCard__Container inputCard-Container__noneAfter" : "inputCard__Container"}>
+            <div className={InputCardItem.item.caption === "middleName"?"inputCard__container inputCard-Container__noneAfter" : "inputCard__container"}>
                 <label>{InputCardItem.item.label}</label>
                 {!InputCardItem.item.select &&
-                    <input aria-label={InputCardItem.item.caption} type={InputCardItem.item.type} placeholder={InputCardItem.item.placeholder}
+                    <input className={'inputCard-container__input ' + (!errors[name] ? "inputCard-container__success" : "inputCard-container__error")} aria-label={InputCardItem.item.caption} type={InputCardItem.item.type} placeholder={InputCardItem.item.placeholder}
                            {...register(name, {
-                                required: InputCardItem.item.required,
-                                maxLength: InputCardItem.item.maxLength,
-                                minLength: InputCardItem.item.minLength,
-                                pattern: InputCardItem.item.pattern,
-                                min: InputCardItem.item.min,
-                                max: InputCardItem.item.max
-                        })} />
-                    /*({errors[name] && <p>InputCardItem.item.errorText</p>})*/
+                               required: InputCardItem.item.required,
+                               maxLength: InputCardItem.item.maxLength,
+                               minLength: InputCardItem.item.minLength,
+                               pattern: InputCardItem.item.pattern,
+                               min: InputCardItem.item.min,
+                               max: InputCardItem.item.max
+                           })} />
                 }
+                {errors[name] && <p className="inputCard__error">{InputCardItem.item.errorText}</p>}
                 {InputCardItem.item.select &&
                     <select aria-label={InputCardItem.item.caption} name={InputCardItem.item.name}>
                         <option value="6">6 month</option>
@@ -164,8 +190,9 @@ export function Form(){
     }
 
     return (
+        <>{isLoading ? loading(setLoading) : ""}
         <section className="form__container">
-            <form className="form" onSubmit={handleSubmit(onSubmit)}>
+            <form className="form" onSubmit={handleSubmit(onSubmit)} ref={ref}>
                 <div className="form__customizeCard">
                     <div className="form-customizeCard__container">
                         <div className="form-customizeCard__content">
@@ -197,7 +224,7 @@ export function Form(){
                     <h2>Contact Information</h2>
                     <div className="form-contactInformation__inputCard">
                         {arrInput.map((item, index) =>
-                            <InputCard item={item} key={index}/>
+                        <InputCard item={item} key={index}/>
                         )}
                     </div>
                 </div>
@@ -206,6 +233,9 @@ export function Form(){
                 </div>
             </form>
         </section>
+        </>
     )
-}
+})
+
+export default Form;
 
