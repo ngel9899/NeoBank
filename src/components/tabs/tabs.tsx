@@ -1,5 +1,5 @@
 import "../../sass/tabs.sass";
-import React, {forwardRef, useEffect, useRef, useState} from "react";
+import React, { useEffect, useRef, useState} from "react";
 import DigitalCreditCard from "../digitalCreditCard/digitalCreditCard";
 import Form from "../form/form";
 

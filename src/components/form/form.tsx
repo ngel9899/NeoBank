@@ -1,10 +1,6 @@
 import "../../sass/form.sass";
-import {forwardRef, useEffect, useState} from "react";
-import {useForm, SubmitHandler, useWatch, Control} from "react-hook-form"
-import Swiper from "swiper";
-import {Navigation} from "swiper/types/modules";
-import {data} from "jquery";
-import {register} from "swiper/swiper-element";
+import {forwardRef, useState} from "react";
+import {useForm, useWatch, Control} from "react-hook-form"
 
 const arrInput = [
     {
@@ -143,8 +139,6 @@ interface IInputCardItem{
 interface IInputCard{
     item: IInputCardItem
 }
-
-
 function AmountWatched({ control }: { control: Control<IFormInterface> }) {
     const amount = useWatch({
         control,
@@ -154,12 +148,13 @@ function AmountWatched({ control }: { control: Control<IFormInterface> }) {
     return <p className="form-selectAmount-content__value">150 000</p>
 }
 
+
 const Form = forwardRef<HTMLFormElement>(function Form(props, ref){
-    const [isLoading, setLoading] = useState(false)
+    const [isLoading, setLoading] = useState(false);
+    const [cards, setCards] = useState();
     const { register, handleSubmit, control, formState:{errors}} = useForm<IFormInterface>({mode: "onSubmit"});
     /*const onSubmit = (data: any) => {submitPost(data);setLoading(true)} направление данных в /application*/
     const onSubmit = (data: any) => {console.log(data);setLoading(true);} //для проверки
-
     const InputCard = (InputCardItem: IInputCard) =>{
         let name = InputCardItem.item.name;
         return(
