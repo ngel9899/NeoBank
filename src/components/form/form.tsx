@@ -138,6 +138,8 @@ interface IInputCardItem{
 }
 interface IInputCard{
     item: IInputCardItem
+    register: any,
+    errors: any
 }
 function AmountWatched({ control }: { control: Control<IFormInterface> }) {
     const amount = useWatch({
@@ -148,6 +150,34 @@ function AmountWatched({ control }: { control: Control<IFormInterface> }) {
     return <p className="form-selectAmount-content__value">150 000</p>
 }
 
+const InputCard = (InputCardItem: IInputCard) =>{
+    let name = InputCardItem.item.name;
+    return(
+        <div className={InputCardItem.item.caption === "middleName"?"inputCard__container inputCard-Container__noneAfter" : "inputCard__container"}>
+            <label>{InputCardItem.item.label}</label>
+            {!InputCardItem.item.select &&
+                <input className={'inputCard-container__input ' + (!InputCardItem.errors[name] ? "inputCard-container__success" : "inputCard-container__error")} aria-label={InputCardItem.item.caption} type={InputCardItem.item.type} placeholder={InputCardItem.item.placeholder}
+                       {...InputCardItem.register(name, {
+                           required: InputCardItem.item.required,
+                           maxLength: InputCardItem.item.maxLength,
+                           minLength: InputCardItem.item.minLength,
+                           pattern: InputCardItem.item.pattern,
+                           min: InputCardItem.item.min,
+                           max: InputCardItem.item.max
+                       })} />
+            }
+            {InputCardItem.errors[name] && <p className="inputCard__error">{InputCardItem.item.errorText}</p>}
+            {InputCardItem.item.select &&
+                <select aria-label={InputCardItem.item.caption} name={InputCardItem.item.name}>
+                    <option value="6">6 month</option>
+                    <option value="12">12 month</option>
+                    <option value="18">18 month</option>
+                    <option value="24">24 month</option>
+                </select>
+            }
+        </div>
+    )
+}
 
 const Form = forwardRef<HTMLFormElement>(function Form(props, ref){
     const [isLoading, setLoading] = useState(false);
@@ -155,34 +185,6 @@ const Form = forwardRef<HTMLFormElement>(function Form(props, ref){
     const { register, handleSubmit, control, formState:{errors}} = useForm<IFormInterface>({mode: "onSubmit"});
     /*const onSubmit = (data: any) => {submitPost(data);setLoading(true)} направление данных в /application*/
     const onSubmit = (data: any) => {console.log(data);setLoading(true);} //для проверки
-    const InputCard = (InputCardItem: IInputCard) =>{
-        let name = InputCardItem.item.name;
-        return(
-            <div className={InputCardItem.item.caption === "middleName"?"inputCard__container inputCard-Container__noneAfter" : "inputCard__container"}>
-                <label>{InputCardItem.item.label}</label>
-                {!InputCardItem.item.select &&
-                    <input className={'inputCard-container__input ' + (!errors[name] ? "inputCard-container__success" : "inputCard-container__error")} aria-label={InputCardItem.item.caption} type={InputCardItem.item.type} placeholder={InputCardItem.item.placeholder}
-                           {...register(name, {
-                               required: InputCardItem.item.required,
-                               maxLength: InputCardItem.item.maxLength,
-                               minLength: InputCardItem.item.minLength,
-                               pattern: InputCardItem.item.pattern,
-                               min: InputCardItem.item.min,
-                               max: InputCardItem.item.max
-                           })} />
-                }
-                {errors[name] && <p className="inputCard__error">{InputCardItem.item.errorText}</p>}
-                {InputCardItem.item.select &&
-                    <select aria-label={InputCardItem.item.caption} name={InputCardItem.item.name}>
-                        <option value="6">6 month</option>
-                        <option value="12">12 month</option>
-                        <option value="18">18 month</option>
-                        <option value="24">24 month</option>
-                    </select>
-                }
-            </div>
-        )
-    }
 
     return (
         <>{isLoading ? loading(setLoading) : ""}
@@ -219,7 +221,7 @@ const Form = forwardRef<HTMLFormElement>(function Form(props, ref){
                     <h2>Contact Information</h2>
                     <div className="form-contactInformation__inputCard">
                         {arrInput.map((item, index) =>
-                        <InputCard item={item} key={index}/>
+                        <InputCard item={item} key={index} register={register} errors={errors}/>
                         )}
                     </div>
                 </div>
