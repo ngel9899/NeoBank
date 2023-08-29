@@ -6,82 +6,94 @@
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.20), 0 0 8px 0 rgba(0, 0, 0, 0.08)
   margin-bottom: 96px
 
-.form__customizeCard
+.form__customize-card
   display: flex
   padding: 32px 0 0 32px
 
-.form-customizeCard__container
+.form-customize-card__container
   width: 608px
-  border-right: dashed  1px #80808066
+  border-right: dashed 1px #80808066
 
-.form-customizeCard__content
+.form-customize-card__content
   @include flex-between
   align-items: center
+
   h1
     @include ubuntuBold-30
+
   div:last-child
     padding-right: 40px
+
     p
       @include ubuntuMed-16
       vertical-align: middle
 
-.form__selectAmount
+.form__select-amount
   width: 568px
   height: 164px
   border-radius: 10px
   border: 1px solid #5B35D5
   margin: 32px 40px 0 0
 
-.form-selectAmount__content
+.form-select-amount__content
   padding: 24px 24px 0 24px
+
   h3
     @include ubuntuMed-16
     padding-bottom: 20px
+
   input
     width: 100%
 
-.form-selectAmount-content__value
+.form-select-amount-content__value
   @include ubuntuMed-16
   padding-bottom: 10px
 
-.form-selectAmount-content__minMax
+.form-select-amount-content__minMax
   @include flex-between
+
   p
     @include ubuntuMed-16
     color: #786D6D
 
 
-.form__haveChosenAmount
+.form__have-chosen-amount
   padding-left: 42px
+
   h2
     @include ubuntuBold-20
     padding-bottom: 16px
+
   p
     @include ubuntuMed-16
     width: 220px
     border-bottom: solid 1px #80808033
     padding-bottom: 10px
 
-.form__contactInformation
+.form__contact-information
   padding: 32px 32px 24px 32px
+
   h2
     @include ubuntuBold-20
 
-.form-contactInformation__inputCard
+.form-contact-information__inputCard
   display: flex
   flex-wrap: wrap
 
 .inputCard__container
   width: 23.6%
   margin: 16px 16px 0 0
+
   label
     @include ubuntuMed-16
     display: block
     padding-bottom: 8px
+
     &:after
       content: "*"
       color: #FF0000
       padding-left: 2px
+
   select
     width: 100%
     height: 40px
@@ -91,6 +103,7 @@
     padding-left: 16px
     border: none
     outline: none
+
     &:focus
       border: solid 2px #5B35D5
 
@@ -102,12 +115,14 @@
   padding-left: 16px
   border: none
   outline: none
+
   &:focus
     border: solid 2px #5B35D5
 
 .inputCard-Container__noneAfter
   input
     background: #F9F5E3
+
   label
     &:after
       display: none
@@ -116,6 +131,7 @@
   display: flex
   justify-content: right
   padding: 0 32px 32px 0
+
   input
     @include buttonForm-submit
 
@@ -133,6 +149,7 @@
 
 .spinner
   height: 0
+
   img
     position: relative
     left: 48%
@@ -145,37 +162,38 @@
     transform: rotateZ(-360deg)
 
 @media screen and (max-width: 1030px)
-  .form-customizeCard__container
+  .form-customize-card__container
     width: 50%
 
-  .form__selectAmount
+  .form__select-amount
     width: 90%
 
 @media screen and (max-width: 900px)
-   .inputCard__container
-     margin: 20px 20px 0 0
-     width: 25%
+  .inputCard__container
+    margin: 20px 20px 0 0
+    width: 25%
 
 @media screen and (max-width: 900px)
   .inputCard__container
     width: 40%
 
 @media screen and (max-width: 850px)
-  .form__customizeCard
+  .form__customize-card
     padding-right: 32px
-  .form-customizeCard__container
+  .form-customize-card__container
     border: none
     width: 100%
-  .form__selectAmount
+  .form__select-amount
     margin: 0
-  .form__haveChosenAmount
+  .form__have-chosen-amount
     width: 100%
     text-align: center
     padding-left: 0
     padding-top: 15px
+
     p
       width: 100%
-  .form__customizeCard
+  .form__customize-card
     flex-wrap: wrap
   .spinner
     img
@@ -183,11 +201,11 @@
       left: 43%
 
 @media screen and (max-width: 650px)
-  .form__contactInformation
+  .form__contact-information
     padding-right: 0
 
 @media screen and (max-width: 550px)
-  .form-customizeCard__content
+  .form-customize-card__content
     h1
       font-size: 24px
 

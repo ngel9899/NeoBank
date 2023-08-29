@@ -1,7 +1,13 @@
 import '../../sass/cashback.sass';
 import React from 'react';
 
-const arrCashback = [
+interface IArrCashback {
+  text: string,
+  percent: string,
+  color?: string
+}
+
+const arrCashback: Array<IArrCashback> = [
   {
     text: 'For food delivery, cafes and restaurants',
     percent: '5%',
@@ -30,9 +36,9 @@ const arrCashback = [
     color: 'true',
   },
 ];
-export const Cashback = () => {
 
-  const cashbackCard = arrCashback.map((card: any) =>
+export const Cashback = () => {
+  const cashbackCard = arrCashback.map((card) =>
     <div key={card.text} className={'cashback__card ' + (card.color ? 'cashback-card__urquoise' : '')}>
       <div className='cashback__container'>
         <p className='cashback__text'>{card.text}</p>

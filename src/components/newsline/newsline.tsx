@@ -7,9 +7,9 @@ import React, { useEffect, useState } from 'react';
 
 
 export function Newsline() {
-  const [news, setNews] = useState<Array<object>>();
+  const [news, setNews] = useState<Array<Record<string, any>>>();
 
-  const filterArr = (item: any) => {
+  const filterArr = (item: Record<string, any>) => {
     if ((item['urlToImage'] && item['description']) != null || undefined) {
       return item;
     }
@@ -20,7 +20,7 @@ export function Newsline() {
     url.searchParams.set('category', 'business');
     url.searchParams.set('apiKey', '47cb016e61734c628e8070d865794427');
     fetch(url.toString(), { method: 'GET' }).then(response => response.json())
-      .then((responses: any) => {
+      .then((responses: Record<string, any>) => {
         setNews(responses.articles.filter(filterArr));
       });
     const swiper = new Swiper('.swiper', {
@@ -38,7 +38,7 @@ export function Newsline() {
     });
   }, []);
 
-  const NewsSliderCard = (articles: any) => {
+  const NewsSliderCard = (articles: Record<string, any>) => {
     return (
       <div className='newsline-slider__card swiper-slide'>
         <div className='newsline-card__container'>

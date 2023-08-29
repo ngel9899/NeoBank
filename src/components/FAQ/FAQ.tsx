@@ -1,5 +1,6 @@
 import '../../sass/FAQ.sass';
 import React, { useState } from 'react';
+import { Accordion } from '../accordion/accordion';
 
 const arrFAQFirst = [
   {
@@ -43,28 +44,7 @@ const arrFAQLast = [
 ];
 
 export const FAQ = () => {
-  const [activeIndex, setActiveIndex] = useState<any>();
-
-  interface IAccordionItem {
-    title: string;
-    text: string;
-  }
-
-  interface IAccordionProps {
-    open: boolean;
-    onClick: (...args: any) => any;
-    item: IAccordionItem;
-  }
-
-
-  const Accordion = (AccordionProps: IAccordionProps) => {
-    return (
-      <details className='FAQ__details' open={AccordionProps.open} onClick={AccordionProps.onClick}>
-        <summary>{AccordionProps.item.title}</summary>
-        <p>{AccordionProps.item.text}</p>
-      </details>
-    );
-  };
+  const [activeIndex, setActiveIndex] = useState<number>();
 
   return (
     <section className='FAQ'>

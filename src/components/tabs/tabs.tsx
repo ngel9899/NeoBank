@@ -1,5 +1,5 @@
 import '../../sass/tabs.sass';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import DigitalCreditCard from '../digitalCreditCard/digitalCreditCard';
 import Form from '../form/form';
 import { AboutCard } from '../aboutCard/aboutCard';
@@ -10,7 +10,8 @@ import { HowToGetCard } from '../howToGetCard/howToGetCard';
 
 export default function Tabs() {
   const [toggleState, setToggleState] = useState(1);
-  const ref = useRef<HTMLFormElement | null>(null);
+  // noinspection TypeScriptValidateTypes
+  const ref = useRef<HTMLFormElement>(null);
 
   return (
     <>

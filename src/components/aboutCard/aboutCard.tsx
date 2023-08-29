@@ -1,12 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import '../../sass/aboutCard.sass';
 
+interface IAboutCard {
+  img: string,
+  title: string,
+  text: string,
+  size?: string,
+  black?: string
+}
+
+type CardFunction = (arr: Array<IAboutCard>, set: React.Dispatch<React.SetStateAction<JSX.Element[] | undefined>>) => void
+
 export const AboutCard = () => {
-  const [cardSmall, setCardSmall] = useState();
-  const [cardBig, setCardBig] = useState();
+  const [cardSmall, setCardSmall] = useState<JSX.Element[]>();
+  const [cardBig, setCardBig] = useState<JSX.Element[]>();
 
   useEffect(() => {
-    const arrCardSmall = [
+    const arrCardSmall: Array<IAboutCard> = [
       {
         img: 'img/money-abountCard.png',
         title: 'Up to 50 000 ₽',
@@ -27,7 +37,7 @@ export const AboutCard = () => {
         size: 'small',
       },
     ];
-    const arrCardBig = [
+    const arrCardBig: IAboutCard[] = [
       {
         img: 'img/bag-abountCard.png',
         title: 'Up to 12 months',
@@ -41,14 +51,14 @@ export const AboutCard = () => {
       },
     ];
 
-    const card = (arr: any, set: any) => {
-      set(arr.map((n: any) =>
-        <div key={n.title}
-             className={'aboutCard__card ' + (n.black ? 'aboutCard-smallCard__cardBlack' : '') + ' ' + (n.size === 'small' ? 'aboutCard-smallCard__card' : 'aboutCard-bigCard__card')}>
-          <div className={(n.size === 'small' ? 'aboutCard-smallCard__content' : 'aboutCard-bigCard__content')}>
-            <img src={n.img} alt='credit card' />
-            <h2>{n.title}</h2>
-            <p>{n.text}</p>
+    const card: CardFunction = (arr, set) => {
+      set(arr.map((item) =>
+        <div key={item.title}
+             className={'about-card__card ' + (item.black ? 'about-card-small-card__cardBlack' : '') + ' ' + (item.size === 'small' ? 'about-card-small-card__card' : 'about-card-big-card__card')}>
+          <div className={(item.size === 'small' ? 'about-card-small-card__content' : 'about-card-big-card__content')}>
+            <img src={item.img} alt='credit card' />
+            <h2>{item.title}</h2>
+            <p>{item.text}</p>
           </div>
         </div>,
       ));
@@ -61,11 +71,11 @@ export const AboutCard = () => {
   }, []);
 
   return (
-    <section className='aboutCard'>
-      <div className='aboutCard__smallCard'>
+    <section className='about-card'>
+      <div className='about-card__small-card'>
         {cardSmall}
       </div>
-      <div className='aboutCard__bigCard'>
+      <div className='about-card__big-card'>
         {cardBig}
       </div>
     </section>

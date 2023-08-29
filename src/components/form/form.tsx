@@ -1,6 +1,7 @@
 import '../../sass/form.sass';
 import React, { forwardRef, useEffect, useState } from 'react';
-import { useForm } from 'react-hook-form';
+import { FieldErrors, useForm } from 'react-hook-form';
+import { UseFormRegister } from 'react-hook-form/dist/types/form';
 
 const arrInput = [
   {
@@ -135,17 +136,17 @@ interface IInputCardItem {
 
 interface IInputCard {
   item: IInputCardItem
-  register: any,
-  errors: any
+  register: UseFormRegister<IFormInterface>,
+  errors: FieldErrors<IFormInterface>
 }
 
 interface IAmountWatched {
-  register: any,
-  errors: any
+  register: UseFormRegister<IFormInterface>,
+  errors: FieldErrors<IFormInterface>
 }
 
 function AmountWatched(amount: IAmountWatched) {
-  return <input type='number' {...amount.register('amount', {
+  return <input type='number' {...amount.register('amount' as keyof IFormInterface, {
     required: true, minLength: 5, min: 15000, max: 600000, pattern: /^(?! )(?!.* $)(?! )(\d*$)/,
   })} />;
 }
@@ -183,15 +184,19 @@ const InputCard = (InputCardItem: IInputCard) => {
   );
 };
 
-const Form = forwardRef<HTMLFormElement>(function Form(props, ref: any) {
+const Form = forwardRef<HTMLFormElement>(function Form(props, ref: any /*React.MutableRefObject<HTMLFormElement>*/) {
   const [isLoading, setLoading] = useState<boolean>(false);
-  const { register, handleSubmit, formState: { errors } } = useForm<IFormInterface>({ mode: 'onSubmit' });
+  const { register, handleSubmit, formState: { errors }, watch } = useForm<IFormInterface>({
+    mode: 'onSubmit',
+    defaultValues: { amount: 150000 },
+  });
   /*const onSubmit = (data: any) => {submitPost(data);setLoading(true)} направление данных в /application*/
   const onSubmit = (data: object) => {
     console.log(data);
     setLoading(true);
   }; //для проверки
-  const amountNumber = 150000;
+  // @ts-expect-error ignore interface error
+  const { amount } = watch<IFormInterface>();
 
   useEffect(() => {
     const loading = (set: (value: (boolean)) => void) => {
@@ -208,9 +213,9 @@ const Form = forwardRef<HTMLFormElement>(function Form(props, ref: any) {
     </div> : ''}
       <section className='form__container'>
         <form className='form' onSubmit={handleSubmit(onSubmit)} ref={ref}>
-          <div className='form__customizeCard'>
-            <div className='form-customizeCard__container'>
-              <div className='form-customizeCard__content'>
+          <div className='form__customize-card'>
+            <div className='form-customize-card__container'>
+              <div className='form-customize-card__content'>
                 <div>
                   <h1>Customize your card</h1>
                 </div>
@@ -218,26 +223,26 @@ const Form = forwardRef<HTMLFormElement>(function Form(props, ref: any) {
                   <p>Step 1 of 5</p>
                 </div>
               </div>
-              <div className='form__selectAmount'>
-                <div className='form-selectAmount__content'>
+              <div className='form__select-amount'>
+                <div className='form-select-amount__content'>
                   <h3>Select amount</h3>
-                  <p className='form-selectAmount-content__value'>{amountNumber}</p>
+                  <p className='form-select-amount-content__value'>{amount}</p>
                   <AmountWatched register={register} errors={errors} />
-                  <div className='form-selectAmount-content__minMax'>
+                  <div className='form-select-amount-content__minMax'>
                     <p>15 000</p>
                     <p>600 000</p>
                   </div>
                 </div>
               </div>
             </div>
-            <div className='form__haveChosenAmount'>
+            <div className='form__have-chosen-amount'>
               <h2>You have chosen the amount</h2>
-              <p className='form-selectAmount-content__value'>{amountNumber}</p>
+              <p className='form-select-amount-content__value'>{amount}</p>
             </div>
           </div>
-          <div className='form__contactInformation'>
+          <div className='form__contact-information'>
             <h2>Contact Information</h2>
-            <div className='form-contactInformation__inputCard'>
+            <div className='form-contact-information__inputCard'>
               {arrInput.map((item, index) =>
                 <InputCard item={item} key={index} register={register} errors={errors} />,
               )}

@@ -2,7 +2,7 @@ import '../../sass/subscribe.sass';
 import React, { useEffect, useState } from 'react';
 
 export function Subscribe() {
-  const [subscribe, setSubscribe] = useState<any>();
+  const [subscribe, setSubscribe] = useState<JSX.Element>();
   const keySubscribe = localStorage.getItem('subscribe');
 
   const FormSubscribe = () => {

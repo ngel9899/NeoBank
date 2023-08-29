@@ -1,24 +1,25 @@
 import '../../sass/whatFeaturesDoWeProvide.sass';
 import React from 'react';
 
-export function WhatFeaturesDoWeProvide() {
-  interface ListItemProps {
-    text: string;
-  }
+interface ListItemProps {
+  text: string;
+}
 
-  function ListItem(props: ListItemProps) {
-    const text = props.text;
-    return (
-      <li><img src={'img/check-green.png'} alt='check' />{text}</li>
-    );
-  }
+function ListItem(props: ListItemProps) {
+  const text = props.text;
+  return (
+    <li><img src={'img/check-green.png'} alt='check' />{text}</li>
+  );
+}
+
+export function WhatFeaturesDoWeProvide() {
 
   return (
-    <section className='whatFeaturesDoWeProvide container'>
-      <div className='whatFeaturesDoWeProvide__img'>
+    <section className='what-features-do-we-provide container'>
+      <div className='what-features-do-we-provide__img'>
         <img src={'img/home-function-usage-illustration.png'} alt='function usage illustration' />
       </div>
-      <div className='whatFeaturesDoWeProvide__text'>
+      <div className='what-features-do-we-provide__text'>
         <h1>We Provide Many Features You Can Use</h1>
         <p>You can explore the features that we provide with fun and have their own functions each feature</p>
         <ul>

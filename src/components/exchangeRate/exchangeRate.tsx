@@ -44,27 +44,27 @@ export function ExchangeRate() {
 
 
   return (
-    <section className='exchangeRate container'>
-      <div className='exchangeRate__container'>
+    <section className='exchange-rate container'>
+      <div className='exchange-rate__container'>
         <div>
-          <div className='exchangeRate__text'>
+          <div className='exchange-rate__text'>
             <h1>Exchange rate in internet bank</h1>
             <p>Currency</p>
           </div>
-          <div className='exchangeRate__currency'>
-            <div className='exchangeRate__currency_list' id='exchangeRate__currency_list'>
+          <div className='exchange-rate__currency'>
+            <div className='exchange-rate__currency_list' id='exchange-rate__currency_list'>
               {data?.map((n: string, index) => <div key={n}><p>{currency[index]}:<span>{n}</span></p></div>)}
             </div>
           </div>
-          <div className='exchangeRate__link'>
+          <div className='exchange-rate__link'>
             <a href=''>All courses</a>
           </div>
         </div>
-        <div className='exchangeRate__right_block'>
-          <div className='exchangeRate__time'>
+        <div className='exchange-rate__right_block'>
+          <div className='exchange-rate__time'>
             <p>Update every 15 minutes, MSC 09.08.2022</p>
           </div>
-          <div className='exchangeRate__img'>
+          <div className='exchange-rate__img'>
             <img src={'img/exchange-rate-logo.png'} alt='exchange logo' />
           </div>
         </div>

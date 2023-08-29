@@ -1,7 +1,13 @@
 import React from 'react';
 import '../../sass/ratesAndConditions.sass';
 
-const arrRatesConditions = [
+interface IArrRatesConditions {
+  title: string,
+  text: string,
+  secondTextLine?: string
+}
+
+const arrRatesConditions: Array<IArrRatesConditions> = [
   {
     title: 'Card currency',
     text: 'Rubles, dollars, euro',
@@ -34,20 +40,20 @@ const arrRatesConditions = [
 ];
 
 export const RatesAndConditions = () => {
-  const ratesAndConditionsContent = arrRatesConditions.map((item: any) =>
-    <div key={item.title} className='ratesAndConditions__bloc'>
-      <div className='ratesAndConditions__title'>
+  const ratesAndConditionsContent = arrRatesConditions.map((item) =>
+    <div key={item.title} className='rates-and-conditions__bloc'>
+      <div className='rates-and-conditions__title'>
         <p>{item.title}</p>
       </div>
-      <div className='ratesAndConditions__text'>
+      <div className='rates-and-conditions__text'>
         <p>{item.text}</p>
-        {item.secondTextLine ? <p className='ratesAndConditions__secondTextLine'>{item.secondTextLine}</p> : ''}
+        {item.secondTextLine ? <p className='rates-and-conditions__secondTextLine'>{item.secondTextLine}</p> : ''}
       </div>
     </div>,
   );
 
   return (
-    <section className='ratesAndConditions'>
+    <section className='rates-and-conditions'>
       {ratesAndConditionsContent}
     </section>
   );
