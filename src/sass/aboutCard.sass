@@ -1,0 +1,59 @@
+@import "../font/variables"
+
+.aboutCard
+  padding: 49px 0 96px 0
+
+.aboutCard__smallCard
+  @include flex-between
+
+.aboutCard__card
+  @include tabs-card
+  height: 236px
+
+  h2
+    @include ubuntuBold-30
+    padding-top: 24px
+
+  p
+    @include ubuntuMed-16
+    padding-top: 16px
+
+.aboutCard-smallCard__card
+  width: 31.3%
+
+.aboutCard-bigCard__card
+  width: 48.5%
+
+.aboutCard__bigCard
+  @include flex-between
+  padding-top: 40px
+
+.aboutCard-smallCard__cardBlack
+  background: #7F92ACB2
+
+.aboutCard-smallCard__content
+  padding: 32px 39px 0 32px
+
+.aboutCard-bigCard__content
+  padding: 32px 41px 0 32px
+
+@media screen and (max-width: 1240px)
+  .aboutCard-bigCard__card
+    height: 260px
+
+
+@media screen and (max-width: 930px)
+  .aboutCard__card
+    h2
+      font-size: 20px
+
+@media screen and (max-width: 700px)
+  .aboutCard-smallCard__content
+    padding: 15px 0 0 15px
+
+  .aboutCard-bigCard__content
+    padding: 15px 0 0 15px
+
+@media screen and (max-width: 590px)
+  .aboutCard-bigCard__content
+    padding: 15px 0 0 15px

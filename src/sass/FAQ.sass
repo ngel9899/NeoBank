@@ -1,0 +1,52 @@
+@import "../font/variables"
+
+.FAQ__first-accordion
+  padding-top: 32px
+
+  h1
+    padding-bottom: 32px
+
+.FAQ__last-accordion
+  padding: 32px 0 48px 0
+
+  h1
+    padding-bottom: 32px
+
+.FAQ__details
+  @include ubuntuMed-16
+  min-height: 84px
+  color: #1C1C1E
+  border: 1px solid #E2E8F0
+
+  &[open] summary:after
+    transform: rotateZ(180deg)
+
+  summary
+    @include ubuntuMed-16
+    @include flex-between
+    color: #1C1C1E
+    list-style: none
+    user-select: none
+    padding: 32px
+
+    &:after
+      display: block
+      content: ""
+      height: 10px
+      width: 14px
+      background: url($way-img + "accordion-marker.png") no-repeat
+      transition: transform .5s
+
+  p
+    @include ubuntuReg-16
+    color: #7B7454
+    padding: 24px 69px 25px 32px
+
+@media screen and (max-width: 700px)
+  .FAQ__details
+    summary
+      &:after
+        height: 12px
+        width: 18px
+        background: url($way-img + "accordion-marker.png") no-repeat
+        transition: transform .5s
