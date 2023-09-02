@@ -96,8 +96,8 @@ const arrInput = [
 
 ];
 
-/*const submitPost = (data: any) =>{
-    const url = new URL('/application');
+/*const submitPost = (data: object) =>{
+    const url = new URL('http://localhost:8080/application');
     return fetch(url.toString(), {
         method: 'POST',
         body: JSON.stringify(data),
@@ -190,11 +190,15 @@ const Form = forwardRef<HTMLFormElement>(function Form(props, ref: any /*React.M
     mode: 'onSubmit',
     defaultValues: { amount: 150000 },
   });
-  /*const onSubmit = (data: any) => {submitPost(data);setLoading(true)} направление данных в /application*/
-  const onSubmit = (data: object) => {
-    console.log(data);
+  /*const onSubmit = (data: object) => {
+    submitPost(data);
+    setLoading(true);
+  };*/
+  const onSubmit = () => {
+    localStorage.setItem('loanOffers', 'true');
     setLoading(true);
   }; //для проверки
+
   // @ts-expect-error ignore interface error
   const { amount } = watch<IFormInterface>();
 

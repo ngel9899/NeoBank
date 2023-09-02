@@ -52,6 +52,8 @@ export function Newsline() {
                     in.</p>
             </div>
             <Swiper
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                // @ts-ignore written according to the documentation
                 modules={[Navigation]}
                 slidesPerView={"auto"}
                 navigation={{

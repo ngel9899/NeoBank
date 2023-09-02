@@ -1,5 +1,5 @@
 import '../../sass/tabs.sass';
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import DigitalCreditCard from '../digitalCreditCard/digitalCreditCard';
 import Form from '../form/form';
 import { AboutCard } from '../aboutCard/aboutCard';
@@ -7,11 +7,18 @@ import { RatesAndConditions } from '../ratesAndConditions/ratesAndConditions';
 import { Cashback } from '../cashback/cashback';
 import { FAQ } from '../FAQ/FAQ';
 import { HowToGetCard } from '../howToGetCard/howToGetCard';
+import LoanOffers from '../loanOffers/loanOffers';
 
 export default function Tabs() {
   const [toggleState, setToggleState] = useState(1);
   // noinspection TypeScriptValidateTypes
   const ref = useRef<HTMLFormElement>(null);
+  const keyLoanOffers = localStorage.getItem('loanOffers');
+  const [offers, setOffers] = useState<JSX.Element>();
+
+  useEffect(() =>{
+    keyLoanOffers !== "true" ? setOffers(<Form ref={ref} />) : setOffers(<LoanOffers ref={ref} />)
+  }, [])
 
   return (
     <>
@@ -42,7 +49,7 @@ export default function Tabs() {
           </div>
         </div>
         <HowToGetCard />
-        <Form ref={ref} />
+        {offers}
       </section>
     </>
   );
