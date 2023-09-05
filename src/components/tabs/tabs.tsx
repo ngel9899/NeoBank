@@ -8,17 +8,19 @@ import { Cashback } from '../cashback/cashback';
 import { FAQ } from '../FAQ/FAQ';
 import { HowToGetCard } from '../howToGetCard/howToGetCard';
 import LoanOffers from '../loanOffers/loanOffers';
+import { useSelector } from 'react-redux';
+import { getData } from '../../app/slice';
 
 export default function Tabs() {
   const [toggleState, setToggleState] = useState(1);
-  // noinspection TypeScriptValidateTypes
   const ref = useRef<HTMLFormElement>(null);
-  const keyLoanOffers = localStorage.getItem('loanOffers');
+  const keyLoanOffers = localStorage.getItem('applicationId');
   const [offers, setOffers] = useState<JSX.Element>();
+  const user = useSelector(getData);
 
   useEffect(() =>{
-    keyLoanOffers !== "true" ? setOffers(<Form ref={ref} />) : setOffers(<LoanOffers ref={ref} />)
-  }, [])
+    !keyLoanOffers ? setOffers(<Form ref={ref} />) : setOffers(<LoanOffers ref={ref} />)
+  }, [keyLoanOffers, user])
 
   return (
     <>
