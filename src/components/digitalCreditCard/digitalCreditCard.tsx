@@ -1,9 +1,21 @@
 import '../../sass/digitalCreditCard.sass';
 import React, { forwardRef } from 'react';
+import { useSelector } from 'react-redux';
+import { getData } from '../../app/slice';
+import { getLoanOfferSelected } from '../../app/sliceLoanOffers';
+import { useNavigate } from 'react-router-dom';
 
 const DigitalCreditCard = forwardRef/*<React.MutableRefObject<HTMLFormElement>>*/<any>(function DigitalCreditCard(props, ref: any) {
+  const user = useSelector(getData);
+  const select = useSelector(getLoanOfferSelected);
+  const navigate = useNavigate();
+  const loanOffersId = useSelector(getData)![0].applicationId;
   const executeScroll = () => {
+    if (!select){
       ref.current?.scrollIntoView({ behavior: 'smooth' });
+    }else{
+      navigate('/loan/' + loanOffersId);
+    }
   }
 
   return (
@@ -30,7 +42,10 @@ const DigitalCreditCard = forwardRef/*<React.MutableRefObject<HTMLFormElement>>*
             </div>
           </div>
           <div className='digital-credit-card__button'>
-            <button onClick={executeScroll}>Apply for card</button>
+            <button onClick={executeScroll}>
+              {!user && "Apply for card"}
+              {!select ? "Choose an offer" : "Continue registration"}
+            </button>
           </div>
         </div>
         <div className='digital-credit-card__image'>

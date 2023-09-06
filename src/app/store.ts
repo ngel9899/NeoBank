@@ -11,10 +11,12 @@ import {
   REGISTER,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
+import { reducerLoanOffers } from './sliceLoanOffers';
 
 
 const rootReducer = combineReducers({
   prescoringSlice: reducer,
+  prescoringLoanOffers: reducerLoanOffers,
 });
 
 const persistConfig = {

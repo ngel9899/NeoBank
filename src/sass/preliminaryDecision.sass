@@ -1,0 +1,36 @@
+@import "../font/variables"
+
+
+.preliminary-decision
+  text-align: center
+  border-radius: 10px
+  border: 1px solid #5B35D5
+  height: 142px
+  margin-bottom: 96px
+  h1
+    @include ubuntuBold-30
+    color: #1C1C1E
+    padding-top: 24px
+  p
+    @include ubuntuMed-16
+    color: #4F5665
+    padding-top: 32px
+
+
+@media screen and (max-width: 900px)
+  .preliminary-decision
+    h1
+      font-size: 24px
+    p
+      font-size: 14px
+
+@media screen and (max-width: 700px)
+  .preliminary-decision
+    h1
+      font-size: 18px
+    p
+      font-size: 14px
+
+@media screen and (max-width: 580px)
+  .preliminary-decision
+    height: 160px

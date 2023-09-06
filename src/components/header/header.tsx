@@ -19,7 +19,7 @@ export function Header(props: IHeader) {
       </div>
       <div className='header__nav'>
         <nav>
-          <NavLink to='/loanPage' className={setActive}>Credit card</NavLink>
+          <NavLink to='/loan' className={setActive}>Credit card</NavLink>
           <NavLink to='/product' className={setActive}>Product</NavLink>
           <NavLink to='/account' className={setActive}>Account</NavLink>
           <NavLink to='/resources' className={setActive}>Resources</NavLink>

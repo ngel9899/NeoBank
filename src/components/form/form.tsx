@@ -5,9 +5,6 @@ import { UseFormRegister } from 'react-hook-form/dist/types/form';
 import { useAppDispatch } from '../../app/hooks';
 import { arrInput } from './arrForm';
 import {
-  setLoading,
-  setData,
-  setErrors,
   sendFormData,
   isLoading, getData,
 } from '../../app/slice';
