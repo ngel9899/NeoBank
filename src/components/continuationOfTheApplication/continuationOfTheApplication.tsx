@@ -1,24 +1,30 @@
 import '../../sass/continuationOfTheApplication.sass';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { UseFormRegister } from 'react-hook-form/dist/types/form';
 import { FieldErrors, useForm } from 'react-hook-form';
 import {
   arrContinuationOfTheApplicationBot,
   arrContinuationOfTheApplicationTop,
 } from './arrContinuationOfTheApplication';
+import { useAppDispatch } from '../../app/hooks';
+import { sendFormDataApplication } from '../../app/sliceFormApplication';
+import { useSelector } from 'react-redux';
+import { getId } from '../../app/slice';
+import { getApplicationId, getStatusApplicationId } from '../../app/getApplicationId';
+import { DecisionOnTheApplication } from '../decisionOnTheApplication/decisionOnTheApplication';
 
 interface IContinuationOfTheApplication {
   'gender': 'MALE' | 'FEMALE',
   'maritalStatus': 'MARRIED' | 'DIVORCED' | 'SINGLE' | 'WIDOW_WIDOWER',
   'dependentAmount': 'number',
-  'passportIssueDate': 'string',
+  'passportIssueDate': 'string | Date',
   'passportIssueBranch': 'string',
   'employmentStatus': 'UNEMPLOYED' | 'SELF_EMPLOYED' | 'EMPLOYED' | 'BUSINESS_OWNER',
   'employerINN': 'number',
   'salary': 'number',
   'position': 'WORKER' | 'MID_MANAGER' | 'TOP_MANAGER' | 'OWNER',
-  'workExperienceTotal': 'number',
-  'workExperienceCurrent': 'number',
+  'workExperienceTotal': 'number',  //Исходя из логики сервера, рекомендую вводить 15 для теста
+  'workExperienceCurrent': 'number', // 4 для теста
 }
 
 interface IInputCardApplicationItem {
@@ -54,7 +60,7 @@ const InputCardApplication = (InputCardApplicationItem: IInputCardApplication) =
       <label>{InputCardApplicationItem.item.label}</label>
       {!InputCardApplicationItem.item.select &&
         <input
-          className={'inputCard-container__input ' + (!InputCardApplicationItem.errors[name] ? 'inputCard-container__success' : 'inputCard-container__error')}
+          className={'application-container__input ' + (!InputCardApplicationItem.errors[name] ? 'application-container__success' : 'application-container__error')}
           aria-label={InputCardApplicationItem.item.caption} type={String(InputCardApplicationItem.item.type)}
           placeholder={String(InputCardApplicationItem.item.placeholder)}
           {...InputCardApplicationItem.register(name, {
@@ -66,10 +72,12 @@ const InputCardApplication = (InputCardApplicationItem: IInputCardApplication) =
             max: InputCardApplicationItem.item.max,
           })} />
       }
-      {InputCardApplicationItem.errors[name] &&
-        <p className='inputCard__error'>{InputCardApplicationItem.item.errorText}</p>}
+      {InputCardApplicationItem.errors[name] && !InputCardApplicationItem.item.select &&
+        <p className='application__error'>{InputCardApplicationItem.item.errorText}</p>}
       {InputCardApplicationItem.item.select &&
-        <select aria-label={InputCardApplicationItem.item.caption}{...InputCardApplicationItem.register(name, {
+        <select
+          className={'application-container__select ' + (!InputCardApplicationItem.errors[name] ? 'application-select__success' : 'application-select__error')}
+          aria-label={InputCardApplicationItem.item.caption}{...InputCardApplicationItem.register(name, {
           required: InputCardApplicationItem.item.required,
         })} >
           <option value=''></option>
@@ -79,45 +87,57 @@ const InputCardApplication = (InputCardApplicationItem: IInputCardApplication) =
             )}
         </select>
       }
+      {InputCardApplicationItem.errors[name] && InputCardApplicationItem.item.select &&
+        <p className='application__error'>{InputCardApplicationItem.item.errorText}</p>}
     </div>
   );
 };
 
 
 export function ContinuationOfTheApplication() {
-  const [isLoading, setLoading] = useState<boolean>(false);
+  const [none, setNone] = useState('');
+  const [checkCreditText, setCheckCreditText] = useState<JSX.Element>();
   const { register, handleSubmit, formState: { errors } } = useForm<IContinuationOfTheApplication>({
     mode: 'onSubmit',
   });
-  const onSubmit = () => {
-    setLoading(true);
+  const status = useSelector(getStatusApplicationId);
+  const dispatch = useAppDispatch();
+  const id = useSelector(getId);
+  const onSubmit = (data: Record<string, any>) => {
+    dispatch(sendFormDataApplication({ data, id }));
+    setTimeout(() => dispatch(getApplicationId(id)), 500);
+    setNone('displayNone');
+    setCheckCreditText(<DecisionOnTheApplication />);
   };
   return (
-    <section className='form__container container'>
-      <form className='form-application' onSubmit={handleSubmit(onSubmit)}>
-        <div className='form__title'>
-          <h1>Continuation of the application</h1>
-          <p>Step 2 of 5</p>
-        </div>
-        <div>
-          <div className='form-contact-information__inputCard'>
-            {arrContinuationOfTheApplicationTop.map((item, index) =>
-              <InputCardApplication item={item} key={index} register={register} errors={errors} />,
-            )}
+    <>
+      {checkCreditText}
+      <section className={'application-form__container container' + ' ' + none}>
+        <form className='application__form' onSubmit={handleSubmit(onSubmit)}>
+          <div className='application-form__title'>
+            <h1>Continuation of the application</h1>
+            <p>Step 2 of 5</p>
           </div>
-        </div>
-        <div className='form-application__contact-information'>
-          <h2>Employment</h2>
-          <div className='form-contact-information__inputCard'>
-            {arrContinuationOfTheApplicationBot.map((item, index) =>
-              <InputCardApplication item={item} key={index} register={register} errors={errors} />,
-            )}
+          <div>
+            <div className='application-form__inputCard-application'>
+              {arrContinuationOfTheApplicationTop.map((item, index) =>
+                <InputCardApplication item={item} key={index} register={register} errors={errors} />,
+              )}
+            </div>
           </div>
-        </div>
-        <div className='form-application__submit'>
-          <input type='submit' value='Continue' />
-        </div>
-      </form>
-    </section>
+          <div className='application-form__contact-information'>
+            <h2>Employment</h2>
+            <div className='application-form__inputCard-application'>
+              {arrContinuationOfTheApplicationBot.map((item, index) =>
+                <InputCardApplication item={item} key={index} register={register} errors={errors} />,
+              )}
+            </div>
+          </div>
+          <div className='application-form__submit'>
+            <input type='submit' value='Continue' />
+          </div>
+        </form>
+      </section>
+    </>
   );
 }

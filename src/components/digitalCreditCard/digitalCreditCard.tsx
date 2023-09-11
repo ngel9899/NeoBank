@@ -1,20 +1,30 @@
 import '../../sass/digitalCreditCard.sass';
 import React, { forwardRef } from 'react';
 import { useSelector } from 'react-redux';
-import { getData } from '../../app/slice';
+import { getData, getId } from '../../app/slice';
 import { getLoanOfferSelected } from '../../app/sliceLoanOffers';
 import { useNavigate } from 'react-router-dom';
+import { getApplicationId } from '../../app/getApplicationId';
+import { useAppDispatch } from '../../app/hooks';
 
 const DigitalCreditCard = forwardRef/*<React.MutableRefObject<HTMLFormElement>>*/<any>(function DigitalCreditCard(props, ref: any) {
   const user = useSelector(getData);
   const select = useSelector(getLoanOfferSelected);
+  const id = useSelector(getId);
+  const dispatch = useAppDispatch();
+  let button;
+  if(!select){
+    button = "Choose an offer";
+  }else {
+    button = "Continue registration";
+  }
   const navigate = useNavigate();
-  const loanOffersId = useSelector(getData)![0].applicationId;
   const executeScroll = () => {
     if (!select){
       ref.current?.scrollIntoView({ behavior: 'smooth' });
     }else{
-      navigate('/loan/' + loanOffersId);
+      navigate('/loan/' + id);
+      dispatch(getApplicationId(id));
     }
   }
 
@@ -43,8 +53,7 @@ const DigitalCreditCard = forwardRef/*<React.MutableRefObject<HTMLFormElement>>*
           </div>
           <div className='digital-credit-card__button'>
             <button onClick={executeScroll}>
-              {!user && "Apply for card"}
-              {!select ? "Choose an offer" : "Continue registration"}
+              {!user ? 'Apply for card' : button}
             </button>
           </div>
         </div>

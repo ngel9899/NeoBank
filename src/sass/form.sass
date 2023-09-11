@@ -1,10 +1,7 @@
 @import "../font/variables"
 
 .form__container
-  background-color: #FFFFFF
-  border-radius: 28px
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.20), 0 0 8px 0 rgba(0, 0, 0, 0.08)
-  margin-bottom: 96px
+  @include form__container
 
 .form__customize-card
   display: flex
@@ -77,8 +74,7 @@
     @include ubuntuBold-20
 
 .form-contact-information__inputCard
-  display: flex
-  flex-wrap: wrap
+  @include flex-wrap
 
 .inputCard__container
   width: 23.6%
@@ -108,16 +104,7 @@
       border: solid 2px #5B35D5
 
 .inputCard-container__input
-  width: 100%
-  height: 40px
-  font-family: $ubuntu-regular
-  font-size: 14px
-  padding-left: 16px
-  border: none
-  outline: none
-
-  &:focus
-    border: solid 2px #5B35D5
+  @include container__input
 
 .inputCard-Container__noneAfter
   input
@@ -134,18 +121,17 @@
 
   input
     @include buttonForm-submit
+    &:hover
+      background-color: #7796C0
 
 .inputCard__error
-  @include ubuntuMed-16
-  color: #FF5631
-  padding-top: 2px
+  @include input__text-border-error
 
 .inputCard-container__error
-  border: solid 2px #FF5631
-  background: #F9F5E3 url($way-img + "check-close-red.png") bottom 50% right 19px no-repeat
+  @include input__error
 
 .inputCard-container__success
-  background: #F9F5E3 url($way-img + "check-green.png") bottom 50% right 19px no-repeat
+  @include input__success
 
 @keyframes rotate
   from

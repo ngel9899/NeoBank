@@ -1,19 +1,14 @@
 import '../../sass/footer.sass';
 import React from 'react';
 
-interface IFooter{
-  subpage?: boolean
-}
 
-export function Footer(props: IFooter) {
-  const subpage = props.subpage;
-  const path = "../"
+export function Footer() {
   return (
     <footer className='footer'>
       <div className='footer__container container'>
         <div className='footer__about'>
           <div className='footer__img'>
-            <a href=''><img src={(subpage ? path : "") +'img/logo-footer.png'} alt='logo Neoflex' /></a>
+            <a href=''><img src={'/img/logo-footer.png'} alt='logo Neoflex' /></a>
           </div>
           <div>
             <address className='footer__adress'>

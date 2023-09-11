@@ -1,0 +1,55 @@
+@import "../font/variables"
+
+.signing-of-documents
+  padding: 104px 0 97px 0
+
+.signing-of-documents__title
+  display: flex
+  align-items: center
+  h1
+    @include ubuntuBold-30
+    color: #1C1C1E
+    padding-right: 120px
+  p
+    @include ubuntuMed-16
+
+.signing-of-documents__text
+  padding-top: 32px
+  p
+    @include ubuntuMed-20
+    color: #4F5665
+
+.signing-of-documents__document
+  padding-top: 32px
+  a
+    @include ubuntuMed-20
+    text-decoration: none
+    color: black
+    display: flex
+    align-items: center
+    img
+      padding-right: 12px
+
+.signing-of-documents__button
+  padding-top: 31px
+  display: flex
+  align-items: center
+  justify-content: right
+  input
+    height: 20px
+    width: 20px
+  label
+    @include ubuntuReg-18
+    color: #1A202C
+    padding: 0 80px 0 16px
+
+.signing-of-documents-button__on
+  @include paymentSchedule-button
+  padding: 11px 60.5px
+  &:hover
+    background-color: #7796C0
+
+.signing-of-documents-button__off
+  @include paymentSchedule-button
+  padding: 11px 60.5px
+  background-color: #7796C0

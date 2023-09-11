@@ -1,0 +1,67 @@
+@import "../font/variables"
+
+.payment-schedule
+  @include form__container
+  height: auto
+  padding: 32px
+
+.payment-schedule__table
+  border-collapse: collapse
+  th, td
+    padding: 11px 0
+    border-bottom: 1px solid #E2E8F0
+
+.payment-schedule__text
+  display: flex
+  padding-bottom: 78px
+  align-items: center
+  h1
+    @include ubuntuBold-30
+    color: #1C1C1E
+    padding-right: 120px
+  p
+    @include ubuntuMed-16
+
+.payment-schedule__head
+  tr
+    th
+      width: 20.64%
+      text-align: left
+      &:nth-child(1), &:nth-child(2)
+        width: 15%
+
+.payment-schedule__body
+  td
+    font-family: $ubuntu-medium
+    font-size: 12px
+    color: #1A202C
+
+.payment-schedule__button-container
+  @include flex-between
+  padding-top: 43.5px
+
+.payment-schedule__button-send
+  label
+    @include ubuntuReg-18
+    padding: 0 40px 0 14px
+  input
+    width: 20px
+    height: 20px
+
+.payment-schedule-button__on
+  @include paymentSchedule-button
+  &:hover
+    background-color: #7796C0
+
+.payment-schedule-button__off
+  @include paymentSchedule-button
+  background-color: #7796C0
+
+.payment-schedule__button-deny
+  button
+    @include paymentSchedule-button
+    background-color: #D93737
+    &:hover
+      background-color: #e88675
+
+

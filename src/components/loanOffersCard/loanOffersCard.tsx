@@ -5,10 +5,10 @@ import { useAppDispatch } from '../../app/hooks';
 import { useSelector } from 'react-redux';
 import { getData } from '../../app/slice';
 
-const LoanOffersCard = (data: Record<string, any>, index: number) => {
+const LoanOffersCard = (data: Record<string, any>) => {
   const dispatch = useAppDispatch();
   const loanOffers = useSelector(getData);
-  const onClick = (id: number) => {
+  const onClick = () => {
     if (loanOffers != null) {
       dispatch(sendLoanOffers(loanOffers[data.index]));
     }
@@ -33,7 +33,7 @@ const LoanOffersCard = (data: Record<string, any>, index: number) => {
       </div>
       <div className='loan-offers-card__button'>
         <button onClick={() => {
-          onClick(index);
+          onClick();
         }}>Select
         </button>
       </div>

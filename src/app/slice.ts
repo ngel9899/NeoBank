@@ -6,12 +6,14 @@ interface IinitialState {
   loading: boolean,
   data: Array<Record<string, any>> | null,
   errors: Record<string, any> | null,
+  id: number,
 }
 
 const initialState: IinitialState = {
   loading: false,
   data: null,
   errors: null,
+  id: 0
 };
 
 export const sendFormData = createAsyncThunk<IinitialState['data'], any, { rejectValue: IinitialState['errors'] }>
@@ -37,6 +39,7 @@ const prescoringSlice = createSlice({
   extraReducers(builder) {
     builder.addCase(sendFormData.fulfilled, (state, action) => {
       state.data = action.payload;
+      state.id = action.payload![0].applicationId;
       state.loading = false;
     });
     builder.addCase(sendFormData.rejected, (state, action) => {
@@ -65,4 +68,5 @@ export const reducer = prescoringSlice.reducer;
 export const { setLoading, setData, setErrors } = prescoringSlice.actions;
 export const isLoading = (state: PrescoringSlice) => state.prescoringSlice.loading;
 export const getData = (state: PrescoringSlice) => state.prescoringSlice.data;
+export const getId = (state: PrescoringSlice) => state.prescoringSlice.id;
 export const getErrors = (state: PrescoringSlice) => state.prescoringSlice.errors;

@@ -12,11 +12,22 @@ import {
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import { reducerLoanOffers } from './sliceLoanOffers';
+import { reducerApplication } from './sliceFormApplication';
+import { reducerApplicationId } from './getApplicationId';
+import { reducerPayment } from './slicePayment';
+import { reducerDeny } from './sliceDeny';
+import { reducerSigningOfDocuments } from './sliceSigningOfDocuments';
 
 
 const rootReducer = combineReducers({
   prescoringSlice: reducer,
   prescoringLoanOffers: reducerLoanOffers,
+  prescoringSliceApplication: reducerApplication,
+  prescoringSliceApplicationId: reducerApplicationId,
+  slicePayment: reducerPayment,
+  sliceDeny: reducerDeny,
+  sliceSigningOfDocuments: reducerSigningOfDocuments,
+
 });
 
 const persistConfig = {
@@ -37,5 +48,7 @@ const store = configureStore({
 });
 
 export const persistor = persistStore(store);
-
+/*persistor.flush().then(() => {
+  return persistor.purge();
+});*/
 export default store;

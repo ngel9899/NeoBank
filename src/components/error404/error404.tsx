@@ -16,7 +16,7 @@ export const Error404 = () => {
         </div>
       </div>
       <div className='error404__img'>
-        <img src='../img/404.png' alt='error 404' />
+        <img src='/img/404.png' alt='error 404' />
       </div>
     </section>
   )

@@ -1,6 +1,5 @@
 import React, { forwardRef, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { getData } from '../../app/slice';
 import {
   getDataLoanOffers,
   getErrorsLoanOffers,

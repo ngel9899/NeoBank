@@ -8,9 +8,9 @@ import { Error404 } from '../components/error404/error404';
 export function Page404() {
   return (
     <section>
-      <Header subpage={true} />
+      <Header />
       <Error404 />
-      <Footer subpage={true} />
+      <Footer />
     </section>
   );
 }

@@ -23,7 +23,10 @@ export function Newsline() {
         fetch(url.toString(), {method: 'GET'}).then(response => response.json())
             .then((responses: Record<string, any>) => {
                 setNews(responses.articles.filter(filterArr));
-            });
+            }).catch(error => {
+            console.log('Ошибка сервера');
+            console.error(error);
+        });
     }, []);
 
     const NewsSliderCard = (articles: Record<string, any>) => {
