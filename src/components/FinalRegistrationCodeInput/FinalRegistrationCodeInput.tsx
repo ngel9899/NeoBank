@@ -21,7 +21,6 @@ interface IFinalRegistrationCodeInput {
   index: number,
   focusEvent: (e: React.KeyboardEvent<HTMLInputElement>) => void,
   control: Control<IFinalRegistrationCode, any>,
-  getWatch:  UseFormWatch<IFinalRegistrationCode>,
 }
 
 const regex = /\d/;
@@ -34,24 +33,22 @@ const FinalRegistrationCodeInput = forwardRef<HTMLInputElement, IFinalRegistrati
     },
   });
   const name = data.item.name;
-  const watchName = data.getWatch([name]);
+  const watchName = useWatch({ control: data.control, name });
   return (
-    <input className={!watchName[0]? 'final-registration-code-form__input' : 'final-registration-code-form__input-none-back' } aria-label={data.item.caption} type={String(data.item.type)}
+    <input
+      className={!watchName ? 'final-registration-code-form__input' : 'final-registration-code-form__input-none-back'}
+      aria-label={data.item.caption} type={String(data.item.type)}
       onKeyDown={(event) => {
-        if (!regex.test(event.key) && event.key != 'Backspace'){
+        if (!regex.test(event.key) && event.key != 'Backspace') {
           event.preventDefault();
-          return
+          return;
         }
-      }} onKeyUp={(event) => {
-      data.focusEvent(event);
-    }} maxLength={data.item.maxLength} {...dataRegister}
-       onChange={(event) => {if (!regex.test(event.target.value)) {
-        return;
-      }dataRegister.onChange(event);
-    }} ref={(element) => {
-             dataRegister.ref(element);
-             ref(element);
-           }} />
+      }}
+      defaultValue={''}
+      onKeyUp={(event) => {data.focusEvent(event);}}
+      maxLength={data.item.maxLength}
+      {...dataRegister}
+      ref={(element) => {dataRegister.ref(element); ref(element);}} />
   );
 });
 

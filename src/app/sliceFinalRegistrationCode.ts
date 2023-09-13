@@ -2,13 +2,15 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 
 interface IinitialState {
-  dataCode: Array<Record<string, any>> | null,
+  dataCode: boolean | null,
   errorsCode: Record<string, any> | null,
+  flagIsloading: boolean,
 }
 
 const initialState: IinitialState = {
   dataCode: null,
   errorsCode: null,
+  flagIsloading: false,
 };
 
 export const sendCode = createAsyncThunk<IinitialState['dataCode'], any, { rejectValue: IinitialState['errorsCode'] }>
@@ -21,21 +23,26 @@ export const sendCode = createAsyncThunk<IinitialState['dataCode'], any, { rejec
     headers: { 'Content-type': 'application/json' },
   });
   if (result.ok) {
-    return thunkAPI.fulfillWithValue((await result.json()) as IinitialState['dataCode']);
+    return thunkAPI.fulfillWithValue(null);
   }
   return thunkAPI.rejectWithValue((await result.json()) as IinitialState['errorsCode']);
 });
 
 const sliceCode = createSlice({
-  name: 'sliceDeny',
+  name: 'sliceCode',
   initialState,
   extraReducers(builder) {
     builder.addCase(sendCode.fulfilled, (state, action) => {
-      state.dataCode = action.payload;
+      state.dataCode = true;
+      state.flagIsloading = false;
     });
     builder.addCase(sendCode.rejected, (state, action) => {
       state.errorsCode = action.payload as IinitialState['errorsCode'];
+      state.flagIsloading = false;
     });
+    builder.addCase(sendCode.pending, (state) =>{
+      state.flagIsloading = true;
+    })
   },
   reducers: {
     setDataCode: (state, action) => {
@@ -46,6 +53,7 @@ const sliceCode = createSlice({
     },
     setClearStory: (state) => {
       state.errorsCode = initialState.errorsCode;
+      state.dataCode = initialState.dataCode;
     },
   },
 });
@@ -55,3 +63,4 @@ export const reducerCode = sliceCode.reducer;
 export const { setDataCode, setErrorsCode, setClearStory } = sliceCode.actions;
 export const getDataCode = (state: PrescoringSlice) => state.sliceCode.dataCode;
 export const getErrorsCode = (state: PrescoringSlice) => state.sliceCode.errorsCode;
+export const getFlagIsloading = (state: PrescoringSlice) => state.sliceCode.flagIsloading;
