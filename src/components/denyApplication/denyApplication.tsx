@@ -13,7 +13,7 @@ interface IDenyApplication {
 }
 
 export const DenyApplication = (item: IDenyApplication) => {
-  const [contentDeny, setContentDeny] = useState<JSX.Element>()
+  const [contentDeny, setContentDeny] = useState<JSX.Element>();
   const [deny, setDeny] = useState(false);
   const navigate = useNavigate();
   const dispatch = useAppDispatch();

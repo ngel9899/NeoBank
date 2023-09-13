@@ -19,34 +19,35 @@ const DigitalCreditCard = forwardRef/*<React.MutableRefObject<HTMLFormElement>>*
   const data = useSelector(getDataApplicationId);
   const status = useSelector(getStatusApplicationId);
   const dispatch = useAppDispatch();
-  const pin = useSelector(getPinApplicationId)
+  const pin = useSelector(getPinApplicationId);
   let button;
-  if(!select){
-    button = "Choose an offer";
-  }else {
-    button = "Continue registration";
+  if (!select) {
+    button = 'Choose an offer';
+  } else {
+    button = 'Continue registration';
   }
   const navigate = useNavigate();
   const executeScroll = () => {
-    if (!select){
+    if (!select) {
       ref.current?.scrollIntoView({ behavior: 'smooth' });
-    }if (status === 'APPROVED'){
+    }
+    if (status === 'APPROVED') {
       navigate('/loan/' + id);
       dispatch(getApplicationId(id));
     }
-    if(status === 'CC_APPROVED'){
+    if (status === 'CC_APPROVED') {
       navigate('/loan/' + id + '/document');
       dispatch(getApplicationId(id));
     }
-    if (status === 'DOCUMENT_CREATED'){
+    if (status === 'DOCUMENT_CREATED') {
       navigate('/loan/' + id + '/document/sign');
       dispatch(getApplicationId(id));
     }
-    if (pin != null){
+    if (pin != null) {
       navigate('/loan/' + id + '/code');
       dispatch(getApplicationId(id));
     }
-  }
+  };
 
   return (
     <section className='digital-credit-card container'>

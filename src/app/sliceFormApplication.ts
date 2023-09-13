@@ -1,7 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 
-
 interface IinitialState {
   dataApplication: Array<Record<string, any>> | null,
   errorsApplication: Record<string, any> | null,
@@ -13,8 +12,8 @@ const initialState: IinitialState = {
 };
 
 export const sendFormDataApplication = createAsyncThunk<IinitialState['dataApplication'], any, { rejectValue: IinitialState['errorsApplication'] }>
-('sendFormDataApplication', async function( dataApplication, thunkAPI) {
-  const {data, id} = dataApplication;
+('sendFormDataApplication', async function(dataApplication, thunkAPI) {
+  const { data, id } = dataApplication;
   const modifiedData = {
     gender: data.gender,
     maritalStatus: data.maritalStatus,
@@ -27,10 +26,10 @@ export const sendFormDataApplication = createAsyncThunk<IinitialState['dataAppli
       salary: data.salary,
       position: data.position,
       workExperienceTotal: data.workExperienceTotal,
-      workExperienceCurrent: data.workExperienceCurrent
-    }
+      workExperienceCurrent: data.workExperienceCurrent,
+    },
   };
-  const url = new URL('http://localhost:8080/application/registration/'+ id);
+  const url = new URL('http://localhost:8080/application/registration/' + id);
   const result = await fetch(url.toString(), {
     method: 'PUT',
     body: JSON.stringify(modifiedData),

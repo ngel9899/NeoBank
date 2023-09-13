@@ -45,10 +45,15 @@ const FinalRegistrationCodeInput = forwardRef<HTMLInputElement, IFinalRegistrati
         }
       }}
       defaultValue={''}
-      onKeyUp={(event) => {data.focusEvent(event);}}
+      onKeyUp={(event) => {
+        data.focusEvent(event);
+      }}
       maxLength={data.item.maxLength}
       {...dataRegister}
-      ref={(element) => {dataRegister.ref(element); ref(element);}} />
+      ref={(element) => {
+        dataRegister.ref(element);
+        ref(element);
+      }} />
   );
 });
 

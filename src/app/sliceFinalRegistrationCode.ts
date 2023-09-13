@@ -40,9 +40,9 @@ const sliceCode = createSlice({
       state.errorsCode = action.payload as IinitialState['errorsCode'];
       state.flagIsloading = false;
     });
-    builder.addCase(sendCode.pending, (state) =>{
+    builder.addCase(sendCode.pending, (state) => {
       state.flagIsloading = true;
-    })
+    });
   },
   reducers: {
     setDataCode: (state, action) => {

@@ -12,7 +12,7 @@ export const DocumentSign = () => {
   const [send, setSend] = useState<JSX.Element>();
   const id = useSelector(getId);
   const dispatch = useAppDispatch();
-  const pin = useSelector(getPinApplicationId)
+  const pin = useSelector(getPinApplicationId);
   useEffect(() => {
     dispatch(getApplicationId(id));
     if (pin != null) {

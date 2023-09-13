@@ -11,16 +11,16 @@ import { getId } from '../app/slice';
 
 
 export function Application() {
-  const [сontinuedСheck, setContinuedCheck] = useState<JSX.Element>()
+  const [сontinuedСheck, setContinuedCheck] = useState<JSX.Element>();
   const status = useSelector(getStatusApplicationId);
   const dataSent = useSelector(getDataApplication);
   const dispatch = useAppDispatch();
   const id = useSelector(getId);
-  useEffect(() =>{
+  useEffect(() => {
     dispatch(getApplicationId(id));
-    if (status === 'APPROVED' || status === 'CC_DENIED'){
-      setContinuedCheck(<ContinuationOfTheApplication />)
-    }else setContinuedCheck(<DecisionOnTheApplication />)
+    if (status === 'APPROVED' || status === 'CC_DENIED') {
+      setContinuedCheck(<ContinuationOfTheApplication />);
+    } else setContinuedCheck(<DecisionOnTheApplication />);
   }, [dataSent, status]);
   return (
     <section>

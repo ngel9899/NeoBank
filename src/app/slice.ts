@@ -13,7 +13,7 @@ const initialState: IinitialState = {
   loading: false,
   data: null,
   errors: null,
-  id: 0
+  id: 0,
 };
 
 export const sendFormData = createAsyncThunk<IinitialState['data'], any, { rejectValue: IinitialState['errors'] }>
@@ -63,7 +63,7 @@ const prescoringSlice = createSlice({
     clearStory: (state) => {
       state.data = initialState.data;
       state.id = initialState.id;
-    }
+    },
   },
 });
 type PrescoringSlice = { prescoringSlice: ReturnType<typeof prescoringSlice.getInitialState> }

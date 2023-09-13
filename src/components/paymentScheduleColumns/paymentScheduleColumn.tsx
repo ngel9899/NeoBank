@@ -18,7 +18,7 @@ export const columns: ColumnDef<Payment>[] = [
       return (
         <p
           className='payment-schedule__header-sort'
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+          onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
         >
           NUMBER
           {{
@@ -26,7 +26,7 @@ export const columns: ColumnDef<Payment>[] = [
             desc: <img src={'../../img/payment-schedule-arrow-sort-bottom.png'} alt='arrow' />,
           }[column.getIsSorted() as string] ?? null}
         </p>
-      )
+      );
     },
   },
   {
@@ -43,7 +43,7 @@ export const columns: ColumnDef<Payment>[] = [
             desc: <img src={'../../img/payment-schedule-arrow-sort-bottom.png'} alt='arrow' />,
           }[column.getIsSorted() as string] ?? null}
         </p>
-      )
+      );
     },
   },
   {
@@ -52,7 +52,7 @@ export const columns: ColumnDef<Payment>[] = [
       return (
         <p
           className='payment-schedule__header-sort'
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+          onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
         >
           TOTAL PAYMENT
           {{
@@ -60,7 +60,7 @@ export const columns: ColumnDef<Payment>[] = [
             desc: <img src={'../../img/payment-schedule-arrow-sort-bottom.png'} alt='arrow' />,
           }[column.getIsSorted() as string] ?? null}
         </p>
-      )
+      );
     },
   },
   {
@@ -69,7 +69,7 @@ export const columns: ColumnDef<Payment>[] = [
       return (
         <p
           className='payment-schedule__header-sort'
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+          onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
         >
           INTEREST PAYMENT
           {{
@@ -77,7 +77,7 @@ export const columns: ColumnDef<Payment>[] = [
             desc: <img src={'../../img/payment-schedule-arrow-sort-bottom.png'} alt='arrow' />,
           }[column.getIsSorted() as string] ?? null}
         </p>
-      )
+      );
     },
   },
   {
@@ -86,7 +86,7 @@ export const columns: ColumnDef<Payment>[] = [
       return (
         <p
           className='payment-schedule__header-sort'
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+          onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
         >
           DEBT PAYMENT
           {{
@@ -94,7 +94,7 @@ export const columns: ColumnDef<Payment>[] = [
             desc: <img src={'../../img/payment-schedule-arrow-sort-bottom.png'} alt='arrow' />,
           }[column.getIsSorted() as string] ?? null}
         </p>
-      )
+      );
     },
   },
   {
@@ -103,7 +103,7 @@ export const columns: ColumnDef<Payment>[] = [
       return (
         <p
           className='payment-schedule__header-sort'
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+          onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
         >
           REMAINING DEBT
           {{
@@ -111,7 +111,7 @@ export const columns: ColumnDef<Payment>[] = [
             desc: <img src={'../../img/payment-schedule-arrow-sort-bottom.png'} alt='arrow' />,
           }[column.getIsSorted() as string] ?? null}
         </p>
-      )
+      );
     },
   },
-]
+];

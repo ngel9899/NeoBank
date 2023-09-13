@@ -17,9 +17,9 @@ export default function Tabs() {
   const [offers, setOffers] = useState<JSX.Element>();
   const loanOffers = useSelector(getData);
 
-  useEffect(() =>{
-    !loanOffers ? setOffers(<Form ref={ref} />) : setOffers(<LoanOffers ref={ref} />)
-  }, [loanOffers])
+  useEffect(() => {
+    !loanOffers ? setOffers(<Form ref={ref} />) : setOffers(<LoanOffers ref={ref} />);
+  }, [loanOffers]);
 
   return (
     <>

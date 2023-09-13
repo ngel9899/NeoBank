@@ -1,5 +1,3 @@
-
-
 export const arrFinalRegistrationCode = [
   {
     caption: 'pin1',
@@ -33,4 +31,4 @@ export const arrFinalRegistrationCode = [
     maxLength: 1,
     minLength: 1,
   } as const,
-]
+];

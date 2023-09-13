@@ -22,7 +22,7 @@ export const PaymentSchedule = () => {
   useEffect(() => {
     dispatch(getApplicationId(id));
     if (status === 'CC_APPROVED') {
-      setCreateDocument(<PaymentScheduleTable columns={columns} data={data!.credit.paymentSchedule}/>);
+      setCreateDocument(<PaymentScheduleTable columns={columns} data={data!.credit.paymentSchedule} />);
     } else {
       setCreateDocument(<DocumentsFormed />);
     }

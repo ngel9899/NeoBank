@@ -29,9 +29,9 @@ export const AppRoutes = () => {
       dispatch(getApplicationId(id));
     }
     if (status === 'CLIENT_DENIED' || status === 'CREDIT_ISSUED') {
-      persistor.flush().then(() => {
+      /*persistor.flush().then(() => {
         return persistor.purge();
-      });
+      });*/
       dispatch(clearStory());
       dispatch(setCleanStoryloanOffer());
       dispatch(setClearStoryApplicationId());

@@ -1,7 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 
-
 interface IinitialState {
   dataPayment: Array<Record<string, any>> | null,
   errorsPayment: Record<string, any> | null,
@@ -13,8 +12,8 @@ const initialState: IinitialState = {
 };
 
 export const sendPayment = createAsyncThunk<IinitialState['dataPayment'], any, { rejectValue: IinitialState['errorsPayment'] }>
-('sendPayment', async function( data, thunkAPI) {
-  const url = new URL('http://localhost:8080/document/'+ data);
+('sendPayment', async function(data, thunkAPI) {
+  const url = new URL('http://localhost:8080/document/' + data);
   const result = await fetch(url.toString(), {
     method: 'POST',
   });

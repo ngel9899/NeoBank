@@ -2,9 +2,9 @@ import '../../sass/finalRegistrationCodeTrue.sass';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-export const FinalRegistrationCodeTrue = () =>{
+export const FinalRegistrationCodeTrue = () => {
   const navigate = useNavigate();
-  return(
+  return (
     <section className='final-registration-code-true container'>
       <div className='final-registration-code-true__content'>
         <img src={'/img/loan-offers.png'} alt='loan offers' />
@@ -13,5 +13,5 @@ export const FinalRegistrationCodeTrue = () =>{
         <button onClick={() => navigate('/home')}>View other offers of our bank</button>
       </div>
     </section>
-  )
-}
+  );
+};

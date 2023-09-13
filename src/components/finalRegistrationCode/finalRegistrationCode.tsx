@@ -14,7 +14,6 @@ import {
   sendCode,
   setClearStory,
 } from '../../app/sliceFinalRegistrationCode';
-import { persistor } from '../../app/store';
 import { FinalRegistrationCodeTrue } from '../finalRegistrationCodeTrue/finalRegistrationCodeTrue';
 
 export interface IFinalRegistrationCode {
@@ -25,7 +24,7 @@ export interface IFinalRegistrationCode {
 }
 
 export const FinalRegistrationCode = () => {
-  const { register, handleSubmit, formState: { errors }, control, watch } = useForm<IFinalRegistrationCode>({
+  const { register, formState: { errors }, control, watch } = useForm<IFinalRegistrationCode>({
     mode: 'onSubmit',
     defaultValues: { pin1: '', pin2: '', pin3: '', pin4: '' },
   });
@@ -46,7 +45,7 @@ export const FinalRegistrationCode = () => {
   const getWatch: Array<string> = watch(['pin1', 'pin2', 'pin3', 'pin4']);
   useEffect(() => {
     dispatch(getApplicationId(id));
-    if (getErrors){
+    if (getErrors) {
       dispatch(setClearStory());
     }
   }, []);

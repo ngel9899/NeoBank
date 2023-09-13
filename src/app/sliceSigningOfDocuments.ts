@@ -12,7 +12,7 @@ const initialState: IinitialState = {
 };
 
 export const sendSigningOfDocuments = createAsyncThunk<IinitialState['dataSigningOfDocuments'], any, { rejectValue: IinitialState['errorsSigningOfDocuments'] }>
-('SigningOfDocuments', async function( data, thunkAPI) {
+('SigningOfDocuments', async function(data, thunkAPI) {
   const url = new URL('http://localhost:8080/document/' + data + '/sign');
   const result = await fetch(url.toString(), {
     method: 'POST',
