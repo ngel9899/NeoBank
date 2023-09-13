@@ -4,14 +4,22 @@ import { useSelector } from 'react-redux';
 import { getData, getId } from '../../app/slice';
 import { getLoanOfferSelected } from '../../app/sliceLoanOffers';
 import { useNavigate } from 'react-router-dom';
-import { getApplicationId } from '../../app/getApplicationId';
+import {
+  getApplicationId,
+  getDataApplicationId,
+  getPinApplicationId,
+  getStatusApplicationId,
+} from '../../app/getApplicationId';
 import { useAppDispatch } from '../../app/hooks';
 
 const DigitalCreditCard = forwardRef/*<React.MutableRefObject<HTMLFormElement>>*/<any>(function DigitalCreditCard(props, ref: any) {
   const user = useSelector(getData);
   const select = useSelector(getLoanOfferSelected);
   const id = useSelector(getId);
+  const data = useSelector(getDataApplicationId);
+  const status = useSelector(getStatusApplicationId);
   const dispatch = useAppDispatch();
+  const pin = useSelector(getPinApplicationId)
   let button;
   if(!select){
     button = "Choose an offer";
@@ -22,8 +30,20 @@ const DigitalCreditCard = forwardRef/*<React.MutableRefObject<HTMLFormElement>>*
   const executeScroll = () => {
     if (!select){
       ref.current?.scrollIntoView({ behavior: 'smooth' });
-    }else{
+    }if (status === 'APPROVED'){
       navigate('/loan/' + id);
+      dispatch(getApplicationId(id));
+    }
+    if(status === 'CC_APPROVED'){
+      navigate('/loan/' + id + '/document');
+      dispatch(getApplicationId(id));
+    }
+    if (status === 'DOCUMENT_CREATED'){
+      navigate('/loan/' + id + '/document/sign');
+      dispatch(getApplicationId(id));
+    }
+    if (pin != null){
+      navigate('/loan/' + id + '/code');
       dispatch(getApplicationId(id));
     }
   }

@@ -13,7 +13,7 @@ export const SigningOfDocuments = () =>{
   const dispatch = useAppDispatch();
   const click = () => {
     dispatch(sendSigningOfDocuments(id))
-    dispatch(getApplicationId(id));
+    setTimeout(() => dispatch(getApplicationId(id)), 500);
   }
   return(
     <section className='signing-of-documents container'>

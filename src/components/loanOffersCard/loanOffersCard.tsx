@@ -1,16 +1,20 @@
 import React from 'react';
 import '../../sass/loanOffers.sass';
-import { sendLoanOffers } from '../../app/sliceLoanOffers';
+import { sendLoanOffers, setloanOfferSelected } from '../../app/sliceLoanOffers';
 import { useAppDispatch } from '../../app/hooks';
 import { useSelector } from 'react-redux';
-import { getData } from '../../app/slice';
+import { getData, getId } from '../../app/slice';
+import { getApplicationId } from '../../app/getApplicationId';
 
 const LoanOffersCard = (data: Record<string, any>) => {
   const dispatch = useAppDispatch();
   const loanOffers = useSelector(getData);
+  const id = useSelector(getId);
   const onClick = () => {
     if (loanOffers != null) {
       dispatch(sendLoanOffers(loanOffers[data.index]));
+      dispatch(setloanOfferSelected());
+      setTimeout(() => dispatch(getApplicationId(id)), 500);
     }
   };
   return (

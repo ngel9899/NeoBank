@@ -30,7 +30,6 @@ export const DenyApplication = (item: IDenyApplication) => {
   };
   useEffect(() => {
     dispatch(getApplicationId(id));
-    console.log(status)
     if (deny) {
       setContentDeny(<>
         <p>Your application has been deny!</p>

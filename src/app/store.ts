@@ -17,6 +17,7 @@ import { reducerApplicationId } from './getApplicationId';
 import { reducerPayment } from './slicePayment';
 import { reducerDeny } from './sliceDeny';
 import { reducerSigningOfDocuments } from './sliceSigningOfDocuments';
+import { reducerCode } from './sliceFinalRegistrationCode';
 
 
 const rootReducer = combineReducers({
@@ -27,7 +28,7 @@ const rootReducer = combineReducers({
   slicePayment: reducerPayment,
   sliceDeny: reducerDeny,
   sliceSigningOfDocuments: reducerSigningOfDocuments,
-
+  sliceCode: reducerCode,
 });
 
 const persistConfig = {

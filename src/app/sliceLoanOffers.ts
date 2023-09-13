@@ -11,12 +11,12 @@ interface IinitialState {
 const initialState: IinitialState = {
   dataLoanOffers: null,
   errorsLoanOffers: null,
-  loanOfferSelected: false
+  loanOfferSelected: false,
 };
 
 export const sendLoanOffers = createAsyncThunk<IinitialState['dataLoanOffers'], any, { rejectValue: IinitialState['errorsLoanOffers'] }>
 ('sendLoanOffers', async function(dataLoanOffers, thunkAPI) {
-  const url = new URL('/application/apply','http://localhost:8080');
+  const url = new URL('/application/apply', 'http://localhost:8080');
   const result = await fetch(url.toString(), {
     method: 'POST',
     body: JSON.stringify(dataLoanOffers),
@@ -37,7 +37,6 @@ const prescoringLoanOffers = createSlice({
     });
     builder.addCase(sendLoanOffers.rejected, (state, action) => {
       state.errorsLoanOffers = action.payload as IinitialState['errorsLoanOffers'];
-      state.loanOfferSelected = true;
     });
   },
   reducers: {
@@ -47,12 +46,23 @@ const prescoringLoanOffers = createSlice({
     setErrorsLoanOffers: (state, action) => {
       state.errorsLoanOffers = action.payload;
     },
+    setloanOfferSelected: (state) => {
+      state.loanOfferSelected = true;
+    },
+    setCleanStoryloanOffer: (state) => {
+      state.loanOfferSelected = initialState.loanOfferSelected;
+    },
   },
 });
 type PrescoringLoanOffers = { prescoringLoanOffers: ReturnType<typeof prescoringLoanOffers.getInitialState> }
 
 export const reducerLoanOffers = prescoringLoanOffers.reducer;
-export const {setDataLoanOffers, setErrorsLoanOffers} = prescoringLoanOffers.actions;
+export const {
+  setDataLoanOffers,
+  setErrorsLoanOffers,
+  setloanOfferSelected,
+  setCleanStoryloanOffer,
+} = prescoringLoanOffers.actions;
 export const getLoanOfferSelected = (state: PrescoringLoanOffers) => state.prescoringLoanOffers.loanOfferSelected;
 export const getDataLoanOffers = (state: PrescoringLoanOffers) => state.prescoringLoanOffers.dataLoanOffers;
 export const getErrorsLoanOffers = (state: PrescoringLoanOffers) => state.prescoringLoanOffers.errorsLoanOffers;

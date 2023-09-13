@@ -44,6 +44,7 @@
   label
     @include ubuntuReg-18
     padding: 0 40px 0 14px
+    user-select: none
   input
     width: 20px
     height: 20px
@@ -63,5 +64,30 @@
     background-color: #D93737
     &:hover
       background-color: #e88675
+
+@media screen and (max-width: 500px)
+  .payment-schedule__button-send
+    label
+      font-size: 12px
+      padding-right: 10px
+    input
+      width: 12px
+      height: 12px
+
+  .payment-schedule__text
+    justify-content: space-between
+    h1
+      font-size: 20px
+      padding-right: 0
+
+  .payment-schedule__head
+    tr
+      th
+        width: 20%
+        text-align: left
+        &:nth-child(1)
+          width: 15%
+        &:nth-child(2)
+          width: 20%
 
 

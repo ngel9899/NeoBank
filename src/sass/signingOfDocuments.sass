@@ -1,7 +1,7 @@
 @import "../font/variables"
 
 .signing-of-documents
-  padding: 104px 0 97px 0
+  padding: 104px 20px 97px 20px
 
 .signing-of-documents__title
   display: flex
@@ -53,3 +53,11 @@
   @include paymentSchedule-button
   padding: 11px 60.5px
   background-color: #7796C0
+
+
+@media screen and (max-width: 590px)
+  .signing-of-documents__title
+    @include flex-between
+    h1
+      font-size: 24px
+      padding-right: 0

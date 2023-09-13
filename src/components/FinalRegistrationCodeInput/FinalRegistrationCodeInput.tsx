@@ -1,5 +1,6 @@
-import React, { forwardRef } from 'react';
-import { FieldErrors } from 'react-hook-form';
+import React, { forwardRef, useEffect } from 'react';
+import '../../sass/finalRegistrationCode.sass';
+import { Control, FieldErrors, UseFormWatch, useWatch } from 'react-hook-form';
 import { UseFormRegister } from 'react-hook-form/dist/types/form';
 import { IFinalRegistrationCode } from '../finalRegistrationCode/finalRegistrationCode';
 
@@ -9,9 +10,8 @@ interface IInputFinalRegistrationCodeInput {
   type: string,
   name: keyof IFinalRegistrationCode,
   required: boolean,
-  maxLength: number,
   minLength: number,
-  pattern: RegExp,
+  maxLength: number,
 }
 
 interface IFinalRegistrationCodeInput {
@@ -19,17 +19,39 @@ interface IFinalRegistrationCodeInput {
   register: UseFormRegister<IFinalRegistrationCode>,
   errors: FieldErrors<IFinalRegistrationCode>,
   index: number,
+  focusEvent: (e: React.KeyboardEvent<HTMLInputElement>) => void,
+  control: Control<IFinalRegistrationCode, any>,
+  getWatch:  UseFormWatch<IFinalRegistrationCode>,
 }
 
-const FinalRegistrationCodeInput = forwardRef<HTMLFormElement, IFinalRegistrationCodeInput>(function FinalRegistrationCodeInput(data, ref) {
-  console.log(data);
+const regex = /\d/;
+
+const FinalRegistrationCodeInput = forwardRef<HTMLInputElement, IFinalRegistrationCodeInput>(function FinalRegistrationCodeInput(data, ref: any) {
+  const dataRegister = data.register(data.item.name, {
+    required: data.item.required,
+    validate: (e: any) => {
+      return regex.test(e);
+    },
+  });
+  const name = data.item.name;
+  const watchName = data.getWatch([name]);
   return (
-    <input aria-label={data.item.caption} type={String(data.item.type)} ref={el =>{ if(el){ref.current[data.index] }}} {...data.register(data.item.name, {
-      required: data.item.required,
-      maxLength: data.item.maxLength,
-      minLength: data.item.minLength,
-      pattern: data.item.pattern,
-    })}  />
+    <input className={!watchName[0]? 'final-registration-code-form__input' : 'final-registration-code-form__input-none-back' } aria-label={data.item.caption} type={String(data.item.type)}
+      onKeyDown={(event) => {
+        if (!regex.test(event.key) && event.key != 'Backspace'){
+          event.preventDefault();
+          return
+        }
+      }} onKeyUp={(event) => {
+      data.focusEvent(event);
+    }} maxLength={data.item.maxLength} {...dataRegister}
+       onChange={(event) => {if (!regex.test(event.target.value)) {
+        return;
+      }dataRegister.onChange(event);
+    }} ref={(element) => {
+             dataRegister.ref(element);
+             ref(element);
+           }} />
   );
 });
 

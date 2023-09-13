@@ -60,12 +60,16 @@ const prescoringSlice = createSlice({
     setErrors: (state, action) => {
       state.errors = action.payload;
     },
+    clearStory: (state) => {
+      state.data = initialState.data;
+      state.id = initialState.id;
+    }
   },
 });
 type PrescoringSlice = { prescoringSlice: ReturnType<typeof prescoringSlice.getInitialState> }
 
 export const reducer = prescoringSlice.reducer;
-export const { setLoading, setData, setErrors } = prescoringSlice.actions;
+export const { setLoading, setData, setErrors, clearStory } = prescoringSlice.actions;
 export const isLoading = (state: PrescoringSlice) => state.prescoringSlice.loading;
 export const getData = (state: PrescoringSlice) => state.prescoringSlice.data;
 export const getId = (state: PrescoringSlice) => state.prescoringSlice.id;

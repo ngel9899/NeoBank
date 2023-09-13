@@ -22,8 +22,8 @@ export const columns: ColumnDef<Payment>[] = [
         >
           NUMBER
           {{
-            asc: <img src='../../img/payment-schedule-arrow-sort-top.png' alt='arrow' />,
-            desc: <img src='../../img/payment-schedule-arrow-sort-bottom.png' alt='arrow' />,
+            asc: <img src={'../../img/payment-schedule-arrow-sort-top.png'} alt='arrow' />,
+            desc: <img src={'../../img/payment-schedule-arrow-sort-bottom.png'} alt='arrow' />,
           }[column.getIsSorted() as string] ?? null}
         </p>
       )
@@ -39,8 +39,8 @@ export const columns: ColumnDef<Payment>[] = [
         >
           DATE
           {{
-            asc: <img src='../../img/payment-schedule-arrow-sort-top.png' alt='arrow' />,
-            desc: <img src='../../img/payment-schedule-arrow-sort-bottom.png' alt='arrow' />,
+            asc: <img src={'../../img/payment-schedule-arrow-sort-top.png'} alt='arrow' />,
+            desc: <img src={'../../img/payment-schedule-arrow-sort-bottom.png'} alt='arrow' />,
           }[column.getIsSorted() as string] ?? null}
         </p>
       )
@@ -56,8 +56,8 @@ export const columns: ColumnDef<Payment>[] = [
         >
           TOTAL PAYMENT
           {{
-            asc: <img src='../../img/payment-schedule-arrow-sort-top.png' alt='arrow' />,
-            desc: <img src='../../img/payment-schedule-arrow-sort-bottom.png' alt='arrow' />,
+            asc: <img src={'../../img/payment-schedule-arrow-sort-top.png'} alt='arrow' />,
+            desc: <img src={'../../img/payment-schedule-arrow-sort-bottom.png'} alt='arrow' />,
           }[column.getIsSorted() as string] ?? null}
         </p>
       )
@@ -73,8 +73,8 @@ export const columns: ColumnDef<Payment>[] = [
         >
           INTEREST PAYMENT
           {{
-            asc: <img src='../../img/payment-schedule-arrow-sort-top.png' alt='arrow' />,
-            desc: <img src='../../img/payment-schedule-arrow-sort-bottom.png' alt='arrow' />,
+            asc: <img src={'../../img/payment-schedule-arrow-sort-top.png'} alt='arrow' />,
+            desc: <img src={'../../img/payment-schedule-arrow-sort-bottom.png'} alt='arrow' />,
           }[column.getIsSorted() as string] ?? null}
         </p>
       )
@@ -90,8 +90,8 @@ export const columns: ColumnDef<Payment>[] = [
         >
           DEBT PAYMENT
           {{
-            asc: <img src='../../img/payment-schedule-arrow-sort-top.png' alt='arrow' />,
-            desc: <img src='../../img/payment-schedule-arrow-sort-bottom.png' alt='arrow' />,
+            asc: <img src={'../../img/payment-schedule-arrow-sort-top.png'} alt='arrow' />,
+            desc: <img src={'../../img/payment-schedule-arrow-sort-bottom.png'} alt='arrow' />,
           }[column.getIsSorted() as string] ?? null}
         </p>
       )
@@ -107,8 +107,8 @@ export const columns: ColumnDef<Payment>[] = [
         >
           REMAINING DEBT
           {{
-            asc: <img src='../../img/payment-schedule-arrow-sort-top.png' alt='arrow' />,
-            desc: <img src='../../img/payment-schedule-arrow-sort-bottom.png' alt='arrow' />,
+            asc: <img src={'../../img/payment-schedule-arrow-sort-top.png'} alt='arrow' />,
+            desc: <img src={'../../img/payment-schedule-arrow-sort-bottom.png'} alt='arrow' />,
           }[column.getIsSorted() as string] ?? null}
         </p>
       )

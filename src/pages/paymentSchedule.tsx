@@ -9,6 +9,7 @@ import { getApplicationId, getDataApplicationId, getStatusApplicationId } from '
 import { columns } from '../components/paymentScheduleColumns/paymentScheduleColumn';
 import { DocumentsFormed } from '../components/documentsFormed/documentsFormed';
 import { getDataPayment } from '../app/slicePayment';
+import { Page404 } from './404';
 
 
 export const PaymentSchedule = () => {
@@ -21,16 +22,20 @@ export const PaymentSchedule = () => {
   useEffect(() => {
     dispatch(getApplicationId(id));
     if (status === 'CC_APPROVED') {
-      setCreateDocument(<PaymentScheduleTable columns={columns} data={data!.credit.paymentSchedule} />);
+      setCreateDocument(<PaymentScheduleTable columns={columns} data={data!.credit.paymentSchedule}/>);
     } else {
       setCreateDocument(<DocumentsFormed />);
     }
   }, [dataPayment, status]);
   return (
-    <section>
-      <Header />
-      {createDocument}
-      <Footer />
-    </section>
+    <>
+      {status === 'CC_APPROVED' || status === 'DOCUMENT_CREATED' ?
+        <section>
+          <Header />
+          {createDocument}
+          <Footer />
+        </section> : <Page404 />
+      }
+    </>
   );
 };

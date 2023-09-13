@@ -100,7 +100,6 @@ export function ContinuationOfTheApplication() {
   const { register, handleSubmit, formState: { errors } } = useForm<IContinuationOfTheApplication>({
     mode: 'onSubmit',
   });
-  const status = useSelector(getStatusApplicationId);
   const dispatch = useAppDispatch();
   const id = useSelector(getId);
   const onSubmit = (data: Record<string, any>) => {
