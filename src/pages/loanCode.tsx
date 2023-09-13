@@ -20,7 +20,6 @@ export function LoanCode() {
   const id = useSelector(getId);
   const status = useSelector(getStatusApplicationId);
   const pin = useSelector(getPinApplicationId);
-  console.log(pin)
   useEffect(() => {
     dispatch(getApplicationId(id));
     if(status === 'CREDIT_ISSUED'){

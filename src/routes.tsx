@@ -25,7 +25,6 @@ export const AppRoutes = () => {
   const dispatch = useAppDispatch();
   const select = useSelector(getLoanOfferSelected);
   useEffect(() => {
-    console.log(status);
     if (id != 0) {
       dispatch(getApplicationId(id));
     }
