@@ -4,12 +4,19 @@ import { createRoot } from "react-dom/client"
 import "./sass/global.sass";
 import "./font/stylesheet.sass";
 import {AppRoutes} from "./routes";
+import store, {persistor} from './app/store'
+import { Provider } from 'react-redux'
+import {PersistGate} from 'redux-persist/integration/react';
 
 function Menu (){
     return(
-        <BrowserRouter>
-            <AppRoutes />
-        </BrowserRouter>
+      <Provider store={store}>
+          <PersistGate loading={null} persistor={persistor}>
+              <BrowserRouter>
+                  <AppRoutes />
+              </BrowserRouter>
+          </PersistGate>
+      </Provider>
     )
 }
 

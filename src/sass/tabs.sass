@@ -1,0 +1,25 @@
+@import "../font/variables"
+
+.tabs
+  padding-top: 48px
+
+.tabs__bloc
+  display: flex
+  border-bottom: solid 2px #80808033
+
+.tab
+  @include ubuntuMed-16
+  position: relative
+  top: 2px
+  padding: 0 16px 8px 16px
+  color: #7B7454
+  cursor: pointer
+
+.tab__active
+  border-bottom: solid 2px #7B7454
+
+.tab-content__inactive
+  display: none
+
+.tab-content__active
+  display: block

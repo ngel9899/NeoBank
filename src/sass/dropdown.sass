@@ -23,10 +23,15 @@
     list-style: none
     padding-top: 8px
     padding-bottom: 8px
-    a
-      text-decoration: none
-      font-family: $ubuntu-bold
-      font-size: 16px
-      color: #1D1929
-    &:hover
-      background-color: #e7e7e7
+
+.active-header
+  @include navLink-header
+  color: #B2A35F
+  &:hover
+    background-color: #e7e7e7
+
+.no-active-header
+  @include navLink-header
+  color: #1D1929
+  &:hover
+    background-color: #e7e7e7

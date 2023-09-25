@@ -1,0 +1,44 @@
+@import "../font/variables"
+
+.how-to-get-card
+  padding: 48px 0 46px 0
+
+  h1
+    @include ubuntuBold-30
+    text-align: center
+
+.how-to-get-card__container
+  @include flex-between
+  padding-top: 14px
+
+.how-to-get-card__bloc
+  width: 30%
+  height: 116px
+
+.how-to-get-card__content
+  @include flex-between
+
+.how-to-get-card__number
+  p
+    @include ubuntuBold-20
+    display: block
+    padding: 12px 18.5px
+    background-color: #D9D9D9
+    border-radius: 50px
+
+.how-to-get-card__dividing-line
+  width: 75%
+  margin: auto 0
+
+  hr
+    color: #80808033
+
+.how-to-get-card__text
+  p
+    @include ubuntuMed-16
+    text-align: center
+    padding-top: 20px
+
+@media screen and (max-width: 590px)
+  .how-to-get-card
+    height: 300px

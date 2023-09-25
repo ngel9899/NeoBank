@@ -1,0 +1,185 @@
+@import "../font/variables"
+
+.form__container
+  @include form__container
+
+.form__customize-card
+  display: flex
+  padding: 32px 0 0 32px
+
+.form-customize-card__container
+  width: 608px
+  border-right: dashed 1px #80808066
+
+.form-customize-card__content
+  @include flex-between
+  align-items: center
+
+  h1
+    @include ubuntuBold-30
+
+  div:last-child
+    padding-right: 40px
+
+    p
+      @include ubuntuMed-16
+      vertical-align: middle
+
+.form__select-amount
+  width: 568px
+  height: 164px
+  border-radius: 10px
+  border: 1px solid #5B35D5
+  margin: 32px 40px 0 0
+
+.form-select-amount__content
+  padding: 24px 24px 0 24px
+
+  h3
+    @include ubuntuMed-16
+    padding-bottom: 20px
+
+  input
+    width: 100%
+
+.form-select-amount-content__value
+  @include ubuntuMed-16
+  padding-bottom: 10px
+
+.form-select-amount-content__minMax
+  @include flex-between
+
+  p
+    @include ubuntuMed-16
+    color: #786D6D
+
+
+.form__have-chosen-amount
+  padding-left: 42px
+
+  h2
+    @include ubuntuBold-20
+    padding-bottom: 16px
+
+  p
+    @include ubuntuMed-16
+    width: 220px
+    border-bottom: solid 1px #80808033
+    padding-bottom: 10px
+
+.form__contact-information
+  padding: 32px 32px 24px 32px
+
+  h2
+    @include ubuntuBold-20
+
+.form-contact-information__inputCard
+  @include flex-wrap
+
+.inputCard__container
+  width: 23.6%
+  margin: 16px 16px 0 0
+
+  label
+    @include ubuntuMed-16
+    display: block
+    padding-bottom: 8px
+
+    &:after
+      content: "*"
+      color: #FF0000
+      padding-left: 2px
+
+  select
+    width: 100%
+    height: 40px
+    background-color: #F9F5E3
+    font-family: $ubuntu-regular
+    font-size: 14px
+    padding-left: 16px
+    border: none
+    outline: none
+
+    &:focus
+      border: solid 2px #5B35D5
+
+.inputCard-container__input
+  @include container__input
+
+.inputCard-Container__noneAfter
+  input
+    background: #F9F5E3
+
+  label
+    &:after
+      display: none
+
+.form__submit
+  display: flex
+  justify-content: right
+  padding: 0 32px 32px 0
+
+  input
+    @include buttonForm-submit
+    &:hover
+      background-color: #7796C0
+
+.inputCard__error
+  @include input__text-border-error
+
+.inputCard-container__error
+  @include input__error
+
+.inputCard-container__success
+  @include input__success
+
+@keyframes rotate
+  from
+    transform: rotateZ(-360deg)
+
+@media screen and (max-width: 1030px)
+  .form-customize-card__container
+    width: 50%
+
+  .form__select-amount
+    width: 90%
+
+@media screen and (max-width: 900px)
+  .inputCard__container
+    margin: 20px 20px 0 0
+    width: 25%
+
+@media screen and (max-width: 900px)
+  .inputCard__container
+    width: 40%
+
+@media screen and (max-width: 850px)
+  .form__customize-card
+    padding-right: 32px
+  .form-customize-card__container
+    border: none
+    width: 100%
+  .form__select-amount
+    margin: 0
+  .form__have-chosen-amount
+    width: 100%
+    text-align: center
+    padding-left: 0
+    padding-top: 15px
+
+    p
+      width: 100%
+  .form__customize-card
+    flex-wrap: wrap
+
+@media screen and (max-width: 650px)
+  .form__contact-information
+    padding-right: 0
+
+@media screen and (max-width: 550px)
+  .form-customize-card__content
+    h1
+      font-size: 24px
+
+  .inputCard__container
+    width: 45%

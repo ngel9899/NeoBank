@@ -1,0 +1,39 @@
+@import "../font/variables"
+
+.rates-and-conditions
+  padding: 40px 0 46px 0
+  width: 78%
+
+.rates-and-conditions__bloc
+  display: flex
+  border-bottom: solid 1px #7F92AC
+  height: 42px
+  margin-bottom: 24px
+
+  &:last-child
+    border-bottom: none
+    margin-bottom: 0
+
+.rates-and-conditions__title
+  width: 32%
+  margin-right: 69px
+
+  p
+    @include ubuntuMed-16
+
+.rates-and-conditions__text
+  width: 68%
+
+  p
+    @include ubuntuMed-16
+    color: #434343
+
+
+@media screen and (max-width: 770px)
+  .rates-and-conditions
+    width: 100%
+
+
+@media screen and (max-width: 590px)
+  .rates-and-conditions__bloc
+    height: 60px

@@ -1,0 +1,44 @@
+@import "../font/variables"
+
+
+.error404
+  @include flex-between
+  padding-top: 24px
+  padding-bottom: 96px
+
+.error404__img
+  img
+    width: 100%
+
+.error404__text
+  padding-top: 152px
+  h1
+    @include ubuntuBold-30
+    color: #1C1C1E
+  h2
+    padding-top: 32px
+    @include ubuntuMed-30
+    color: black
+  p
+    @include ubuntuMed-16
+    padding-top: 32px
+  button
+    @include buttonBlue-16
+    padding: 11px 64.5px
+    border-radius: 8px
+    margin-top: 32px
+    &:hover
+      background-color: #7796C0
+
+
+@media screen and (max-width: 930px)
+  .error404__img
+    width: 80%
+
+@media screen and (max-width: 800px)
+  .error404__img
+    width: 115%
+
+@media screen and (max-width: 700px)
+  .error404__img
+    display: none

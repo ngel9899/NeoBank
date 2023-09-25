@@ -1,0 +1,67 @@
+@import "../font/variables"
+
+
+.deny-application
+  display: flex
+  align-items: center
+  justify-content: center
+  height: 100vh
+  width: 100vw
+  background-color: rgba(0, 0, 0, 0.4)
+  position: fixed
+  top: 0
+  left: 0
+  transform: scale(0)
+
+.deny-application.active
+  transform: scale(1)
+
+.deny-application__content
+  background-color: #FFFFFF
+  padding: 16px
+  width: 448px
+  height: 174px
+
+  p
+    @include ubuntuMed-16
+    color: #1A202C
+
+.deny-application__title
+  padding-bottom: 16px
+  @include flex-between
+
+  h3
+    @include ubuntuBold-16
+    color: #1C1C1E
+
+  img
+    height: 24px
+    width: 24px
+
+    &:hover
+      background-color: #f9f5eb
+
+
+.deny-application_button
+  display: flex
+  justify-content: right
+  padding-top: 35px
+
+.deny-application-button__deny
+  margin-right: 40px
+  @include paymentSchedule-button
+  background-color: #D93737
+  &:hover
+    background-color: #e88675
+
+.deny-application-button__cancel
+  @include paymentSchedule-button
+  padding: 11px 21.5px
+  &:hover
+    background-color: #7796C0
+
+.deny-application-button__go-home
+  @include paymentSchedule-button
+  padding: 11px 29.5px
+  &:hover
+    background-color: #7796C0
